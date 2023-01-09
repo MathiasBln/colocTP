@@ -1,4 +1,4 @@
-# Another one blog to dust
+# Coloc
 
 Simple blog made Adrien Quimbre for school project, Hetic web second year
 
