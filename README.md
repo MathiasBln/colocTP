@@ -1,12 +1,7 @@
 # Coloc
 
-Simple blog made Adrien Quimbre for school project, Hetic web second year
 
 ## Description:
-
-Blog with login, sign up, get articles, post article.
-<br>
-Docker, PHP vanilla with object and react.
 
 ## Prerequisite
 Docker, composer, npm.
