@@ -18,6 +18,8 @@ export default function Dashboard() {
         <>
             <Balance />
             {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
-        </>
-    )
+        </>)
+
 }
+
+

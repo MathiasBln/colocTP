@@ -3,6 +3,7 @@ import { useEffect, useState} from "react";
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./Routes/Login";
+import Dashboard from "./Routes/Dashboard";
 import {IColoc} from "./types/Post";
 import Home from "./Routes/Home";
 import NeedAuth from "./Routes/NeedAuth";
@@ -33,6 +34,9 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={"/login"} element={<Login/>}/>
+                    <NeedAuth>
+                        <Route path={"/dashboard/:id"} element={<Dashboard/>}/>
+                    </NeedAuth>
                     <Route path={'/'} element={
                         <NeedAuth>
                             <Home setColoc={setColoc} coloc={coloc}/>
