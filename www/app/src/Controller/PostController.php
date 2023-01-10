@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\Factory\PDOFactory;
 use App\Model\Repository\ColocRepository;
+use App\Model\Repository\Coloc_User_Repository;
 use App\Model\Repository\UserRepository;
 use App\Route\Route;
 use App\Model\Entity\Coloc;
@@ -55,7 +56,10 @@ class PostController extends Controller
 
         $args = [...$_POST];
         $colocRepository = new ColocRepository(new PDOFactory());
+        $coloc_user = new Coloc_User_Repository(new PDOFactory());
         $coloc = new Coloc($args);
+        //Mettre l'id 
+        $colocUser = new Coloc_X_User()
         $coloc = $colocRepository->insert($coloc);
         $this->renderJSON([
             "coloc" => $coloc

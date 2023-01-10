@@ -10,7 +10,10 @@ CREATE TABLE IF NOT EXISTS expense
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     title TEXT NOT NULL,
-  	cost INT Not NULL
+  	cost INT Not NULL,
+    coloc_id INT,
+    CONSTRAINT FK_colocID
+      FOREIGN KEY (coloc_id) REFERENCES colocGroup (id),
 );
 
 -- EXPENSE <-> USER --
