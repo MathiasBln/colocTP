@@ -1,3 +1,10 @@
+CREATE TABLE IF NOT EXISTS colocGroup
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS users
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -17,7 +24,7 @@ CREATE TABLE IF NOT EXISTS expense
   	cost INT Not NULL,
     coloc_id INT,
     CONSTRAINT FK_colocID
-      FOREIGN KEY (coloc_id) REFERENCES colocGroup (id),
+      FOREIGN KEY (coloc_id) REFERENCES colocGroup (id)
 );
 
 -- EXPENSE <-> USER --
@@ -33,9 +40,3 @@ create table expense_user_junction
 );
 
 
-CREATE TABLE IF NOT EXISTS colocGroup
-(
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title TEXT NOT NULL,
-    content TEXT NOT NULL
-);
