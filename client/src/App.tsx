@@ -35,7 +35,7 @@ function App() {
                 <Routes>
                     <Route path={"/login"} element={<Login/>}/>
                     
-                    <Route path={"/dashboard/:id"} element={<NeedAuth><Dashboard/></NeedAuth>}/>
+                    <Route path={"/dashboard/:id"} element={<Dashboard/>}/>
                     
                     <Route path={'/'} element={
                         <NeedAuth>
