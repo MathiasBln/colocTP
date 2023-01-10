@@ -6,6 +6,7 @@ import Login from "./Routes/Login";
 import {IColoc} from "./types/Post";
 import Home from "./Routes/Home";
 import NeedAuth from "./Routes/NeedAuth";
+import Balance from './Component/Balance';
 
 
 interface authInterface {
@@ -39,6 +40,7 @@ function App() {
                     }/>
                 </Routes>
             </BrowserRouter>
+            <Balance></Balance>
         </div>
     );
 }
