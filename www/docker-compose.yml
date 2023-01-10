@@ -19,3 +19,10 @@ services:
             MYSQL_ROOT_PASSWORD: root
         volumes:
             - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - '1001:80'
+        environment:
+            - PMA_ARBITRARY=1
