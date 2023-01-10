@@ -10,7 +10,7 @@ class User extends BaseEntity
     private ?string $username = null;
     private ?string $password = null;
     private ?string $token = null;
-    private ?boolean $isProprio = null;
+    private ?int $isProprio = null;
     private ?int $coloc_id = null;
 
     /**
@@ -64,7 +64,7 @@ class User extends BaseEntity
         return $this->isProprio;
     }
 
-    public function setIsProprio(string $isProprio)
+    public function setIsProprio($isProprio)
     {
         $this->isProprio = $isProprio;
         return $this;
@@ -75,7 +75,7 @@ class User extends BaseEntity
         return $this->coloc_id;
     }
 
-    public function setColocId(string $coloc_id)
+    public function setColocId($coloc_id)
     {
         $this->coloc_id = $coloc_id;
         return $this;
