@@ -13,7 +13,6 @@ export default function Form({setColoc, coloc}: IShowProps) {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         fetch('http://localhost:5657/post', {
             method: "POST",
             mode: "cors",
@@ -70,7 +69,7 @@ export default function Form({setColoc, coloc}: IShowProps) {
                                     <input type="text" id="typeEmailX" className="form-control form-control-lg" name="title" onChange={handleChange}/>
                                 </div>
                                 <div className="form-outline form-white mb-4">
-                                    <label className="form-label" htmlFor="typePasswordX">Content</label>
+                                    <label className="form-label" htmlFor="typePasswordX">Address</label>
                                     <textarea id="typePasswordX" className="form-control form-control-lg" name="content" onChange={handleChange}/>
                                 </div>
                                 <button className="btn btn-outline-light btn-lg px-5" type="submit">Submit</button>

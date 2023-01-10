@@ -30,8 +30,6 @@ export default function ShowPost({setColoc, coloc}: IShowProps) {
 
     },[])
 
-    console.log(coloc)
-
     return (
         <>
 

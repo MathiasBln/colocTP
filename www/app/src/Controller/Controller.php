@@ -35,38 +35,6 @@ abstract class Controller
         exit;
     }
 
-    public function saveFile($fileName): array
-    {
-        $targetDir = __DIR__ . "/../../public/img/";
-        $targetFile = $targetDir . basename($fileName);
-        $error = ['error'];
-        $succeed = ['succeed'];
-        $acceptExtension = ['jpg', 'png', 'jpeg', 'gif'];
-        $check = true;
-
-        if(!getimagesize($_FILES["fileToUpload"]["tmp_name"])) {
-            $error[] = "Ce n'est pas une image";
-            $check = false;
-        }
-
-        if ($_FILES["fileToUpload"]["size"] > 5971520) {
-            $error[] = "Image trop volumineuse";
-            $check = false;
-        }
-
-        if(!in_array(strtolower(pathinfo($fileName,PATHINFO_EXTENSION)), $acceptExtension)) {
-            $error[] = "Seulement jpg, png, jpeg et gif";
-            $check = false;
-        }
-
-        if (!$check) {
-            return $error;
-        }
-
-        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile);
-        return $succeed;
-    }
-
     public function uuid(): string
     {
         return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',

@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Model\Factory\PDOFactory;
-use App\Model\Repository\PostRepository;
+use App\Model\Repository\ColocRepository;
 use App\Model\Repository\UserRepository;
 use App\Route\Route;
-use App\Model\Entity\Post;
+use App\Model\Entity\Coloc;
 use App\Services\JWTHelper;
 
 class PostController extends Controller
@@ -48,47 +48,20 @@ class PostController extends Controller
             ]);
             die;
         }
+        // $userRepository = new UserRepository(new PDOFactory());
+        // $user = $userRepository->getUserByToken($cred);
+        // $author = $user->getUsername();
+        // $userId = $user->getId();
 
-        $userRepository = new UserRepository(new PDOFactory());
-        $user = $userRepository->getUserByToken($cred);
-        $author = $user->getUsername();
-        $userId = $user->getId();
-
-        $args = [...$_POST, 'author' => $author, 'user_id' => $userId];
-        $postRepository = new PostRepository(new PDOFactory());
-        $post = new Post($args);
-        $post = $postRepository->insert($post);
+        $args = [...$_POST];
+        $colocRepository = new ColocRepository(new PDOFactory());
+        $coloc = new Coloc($args);
+        $coloc = $colocRepository->insert($coloc);
         $this->renderJSON([
-            "post" => $post
+            "coloc" => $coloc
         ]);
         http_response_code(200);
         die;
     }
-
-    #[Route('/post/delete', 'deletePost', ['POST'])]
-    public function deletePost()
-    {
-        $json = file_get_contents("php://input");
-        $body = json_decode($json, true);
-        $postId = $body['id'];
-        if ($postId) {
-            $postRepository = new PostRepository(new PDOFactory());
-            $postRepository->delete($postId);
-            http_response_code(200);
-        }
-        exit();
-    }
-
-    #[Route('/post/patch', 'patchPost', ['POST'])]
-    public function patchPost()
-    {
-        $json = file_get_contents("php://input");
-        $postRepository = new PostRepository(new PDOFactory());
-        $post = new Post(json_decode($json, true));
-        $postRepository->update($post);
-        http_response_code(200);
-        exit();
-    }
-
 
 }

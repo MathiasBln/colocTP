@@ -35,6 +35,7 @@ class ColocRepository extends Repository
 
     public function insert(Coloc $coloc)
     {
+        var_dump($coloc);
         $newColoc =
             'INSERT INTO `colocGroup` (`title`, `content`)
             VALUES(:title, :content)';
