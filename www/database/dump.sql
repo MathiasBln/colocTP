@@ -30,8 +30,18 @@ CREATE TABLE IF NOT EXISTS colocGroup
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     title TEXT NOT NULL,
-    content TEXT NOT NULL,
-    proprioId INT,
-    CONSTRAINT FK_proprio 
-      FOREIGN KEY (proprioId) REFERENCES users (id)
+    content TEXT NOT NULL
+);
+
+-- COLOC <-> USER --
+create table coloc_user_junction
+(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  coloc_id int,
+  user_id int,
+  isProprio boolean,
+  CONSTRAINT FK_coloc 
+      FOREIGN KEY (coloc_id) REFERENCES colocGroup (id),
+  CONSTRAINT FK_users 
+      FOREIGN KEY (user_id) REFERENCES users (id)
 );
