@@ -48,15 +48,18 @@ class PostController extends Controller
             ]);
             die;
         }
-        // $userRepository = new UserRepository(new PDOFactory());
-        // $user = $userRepository->getUserByToken($cred);
-        // $author = $user->getUsername();
-        // $userId = $user->getId();
-
+        $userRepository = new UserRepository(new PDOFactory());
+        $user = $userRepository->getUserByToken($cred);
+        $author = $user->getUsername();
+        $userId = $user->getId();
+        
         $args = [...$_POST];
         $colocRepository = new ColocRepository(new PDOFactory());
         $coloc = new Coloc($args);
         $coloc = $colocRepository->insert($coloc);
+
+        $userModif = $userRepository->updateStatus();
+        
         $this->renderJSON([
             "coloc" => $coloc
         ]);
