@@ -67,7 +67,7 @@ export default function Form() {
 
                                         <div className="form-outline form-white mb-4">
                                             <input type="text" id="typeEmailX" className="form-control form-control-lg" name="username" onChange={handleChange}/>
-                                            <label className="form-label" htmlFor="typeEmailX">Email</label>
+                                            <label className="form-label" htmlFor="typeEmailX">Username</label>
                                         </div>
 
                                         <div className="form-outline form-white mb-4">

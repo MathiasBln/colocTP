@@ -1,11 +1,11 @@
 import {Dispatch, SetStateAction} from "react";
 
-export interface FormPost {
+export interface FormColoc {
     title: string,
     content: string
 }
 
-export interface IPost extends FormPost {
+export interface IColoc extends FormColoc {
     id: number,
     author: string,
     createdAt: object,
@@ -13,6 +13,6 @@ export interface IPost extends FormPost {
 }
 
 interface IShowProps {
-    setPosts: Dispatch<SetStateAction<{ posts: IPost[] }>>
-    posts: { posts: IPost[] }
+    setColoc: Dispatch<SetStateAction<{ coloc: IColoc[] }>>
+    coloc: { coloc: IColoc[] }
 }

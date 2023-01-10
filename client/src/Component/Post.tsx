@@ -1,6 +1,6 @@
-import {IPost} from "../types/Post";
+import {IColoc} from "../types/Post";
 
-export default function Post({id, title, content, author, createdAt, userId}: IPost) {
+export default function Post({id, title, content, author, createdAt, userId}: IColoc) {
     return (
         <div className="container py-2 h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">

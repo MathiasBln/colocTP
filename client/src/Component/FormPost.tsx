@@ -1,11 +1,11 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import { FormPost, IShowProps} from "../types/Post";
+import { FormColoc, IShowProps} from "../types/Post";
 import {useNavigate} from "react-router-dom";
 
 
-export default function Form({setPosts, posts}: IShowProps) {
+export default function Form({setColoc, coloc}: IShowProps) {
 
-    const [formData, setFormData] = useState<FormPost>({ title: "", content: "" })
+    const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" })
 
     // @ts-ignore
     const token = JSON.parse(sessionStorage.token)
@@ -35,12 +35,12 @@ export default function Form({setPosts, posts}: IShowProps) {
                     }
                     return
                 }
-                setPosts(
+                setColoc(
                     prevState => {
                         return {
-                            posts: [
-                                json.post,
-                                ...prevState.posts,
+                            coloc: [
+                                json.coloc,
+                                ...prevState.coloc,
                             ]
                         }
                     }
@@ -70,7 +70,7 @@ export default function Form({setPosts, posts}: IShowProps) {
                                     <input type="text" id="typeEmailX" className="form-control form-control-lg" name="title" onChange={handleChange}/>
                                 </div>
                                 <div className="form-outline form-white mb-4">
-                                    <label className="form-label" htmlFor="typePasswordX">Password</label>
+                                    <label className="form-label" htmlFor="typePasswordX">Content</label>
                                     <textarea id="typePasswordX" className="form-control form-control-lg" name="content" onChange={handleChange}/>
                                 </div>
                                 <button className="btn btn-outline-light btn-lg px-5" type="submit">Submit</button>

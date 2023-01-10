@@ -4,7 +4,7 @@ import { useNavigate} from "react-router-dom";
 import Post from "./Post";
 
 
-export default function ShowPost({setPosts, posts}: IShowProps) {
+export default function ShowPost({setColoc, coloc}: IShowProps) {
 
     // @ts-ignore
     const token = JSON.parse(sessionStorage.token)
@@ -25,17 +25,17 @@ export default function ShowPost({setPosts, posts}: IShowProps) {
                     }
                     return
                 }
-                setPosts(json)
+                setColoc(json)
             })
 
     },[])
 
-    console.log(posts)
+    console.log(coloc)
 
     return (
         <>
 
-            {posts.posts.map((value, index) => {
+            {coloc.coloc.map((value, index) => {
                 return (<Post key={index} {...value}/>)
             })}
         </>
