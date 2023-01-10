@@ -10,6 +10,8 @@ class User extends BaseEntity
     private ?string $username = null;
     private ?string $password = null;
     private ?string $token = null;
+    private ?boolean $isProprio = null;
+    private ?int $coloc_id = null;
 
     /**
      * @return string|null
@@ -56,4 +58,28 @@ class User extends BaseEntity
     {
         return password_verify($plainPassword, $this->password);
     }
+
+    public function getIsProprio()
+    {
+        return $this->isProprio;
+    }
+
+    public function setIsProprio(string $isProprio)
+    {
+        $this->isProprio = $isProprio;
+        return $this;
+    }
+
+    public function getColocId()
+    {
+        return $this->coloc_id;
+    }
+
+    public function setColocId(string $coloc_id)
+    {
+        $this->coloc_id = $coloc_id;
+        return $this;
+    }
+
+
 }

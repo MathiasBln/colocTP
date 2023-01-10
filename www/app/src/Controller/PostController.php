@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\Factory\PDOFactory;
 use App\Model\Repository\ColocRepository;
-use App\Model\Repository\Coloc_User_Repository;
 use App\Model\Repository\UserRepository;
 use App\Route\Route;
 use App\Model\Entity\Coloc;
@@ -49,18 +48,18 @@ class PostController extends Controller
             ]);
             die;
         }
-        // $userRepository = new UserRepository(new PDOFactory());
-        // $user = $userRepository->getUserByToken($cred);
-        // $author = $user->getUsername();
-        // $userId = $user->getId();
-
+        $userRepository = new UserRepository(new PDOFactory());
+        $user = $userRepository->getUserByToken($cred);
+        $author = $user->getUsername();
+        $userId = $user->getId();
+        
         $args = [...$_POST];
         $colocRepository = new ColocRepository(new PDOFactory());
-        $coloc_user = new Coloc_User_Repository(new PDOFactory());
         $coloc = new Coloc($args);
-        //Mettre l'id 
-        $colocUser = new Coloc_X_User()
         $coloc = $colocRepository->insert($coloc);
+
+        $userModif = $userRepository->updateStatus();
+        
         $this->renderJSON([
             "coloc" => $coloc
         ]);

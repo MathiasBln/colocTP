@@ -109,6 +109,22 @@ class UserRepository extends Repository
         return $query->execute();
     }
 
+    public function updateStatus(User $user): bool
+    {
+        $updateUser =
+            'UPDATE `users`
+            SET `isProprio` = :isProprio, `coloc_id` = :colocId
+            WHERE `id` = :id';
+
+        $query = $this->pdo->prepare($updateUser);
+        $query->bindValue(':isProprio', $user->getIsProprio());
+        $query->bindValue(':colocId', $user->getColocId());
+        $query->bindValue(':id', $user->getId());
+
+        return $query->execute();
+    }
+
+
     public function delete($id)
     {
         $deleteUser = "DELETE FROM `users` WHERE `id` = :id";
