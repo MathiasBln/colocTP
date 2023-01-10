@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 // import IUsers from '../types/User' - TODO: faire une belle interface 
 
 export default function UserList() {
@@ -19,15 +20,16 @@ export default function UserList() {
 
     return (
             <>
-            {fetchUsers.post?.map( (item: any, key: any) => (
-                    <div className="main-category-container"  key={key}>
+            {fetchUsers.renters?.map( (item: any, key: any) => (
+                    <div className=""  key={key}>
 
                             <div
-                                className="background-text"
+                                className=""
                             />
-                        <div className="body">
-                            <h1>{item['title']}</h1>
-                            <p>{item['post']}</p>
+                        <div className="">
+                            <h1>{item['username']}</h1>
+                            <p>{item['userId']}</p>
+                            <p>{item['colocId']}</p>
                         </div>
                     </div>
             ))}

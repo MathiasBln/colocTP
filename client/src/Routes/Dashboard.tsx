@@ -3,13 +3,14 @@ import {useNavigate} from "react-router-dom";
 import InviteUser from "../Component/InviteBoard";
 import React, { useEffect } from "react";
 import Balance from '../Component/Balance';
+import InviteBoard from "../Component/InviteBoard";
 
-export default function Dashboard(coloc_name:string) {
+export default function Dashboard() {
     // fetch user
     const user:any = [];
     return (
          <>
-         <h1>Bienvenue chez {coloc_name} </h1>
+         <h1>Bienvenue chez la coloc </h1>
          <InviteBoard />
          </>
     )
