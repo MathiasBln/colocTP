@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS colocGroup
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     title TEXT NOT NULL,
-    content TEXT NOT NULL
+    content TEXT NOT NULL,
+    proprioID INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS users
@@ -11,7 +12,6 @@ CREATE TABLE IF NOT EXISTS users
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     token VARCHAR(255),
-    isProprio boolean,
     coloc_id INT,
     CONSTRAINT FK_coloc 
       FOREIGN KEY (coloc_id) REFERENCES colocGroup (id)
@@ -38,5 +38,6 @@ create table expense_user_junction
   CONSTRAINT FK_user 
       FOREIGN KEY (user_id) REFERENCES users (id)
 );
+
 
 

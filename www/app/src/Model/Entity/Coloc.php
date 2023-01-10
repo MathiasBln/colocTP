@@ -8,6 +8,7 @@ class Coloc extends BaseEntity
 {
     private ?string $title = null;
     private ?string $content = null;
+    private ?int $proprioID = null;
 
     public function getTitle()
     {
@@ -28,6 +29,17 @@ class Coloc extends BaseEntity
     public function setContent($content)
     {
         $this->content = $content;
+        return $this;
+    }
+
+    public function getProprioId()
+    {
+        return $this->proprioID;
+    }
+
+    public function setProprioID($proprioID)
+    {
+        $this->proprioID = $proprioID;
         return $this;
     }
 }

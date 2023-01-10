@@ -37,12 +37,13 @@ class ColocRepository extends Repository
     {
         var_dump($coloc);
         $newColoc =
-            'INSERT INTO `colocGroup` (`title`, `content`)
-            VALUES(:title, :content)';
+            'INSERT INTO `colocGroup` (`title`, `content`, `proprioID`)
+            VALUES(:title, :content, :proprioID)';
 
         $query = $this->pdo->prepare($newColoc);
         $query->bindValue(':title', $coloc->getTitle());
         $query->bindValue(':content', $coloc->getContent());
+        $query->bindValue(':proprioID', $coloc->getProprioID());
         return $query->execute();
     }
 

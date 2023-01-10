@@ -124,7 +124,6 @@ class UserRepository extends Repository
         return $query->execute();
     }
 
-
     public function delete($id)
     {
         $deleteUser = "DELETE FROM `users` WHERE `id` = :id";
