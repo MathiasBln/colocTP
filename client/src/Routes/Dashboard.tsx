@@ -3,15 +3,16 @@ import {useNavigate} from "react-router-dom";
 import InviteUser from "../Component/InviteBoard";
 import React, { useEffect } from "react";
 import Balance from '../Component/Balance';
+import {useNavigate, Outlet} from "react-router-dom";
 import InviteBoard from "../Component/InviteBoard";
 
 export default function Dashboard() {
-    // fetch user
-    const user:any = [];
+
     return (
          <>
          <h1>Bienvenue chez la coloc </h1>
          <InviteBoard />
+         <Outlet/>
          </>
     )
 export default function Dashboard() {

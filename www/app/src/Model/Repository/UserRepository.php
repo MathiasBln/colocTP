@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Model\Repository;
-
 use App\Model\Entity\User;
 use App\Model\Repository\Repository;
 

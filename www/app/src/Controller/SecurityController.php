@@ -65,20 +65,20 @@ class SecurityController extends Controller
         exit();
     }
 
-    #[Route('/home', 'home', ['POST', 'GET'])]
+    #[Route('/users', 'users', ['POST', 'GET'])]
     public function listUsers() {
         $userRepository = new UserRepository(new PDOFactory());
         $users = $userRepository->getAllUsers();
         $renters = [];
-        foreach($users as $user) {
-            $renters[] = [
-                'userId' => $user->getId(),
-                'username' => $user->getUsername(),
-                'colocId' => $user->getColocId()
-            ];
+        if(isset($users) && !empty($users)) { 
+            foreach($users as $user) {
+                $renters[] = [
+                    'username' => $user->getUsername(),
+                    'colocId' => $user->getColocId()
+                ];
+            }
         }
-    
-        $this->renderJson(['renters' => $renters]);
+        $this->renderJson([$users]);
         http_response_code(200);
         exit();
     }    

@@ -17,8 +17,8 @@ interface authInterface {
 
 function App() {
     const [auth, setAuth] = useState<authInterface>({value : false})
-    const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})
-
+    const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})     
+    
     useEffect(() => {
         if (sessionStorage.token) {
             setAuth({value : true})
@@ -35,7 +35,9 @@ function App() {
                 <Routes>
                     <Route path={"/login"} element={<Login/>}/>
                     
-                    <Route path={"/dashboard/:id"} element={<Dashboard/>}/>
+                    <Route path={"dashboard"} element={<NeedAuth><Dashboard /></NeedAuth>}>
+                        <Route path=":id" element={<Dashboard />} />
+                    </Route>
                     
                     <Route path={'/'} element={
                         <NeedAuth>

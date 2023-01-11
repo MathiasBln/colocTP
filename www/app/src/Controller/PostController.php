@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use App\Model\Factory\PDOFactory;
 use App\Model\Repository\ColocRepository;
 use App\Model\Repository\UserRepository;
@@ -12,31 +10,18 @@ use App\Services\JWTHelper;
 
 class PostController extends Controller
 {
-    #[Route('/', 'homePage', ['GET'])]
-    public function home($error = [])
-    {
-        $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
-        $token = JWTHelper::decodeJWT($cred);
-        if (!$token) {
-            $this->renderJSON([
-                "message" => "invalid cred"
-            ]);
-            die;
-        }
-        $postRepository = new PostRepository(new PDOFactory());
-        $posts = $postRepository->getAllPost();
-        if($posts) {
-            $this->renderJSON([
-                "posts" => $posts
-            ]);
-            http_response_code(200);
-            die;
-        }
-        $this->renderJSON([
-            "message" => "No Post"
-        ]);
-        die;
-    }
+    // #[Route('/', 'homePage', ['GET'])]
+    // public function home($error = [])
+    // {
+    //     $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
+    //     $token = JWTHelper::decodeJWT($cred);
+    //     if (!$token) {
+    //         $this->renderJSON([
+    //             "message" => "invalid cred"
+    //         ]);
+    //         die;
+    //     }
+    // }
 
     #[Route('/post', 'newPost', ['POST'])]
     public function newPost()

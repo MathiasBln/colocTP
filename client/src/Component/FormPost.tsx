@@ -44,7 +44,6 @@ export default function Form({setColoc, coloc}: IShowProps) {
                     }
                 )
             })
-            navigate('/coloc')
     }
 
     const handleChange = (e: ChangeEvent) => {
