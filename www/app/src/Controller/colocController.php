@@ -5,6 +5,7 @@ use App\Model\Repository\ColocRepository;
 use App\Model\Repository\UserRepository;
 use App\Route\Route;
 use App\Model\Entity\Coloc;
+use App\Model\Entity\User;
 use App\Services\JWTHelper;
 
 class colocController extends Controller
@@ -24,17 +25,8 @@ class colocController extends Controller
     #[Route('/addrenter', 'addrenter', ['POST'])]
     public function addrenter()
     {
-        $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
-        $token = JWTHelper::decodeJWT($cred);
-        if (!$token) {
-            $this->renderJSON([
-                "message" => "invalid cred"
-            ]);
-            die;
-        }
-        $userRepository = new UserRepository(new PDOFactory());
-        $user = $userRepository->getUserByToken($cred);
-        $userId = $user->getId();
+        $args = [...$_POST];
+        var_dump($args);
     }
 
 } 

@@ -5,7 +5,7 @@ import { formDataColocInterface } from "../types/Post"
 export default function UserList() {
     // @ts-ignore
     const [fetchUsers, setFetchUsers] = useState<any>("");
-    const [formDataColoc, setFormDataColoc] = useState<formDataColocInterface>({coloc_id: ""});
+    const [formDataColoc, setFormDataColoc] = useState<formDataColocInterface>({user_id: ""});
     const navigate = useNavigate();
     const token = JSON.parse(sessionStorage.token);
 
@@ -39,8 +39,9 @@ export default function UserList() {
                 "Authorization" : "Bearer " + token.token,
                 "Content-type":  "application/x-www-form-urlencoded"
             })
-        }).then((response) =>  response.json())
+        }).then((response) =>  response.text())
             .then((data) => {
+                console.log("DATA IS"+data);
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }
     const handleChange = (e: ChangeEvent) => {
@@ -54,7 +55,6 @@ export default function UserList() {
         })
     }
 
-    console.log(fetchUsers.users);
     console.log("formDataColoc is"+formDataColoc);
     return (
             <>

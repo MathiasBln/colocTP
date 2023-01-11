@@ -3,7 +3,6 @@ import { IShowProps} from "../types/Post";
 import { useNavigate} from "react-router-dom";
 import Post from "./Post";
 
-
 export default function ShowPost({setColoc, coloc}: IShowProps) {
 
     // @ts-ignore
@@ -32,7 +31,6 @@ export default function ShowPost({setColoc, coloc}: IShowProps) {
 
     return (
         <>
-
             {coloc.coloc.map((value, index) => {
                 return (<Post key={index} {...value}/>)
             })}
