@@ -18,5 +18,6 @@ interface IShowProps {
 }
 
 export interface formDataColocInterface {
-    user_id: string
+    user_id: string,
+    coloc_id: string
 }

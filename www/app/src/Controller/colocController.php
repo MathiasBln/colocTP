@@ -22,11 +22,12 @@ class colocController extends Controller
       
     }
 
-    #[Route('/addrenter', 'addrenter', ['POST'])]
+    #[Route('/addrenter', 'addrenter', ['POST', 'GET'])]
     public function addrenter()
     {
-        $args = [...$_POST];
-        var_dump($args);
+        var_dump($_POST);
+
+
     }
 
 } 

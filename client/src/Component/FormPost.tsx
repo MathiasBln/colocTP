@@ -1,5 +1,5 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import { FormColoc, IShowProps} from "../types/Post";
+import {FormColoc, IColoc, IShowProps} from "../types/Post";
 import {useNavigate} from "react-router-dom";
 
 
