@@ -112,13 +112,12 @@ class UserRepository extends Repository
     public function updateStatus(User $user): bool
     {
         $updateUser =
-            'UPDATE `users`
-            SET `isProprio` = :isProprio, `coloc_id` = :colocId
-            WHERE `id` = :id';
+            'UPDATE users
+            SET coloc_id = :colocID
+            WHERE id = :id';
 
         $query = $this->pdo->prepare($updateUser);
-        $query->bindValue(':isProprio', $user->getIsProprio());
-        $query->bindValue(':colocId', $user->getColocId());
+        $query->bindValue(':colocID', $user->getColocId());
         $query->bindValue(':id', $user->getId());
 
         return $query->execute();

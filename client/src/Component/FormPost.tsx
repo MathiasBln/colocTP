@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom";
 export default function Form({setColoc, coloc}: IShowProps) {
 
     const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" })
-
     // @ts-ignore
     const token = JSON.parse(sessionStorage.token)
     const navigate = useNavigate()
@@ -45,6 +44,7 @@ export default function Form({setColoc, coloc}: IShowProps) {
                     }
                 )
             })
+            navigate('/coloc')
     }
 
     const handleChange = (e: ChangeEvent) => {

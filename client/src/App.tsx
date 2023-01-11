@@ -6,7 +6,7 @@ import Login from "./Routes/Login";
 import {IColoc} from "./types/Post";
 import Home from "./Routes/Home";
 import NeedAuth from "./Routes/NeedAuth";
-import Balance from './Component/Balance';
+import Dashboard from './Routes/Dashboard';
 
 
 interface authInterface {
@@ -38,9 +38,13 @@ function App() {
                             <Home setColoc={setColoc} coloc={coloc}/>
                         </NeedAuth>
                     }/>
+                    <Route path={'/coloc'} element={
+                        <NeedAuth>
+                            <Dashboard />
+                        </NeedAuth>
+                    }/>
                 </Routes>
             </BrowserRouter>
-            <Balance></Balance>
         </div>
     );
 }

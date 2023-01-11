@@ -17,25 +17,24 @@ class ColocRepository extends Repository
     //     return $articles;
     // }
 
-    // public function getPostById($id): ?Post
-    // {
-    //     $query = $this->pdo->prepare(
-    //         "SELECT *
-    //         FROM `posts`
-    //         WHERE `id` = :id"
-    //     );
-    //     $query->bindValue(':id', $id);
-    //     $query->execute();
-    //     $post = $query->fetch(\PDO::FETCH_ASSOC);
-    //     if ($post) {
-    //         return new Post($post);
-    //     }
-    //     return null;
-    // }
+    public function getColocByUserId($id): ?Coloc
+    {
+        $query = $this->pdo->prepare(
+            "SELECT *
+            FROM `colocGroup`
+            WHERE `proprioID` = :id"
+        );
+        $query->bindValue(':id', $id);
+        $query->execute();
+        $coloc = $query->fetch(\PDO::FETCH_ASSOC);
+        if ($coloc) {
+            return new Coloc($coloc);
+        }
+        return null;
+    }
 
     public function insert(Coloc $coloc)
     {
-        var_dump($coloc);
         $newColoc =
             'INSERT INTO `colocGroup` (`title`, `content`, `proprioID`)
             VALUES(:title, :content, :proprioID)';
@@ -44,23 +43,23 @@ class ColocRepository extends Repository
         $query->bindValue(':title', $coloc->getTitle());
         $query->bindValue(':content', $coloc->getContent());
         $query->bindValue(':proprioID', $coloc->getProprioID());
-        return $query->execute();
+        $query->execute();
     }
 
-    public function update(Post $post): bool
-    {
-        $updatePost =
-            'UPDATE `posts`
-            SET `title` = :title, `content`= :content
-            WHERE `id` = :post_id';
+    // public function update(Post $post): bool
+    // {
+    //     $updateUser =
+    //     'UPDATE `users`
+    //     SET `coloc_id` = :colocID
+    //     WHERE `id` = :user_id'; 
+    //     $newquery = $this->pdo->prepare($updateUser);
+    //     var_dump($coloc->getId());
+    //     var_dump($coloc->getProprioID());
 
-        $query = $this->pdo->prepare($updatePost);
-        $query->bindValue(':title', $post->getTitle());
-        $query->bindValue(':content', $post->getContent());
-        $query->bindValue(':post_id', $post->getId());
-
-        return $query->execute();
-    }
+    //     $newquery->bindValue(':colocID', $coloc->getId());
+    //     $newquery->bindValue(':user_id', $coloc->getProprioID());
+    //     return $newquery->execute();
+    // }
 
     // public function delete($id)
     // {
