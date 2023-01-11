@@ -12,7 +12,6 @@ export default function Dashboard() {
          <>
          <h1>Bienvenue chez la coloc </h1>
          <InviteBoard />
-         <Outlet/>
          </>
     )
 export default function Dashboard() {

@@ -6,35 +6,30 @@ export default function UserList() {
     const [fetchUsers, setFetchUsers] = useState<any>("");
     const navigate = useNavigate();
     const token = JSON.parse(sessionStorage.token);
+
     useEffect( () => {
-      
-        fetch('http://localhost:5657', {
-            method: "GET",
+        const usersList = fetch('http://localhost:5657/userslist', {
+            method: "POST",
             mode: "cors",
             credentials: "include",
             headers: new Headers({
                 "Authorization" : "Bearer " + token.token,
                 "Content-type":  "application/x-www-form-urlencoded"
             })
-        })
-            .then((response) =>  response.text())
-            .then((data) => {
-               
-                if (data) {
-                    // if (data.message === "invalid cred") {
-                    //     sessionStorage.removeItem('token');
-                    //     navigate("/login")
-                    // }     
-                }
-                let sette:any = setFetchUsers(data);
-                console.log(sette);
-            }).catch(error => console.log("Erreur dans la requête fetch : " + error))
+        }).then((response) =>  response.json())
+        .then((data) => {
+            
+            setFetchUsers(data);
+        }).catch(error => console.log("Erreur dans la requête fetch : " + error)) 
     }, [])
 
-
+    const addUser = () => { 
+        
+    };   
+    console.log(fetchUsers.users);
     return (
             <>
-            {/* {fetchUsers.renters?.map( (item: any, key: any) => (
+            {fetchUsers.users?.map( (item: any, key: any) => (
                     <div className=""  key={key}>
 
                             <div
@@ -42,10 +37,10 @@ export default function UserList() {
                             />
                         <div className="">
                             <h1>{item['username']}</h1>
-                            <p>{item['colocId']}</p>
+                            <button onClick={addUser}>Ajouter à la coloc</button>
                         </div>
                     </div>
-            ))} */}
+            ))}
         </>
     );
 };
