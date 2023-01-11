@@ -7,7 +7,7 @@ import Dashboard from "./Routes/Dashboard";
 import {IColoc} from "./types/Post";
 import Home from "./Routes/Home";
 import NeedAuth from "./Routes/NeedAuth";
-import Dashboard from './Routes/Dashboard';
+
 
 
 interface authInterface {

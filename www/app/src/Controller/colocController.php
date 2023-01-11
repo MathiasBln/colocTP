@@ -19,5 +19,22 @@ class colocController extends Controller
         http_response_code(200);
         exit();
       
-    } 
+    }
+
+    #[Route('/addrenter', 'addrenter', ['POST'])]
+    public function addrenter()
+    {
+        $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
+        $token = JWTHelper::decodeJWT($cred);
+        if (!$token) {
+            $this->renderJSON([
+                "message" => "invalid cred"
+            ]);
+            die;
+        }
+        $userRepository = new UserRepository(new PDOFactory());
+        $user = $userRepository->getUserByToken($cred);
+        $userId = $user->getId();
+    }
+
 } 

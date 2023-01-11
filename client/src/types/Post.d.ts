@@ -16,3 +16,7 @@ interface IShowProps {
     setColoc: Dispatch<SetStateAction<{ coloc: IColoc[] }>>
     coloc: { coloc: IColoc[] }
 }
+
+export interface formDataColocInterface {
+    coloc_id: string
+}

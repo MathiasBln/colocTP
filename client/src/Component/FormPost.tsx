@@ -44,6 +44,7 @@ export default function Form({setColoc, coloc}: IShowProps) {
                     }
                 )
             })
+        navigate('dashboard');
     }
 
     const handleChange = (e: ChangeEvent) => {
