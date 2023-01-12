@@ -22,7 +22,20 @@ interface IuserList extends IShowProps {
     fetchUsers: any
 }
 
-export interface IformDataColoc extends FormColoc {
-    coloc_id: any,
-    user_id: any
+
+export interface FormRenter {
+    coloc_id: number,
+    id: number
+}
+
+export interface IRenter extends FormRenter {
+    id: number,
+    author: string,
+    createdAt: object,
+    userId: number
+}
+
+interface INewRenter {
+    setRenter: Dispatch<SetStateAction<{ renter: IRenter[] }>>
+    renter: { renter: IRenter[] }
 }

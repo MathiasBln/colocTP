@@ -1,12 +1,17 @@
 import {useState, useEffect, ChangeEvent, FormEvent} from "react";
 import { useNavigate } from "react-router-dom";
-import {IformDataColoc, IColoc, IShowProps, FormColoc} from "../types/Post"
+import { IColoc, IShowProps, FormColoc, IRenter, INewRenter, FormRenter} from "../types/Post"
 
 export default function UserList({setFetchUsers, fetchUsers}:any) {
     // @ts-ignore
-    const [formDataColoc, setFormDataColoc] = useState<IformDataColoc>({coloc_id:0, user_id:0});
+
     const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" });
     const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})
+
+    const [formRenter, setFormRenter] = useState<FormRenter>({ id: 0, coloc_id: 0 });
+    const [renter, setRenter] = useState<{ renter: IRenter[] }>({renter: []})
+
+
     const token = JSON.parse(sessionStorage.token);
     const navigate = useNavigate();
 
