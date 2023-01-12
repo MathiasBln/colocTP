@@ -32,7 +32,7 @@ class Coloc extends BaseEntity
         return $this;
     }
 
-    public function getProprioId()
+    public function getProprioID()
     {
         return $this->proprioID;
     }
