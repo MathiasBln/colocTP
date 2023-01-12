@@ -9,24 +9,6 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
     const token = JSON.parse(sessionStorage.token);
     const navigate = useNavigate();
 
-    // useEffect( () => {
-    //
-    //     const usersList = fetch('http://localhost:5657/userslist', {
-    //         method: "POST",
-    //         mode: "cors",
-    //         credentials: "include",
-    //         headers: new Headers({
-    //             "Authorization" : "Bearer " + token.token,
-    //             "Content-type":  "application/x-www-form-urlencoded"
-    //         })
-    //     }).then((response) =>  response.json())
-    //     .then((data) => {
-    //
-    //         setFetchUsers(data);
-    //     }).catch(error => console.log("Erreur dans la requête fetch : " + error))
-    // }, [])
-
-
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(formDataColoc)
@@ -42,13 +24,13 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
         }).then((data) =>  data.json())
             .then((json) => {
                 console.log(json);
-                // if (json.message) {
-                //     if (json.message === "invalid cred") {
-                //         sessionStorage.removeItem('token');
-                //         navigate("/login")
-                //     }
-                //     return
-                // }
+                if (json.message) {
+                    if (json.message === "invalid cred") {
+                        sessionStorage.removeItem('token');
+                        navigate("/login")
+                    }
+                    return
+                }
 
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }
