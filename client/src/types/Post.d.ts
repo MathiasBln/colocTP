@@ -24,8 +24,8 @@ interface IuserList extends IShowProps {
 
 
 export interface FormRenter {
-    coloc_id: number,
-    id: number
+    coloc_id: string,
+    id: string
 }
 
 export interface IRenter extends FormRenter {

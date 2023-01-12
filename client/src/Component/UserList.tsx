@@ -4,11 +4,10 @@ import { IColoc, IShowProps, FormColoc, IRenter, INewRenter, FormRenter} from ".
 
 export default function UserList({setFetchUsers, fetchUsers}:any) {
     // @ts-ignore
-
     const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" });
     const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})
 
-    const [formRenter, setFormRenter] = useState<FormRenter>({ id: 0, coloc_id: 0 });
+    const [formRenter, setFormRenter] = useState<FormRenter>({ id: "", coloc_id: "" });
     const [renter, setRenter] = useState<{ renter: IRenter[] }>({renter: []})
 
 
@@ -21,7 +20,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
             method: "POST",
             mode: "cors",
             body: new URLSearchParams({
-            ...formData
+            ...formRenter
             }),
             credentials: "include",
             headers: new Headers({
@@ -39,14 +38,14 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                     return
                 }
                 // @ts-ignore
-                setColoc(
+                setRenter(
                     prevState => {
                         // @ts-ignore
                         return {
-                            coloc: [
+                            renter: [
                                 // @ts-ignore
-                                json.coloc,
-                                ...prevState.coloc,
+                                json.renter,
+                                ...prevState.renter,
                             ]
                         }
                     }
@@ -56,7 +55,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
     }
 
     const handleChange = (e: ChangeEvent) => {
-        setFormData(prevState => {
+        setFormRenter(prevState => {
             return {
                 ...prevState,
                 // @ts-ignore
@@ -81,10 +80,10 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                                    <form onSubmit={handleSubmit}>
                                    {fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] != null).map( (el: any, key: any) => (
                                        <div key={key}>
-                                           <input type="hidden" name="title" value={el['coloc_id']} onChange={handleChange}/>
+                                           <input type="hidden" name="coloc_id" value={el['coloc_id']} onChange={handleChange}/>
                                        </div>
                                    ))}
-                                       <input type="hidden" name="content" value={item['id']} onChange={handleChange}/>
+                                       <input type="hidden" name="id" value={item['id']} onChange={handleChange}/>
                                    <button className="list-group-item p-0 border-0 btn btn-link" type="submit">Inviter</button>
                                </form>
                                </span>
