@@ -1,0 +1,21 @@
+.max-w-50 {
+    max-width: 50vw;
+}
+
+.max-w-25 {
+    max-width: 25vw;
+}
+
+max-w-70 {
+    max-width: 70vw;
+}
+
+.max-w-80 {
+    max-width: 80vw;
+}
+
+@media (min-width: 1580px) {
+    .max-w {
+        max-width: 1400px;
+    }
+}

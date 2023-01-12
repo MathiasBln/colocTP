@@ -49,9 +49,6 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
 
     return (
             <>
-                <div className="w-50 mx-auto mb-3">
-                    <h4 className="text-center mx-auto">Liste des candidats à la colocation:</h4>
-                </div>
                 <ul className="list-group mt-2 w-50 mx-auto">
                     {fetchUsers.users?.filter( (ele: any) => ele['coloc_id'] == null).map( (item: any, key: any) => (
                        <li className="list-group-item"  key={key}>
