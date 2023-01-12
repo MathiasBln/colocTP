@@ -45,12 +45,6 @@ export default function AdminBoard({setColoc, coloc}: IShowProps) {
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }, [])
 
-    useEffect( () => {
-        if(!fetchColoc.allColocs) {
-            navigate('/')
-        }
-    }, [])
-
     return (
       <>
               {fetchColoc.allColocs?.map((item: any, index: any) => {
@@ -64,14 +58,11 @@ export default function AdminBoard({setColoc, coloc}: IShowProps) {
                           {fetchUsers.users?.filter( (elem: any) => (elem['id'] === item['proprioID']) && (elem['token'] === token.token)  ).map((el: any, key: any) => {
                               return (
                                   <div className="container bg-dark text-white rounded mb-5 p-4" key={key}>
-                                      <div className="d-flex flex-column align-content-center justify-content-center">
-                                      <h3 className="text-center mb-2">Votre espace administrateur</h3>
-                                      <p className="text-center mb-2">Bienvenue {el['username']} -- id:  {el['id']}  </p>
+                                      <div className="d-flex flex-column align-content-center justify-content-center align-item-center justify-item-center">
+                                          <h3 className="text-center fw-bold mb-2">Bienvenue <span className="text-success">{el['username']}</span> dans votre espace d'administration</h3>
                                       </div>
-                                      <div className="d-flex flex-sm-row flex-column align-content-center justify-content-center">
-                                          <div className="w-100 d-flex flex-column align-content-center">
-                                              <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} />
-                                          </div>
+                                      <div className="mx-auto">
+                                          <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} />
                                       </div>
                                   </div>
                               );

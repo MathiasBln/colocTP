@@ -34,9 +34,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
 
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }
-
-
-
+    
     const handleChange = (event: any) => {
         let value = event.target.value;
         let name = event.target.name;
@@ -51,10 +49,10 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
 
     return (
             <>
-                <div className="w-75 mb-3">
-                    <h4 className="text-center">Liste des candidats à la colocation:</h4>
+                <div className="w-50 mx-auto mb-3">
+                    <h4 className="text-center mx-auto">Liste des candidats à la colocation:</h4>
                 </div>
-                <ul className="list-group mt-2 w-75">
+                <ul className="list-group mt-2 w-50 mx-auto">
                     {fetchUsers.users?.filter( (ele: any) => ele['coloc_id'] == null).map( (item: any, key: any) => (
                        <li className="list-group-item"  key={key}>
                            <div className="d-flex py-2 justify-content-around gap-2">
