@@ -6,8 +6,8 @@ use App\Model\Entity\BaseEntity;
 
 class Coloc extends BaseEntity
 {
-    private ?string $title = null;
-    private ?string $content = null;
+    public ?string $title = null;
+    public ?string $content = null;
     private ?int $proprioID = null;
 
     public function getTitle()
