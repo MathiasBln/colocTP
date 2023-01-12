@@ -6,16 +6,16 @@ use App\Model\Entity\Coloc;
 
 class ColocRepository extends Repository
 {
-    // public function getAllPost(): array
-    // {
-    //     $selectArticles = 'SELECT * FROM `posts` AS a ORDER BY `created_at` DESC';
-    //     $query = $this->pdo->query($selectArticles);
-    //     $articles = [];
-    //     while ($result = $query->fetch(\PDO::FETCH_ASSOC)) {
-    //         $articles[] = new Post($result);
-    //     }
-    //     return $articles;
-    // }
+     public function getAllColocs(): array
+     {
+         $colocs = 'SELECT * FROM colocGroup';
+         $query = $this->pdo->query($colocs);
+         $allColocs = [];
+         while ($result = $query->fetch(\PDO::FETCH_ASSOC)) {
+             $allColocs[] = new Coloc($result);
+         }
+         return $allColocs;
+     }
 
     public function getColocByUserId($id): ?Coloc
     {

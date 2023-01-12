@@ -4,9 +4,8 @@ import {useNavigate} from "react-router-dom";
 
 
 export default function Form({setColoc, coloc}: IShowProps) {
-
-    const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" })
     // @ts-ignore
+    const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" })
     const token = JSON.parse(sessionStorage.token)
     const navigate = useNavigate()
 
@@ -61,18 +60,19 @@ export default function Form({setColoc, coloc}: IShowProps) {
         <>
             <div className="container py-2 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div className="card bg-dark text-white " style={{borderRadius: '1rem'}}>
-                            <form className="card-body p-5" onSubmit={handleSubmit}>
+                    <div className="col-10 bg-white rounded-2 p-5">
+                        <h4 className="text-center text-black fw-bold mb-3">Création d'une coloc</h4>
+                        <div className="row align-content-center justify-content-center bg-white text-dark rounded-2">
+                            <form className="col-12" onSubmit={handleSubmit}>
                                 <div className="form-outline form-white mb-4">
-                                    <label className="form-label" htmlFor="typeEmailX">Title</label>
+                                    <label className="form-label fw-bold" htmlFor="typeEmailX">Nom de votre coloc</label>
                                     <input type="text" id="typeEmailX" className="form-control form-control-lg" name="title" onChange={handleChange}/>
                                 </div>
                                 <div className="form-outline form-white mb-4">
-                                    <label className="form-label" htmlFor="typePasswordX">Address</label>
+                                    <label className="form-label fw-bold" htmlFor="typePasswordX">Address de la coloc</label>
                                     <textarea id="typePasswordX" className="form-control form-control-lg" name="content" onChange={handleChange}/>
                                 </div>
-                                <button className="btn btn-outline-light btn-lg px-5" type="submit">Submit</button>
+                                <button className="btn btn-dark btn-outline-light btn-lg px-5" type="submit">Créer</button>
                             </form>
                         </div>
                     </div>

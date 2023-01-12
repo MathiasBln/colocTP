@@ -107,7 +107,7 @@ class UserRepository extends Repository
         return $query->execute();
     }
 
-    public function updateStatus(User $user): bool
+    public function updateStatus($user): bool
     {
         $updateUser =
             'UPDATE users
@@ -115,18 +115,33 @@ class UserRepository extends Repository
             WHERE id = :id';
 
         $query = $this->pdo->prepare($updateUser);
-        $query->bindValue(':colocID', $user->getColocId());
-        $query->bindValue(':id', $user->getId());
+        $query->bindValue(':colocID', 1);
+        $query->bindValue(':id', 2);
 
         return $query->execute();
     }
 
-    public function delete($id)
-    {
-        $deleteUser = "DELETE FROM `users` WHERE `id` = :id";
-        $query = $this->pdo->prepare($deleteUser);
-        $query->bindValue(':id', $id);
-
-        return $query->execute();
-    }
+//    public function updateColocId($user): bool
+//    {
+//
+//        $updateUser =
+//            'UPDATE users
+//            SET coloc_id = :colocID
+//            WHERE id = :id';
+//
+//        $query = $this->pdo->prepare($updateUser);
+//        $query->bindValue(':colocID', $user->getColocId());
+//        $query->bindValue(':id', $user->getId());
+//
+//        return $query->execute();
+//    }
+//
+//    public function delete($id)
+//    {
+//        $deleteUser = "DELETE FROM `users` WHERE `id` = :id";
+//        $query = $this->pdo->prepare($deleteUser);
+//        $query->bindValue(':id', $id);
+//
+//        return $query->execute();
+//    }
 }

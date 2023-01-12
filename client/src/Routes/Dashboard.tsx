@@ -1,25 +1,23 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import Balance from '../Component/Balance';
-import InviteBoard from "../Component/InviteBoard";
+import AdminBoard from "../Component/AdminBoard";
+import {FormColoc, IColoc, IShowProps} from "../types/Post";
+import {useEffect, useState} from "react";
+import {useNavigate, NavLink} from "react-router-dom";
 
-export default function Dashboard() {
-    const token = JSON.parse(sessionStorage.token)
-    useEffect(()=> {
-        fetch('http://localhost:5657/coloc', {
-            method: "POST",
-            mode: "cors",
-            credentials: "include",
-            headers: new Headers({
-                "Authorization" : "Bearer " + token.token,
-                "Content-type":  "application/x-www-form-urlencoded"
-            })
-        })
-    })
+export default function Dashboard({setColoc, coloc}: IShowProps) {
+    const navigate = useNavigate();
     return(
         <>
-            <h1>Bienvenue chez la coloc </h1>
-            <InviteBoard />
-            <Balance />
+            <div className="container">
+              <div className="mx-auto d-flex flex-column align-content-center justify-content-center">
+                  <h2 className="text-center mt-2 mb-2"> Tableau de bord </h2>
+                  <NavLink  className="mx-auto btn btn-sm btn-secondary w-25" to="/">Retour à l'accueil</NavLink>
+              </div>
+                <AdminBoard setColoc={setColoc} coloc={coloc} />
+                <Balance />
+            </div>
+
         </>)
 
 }

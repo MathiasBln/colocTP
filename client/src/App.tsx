@@ -34,17 +34,15 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={"/login"} element={<Login/>}/>
-                    
-                    <Route path={"dashboard"} element={<NeedAuth><Dashboard /></NeedAuth>}/>
-                    
+
                     <Route path={'/'} element={
                         <NeedAuth>
                             <Home setColoc={setColoc} coloc={coloc}/>
                         </NeedAuth>
                     }/>
-                    <Route path={'/coloc'} element={
+                    <Route path={'/dashboard'} element={
                         <NeedAuth>
-                            <Dashboard />
+                            <Dashboard setColoc={setColoc} coloc={coloc} />
                         </NeedAuth>
                     }/>
                 </Routes>

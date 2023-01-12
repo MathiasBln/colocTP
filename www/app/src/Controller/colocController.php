@@ -22,11 +22,29 @@ class colocController extends Controller
       
     }
 
+    #[Route('/coloclist', 'coloclist', ['POST'])]
+    public function colocList() {
+        $colocRepository = new ColocRepository(new PDOFactory());
+        $allColocs = $colocRepository->getAllColocs();
+
+        $this->renderJson(["allColocs" => $allColocs]);
+        http_response_code(200);
+        exit();
+
+    }
+
     #[Route('/addrenter', 'addrenter', ['POST', 'GET'])]
     public function addrenter()
     {
-        var_dump($_POST);
 
+        $userRepo = new UserRepository(new PDOFactory());
+        $argsRenter =  [...$_POST];
+        $renterUpdate = $userRepo->updateStatus($argsRenter);
+        $this->renderJSON([
+            "renterUpdate" => $renterUpdate
+        ]);
+        http_response_code(200);
+        die;
 
     }
 
