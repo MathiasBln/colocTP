@@ -5,6 +5,7 @@ import {FormColoc, IColoc, IShowProps} from "../types/Post";
 import React, {useEffect, useState} from "react";
 import {useNavigate, NavLink} from "react-router-dom";
 import FormPost from "../Component/FormPost";
+import Wallet from "../Component/Wallet";
 
 export default function Dashboard({setColoc, coloc}: IShowProps) {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function Dashboard({setColoc, coloc}: IShowProps) {
               </div>
                 <AdminBoard setColoc={setColoc} coloc={coloc} />
                 <Balance />
+                <Wallet />
             </div>
 
         </>)
