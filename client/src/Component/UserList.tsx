@@ -1,22 +1,22 @@
 import {useState, useEffect, ChangeEvent, FormEvent} from "react";
 import { useNavigate } from "react-router-dom";
-import {IformDataColoc, IColoc, IShowProps} from "../types/Post"
+import {IformDataColoc, IColoc, IShowProps, FormColoc} from "../types/Post"
 
 export default function UserList({setFetchUsers, fetchUsers}:any) {
     // @ts-ignore
     const [formDataColoc, setFormDataColoc] = useState<IformDataColoc>({coloc_id:0, user_id:0});
+    const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" });
     const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})
     const token = JSON.parse(sessionStorage.token);
     const navigate = useNavigate();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         fetch('http://localhost:5657/addrenter', {
             method: "POST",
             mode: "cors",
             body: new URLSearchParams({
-            ...formDataColoc
+            ...formData
             }),
             credentials: "include",
             headers: new Headers({
@@ -33,23 +33,25 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                     }
                     return
                 }
+                // @ts-ignore
                 setColoc(
                     prevState => {
+                        // @ts-ignore
                         return {
                             coloc: [
+                                // @ts-ignore
                                 json.coloc,
                                 ...prevState.coloc,
                             ]
                         }
                     }
                 )
-            console.log(coloc);
-            console.log(formDataColoc?.coloc_id);
+
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }
 
     const handleChange = (e: ChangeEvent) => {
-        setFormDataColoc(prevState => {
+        setFormData(prevState => {
             return {
                 ...prevState,
                 // @ts-ignore
@@ -74,10 +76,10 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                                    <form onSubmit={handleSubmit}>
                                    {fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] != null).map( (el: any, key: any) => (
                                        <div key={key}>
-                                           <input type="hidden" id="colocId" name="coloc_id" value={el['coloc_id']} onChange={handleChange}/>
+                                           <input type="hidden" name="title" value={el['coloc_id']} onChange={handleChange}/>
                                        </div>
                                    ))}
-                                       <input type="hidden" id="userId" name="user_id" value={item['id']} onChange={handleChange}/>
+                                       <input type="hidden" name="content" value={item['id']} onChange={handleChange}/>
                                    <button className="list-group-item p-0 border-0 btn btn-link" type="submit">Inviter</button>
                                </form>
                                </span>
