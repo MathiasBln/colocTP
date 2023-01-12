@@ -6,16 +6,22 @@ use App\Model\Entity\Coloc;
 
 class ColocRepository extends Repository
 {
-    // public function getAllPost(): array
-    // {
-    //     $selectArticles = 'SELECT * FROM `posts` AS a ORDER BY `created_at` DESC';
-    //     $query = $this->pdo->query($selectArticles);
-    //     $articles = [];
-    //     while ($result = $query->fetch(\PDO::FETCH_ASSOC)) {
-    //         $articles[] = new Post($result);
-    //     }
-    //     return $articles;
-    // }
+
+    public function getColocByID($id): ?Coloc
+    {
+        $query = $this->pdo->prepare(
+            "SELECT *
+            FROM `colocGroup`
+            WHERE `id` = :id"
+        );
+        $query->bindValue(':id', $id);
+        $query->execute();
+        $coloc = $query->fetch(\PDO::FETCH_ASSOC);
+        if ($coloc) {
+            return new Coloc($coloc);
+        }
+        return null;
+    }
 
     public function getColocByUserId($id): ?Coloc
     {
@@ -46,27 +52,5 @@ class ColocRepository extends Repository
         $query->execute();
     }
 
-    // public function update(Post $post): bool
-    // {
-    //     $updateUser =
-    //     'UPDATE `users`
-    //     SET `coloc_id` = :colocID
-    //     WHERE `id` = :user_id'; 
-    //     $newquery = $this->pdo->prepare($updateUser);
-    //     var_dump($coloc->getId());
-    //     var_dump($coloc->getProprioID());
 
-    //     $newquery->bindValue(':colocID', $coloc->getId());
-    //     $newquery->bindValue(':user_id', $coloc->getProprioID());
-    //     return $newquery->execute();
-    // }
-
-    // public function delete($id)
-    // {
-    //     $deletePost = "DELETE FROM `posts` WHERE `id` = :id";
-    //     $query = $this->pdo->prepare($deletePost);
-    //     $query->bindValue(':id', $id);
-
-    //     return $query->execute();
-    // }
 }

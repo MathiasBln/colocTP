@@ -36,7 +36,7 @@ export default function Form() {
             .then(json => {
                 if (json.token) {
                     sessionStorage.setItem('token', JSON.stringify(json))
-                    navigate("/")
+                    navigate("/home")
                 }
                 setError({...error, isError: true, message: json.error})
             })

@@ -12,7 +12,7 @@ use App\Services\JWTHelper;
 
 class PostController extends Controller
 {
-    #[Route('/', 'homePage', ['GET'])]
+    #[Route('/home', 'homePage', ['POST', 'GET'])]
     public function home($error = [])
     {
         $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
@@ -23,15 +23,14 @@ class PostController extends Controller
             ]);
             die;
         }
-        $postRepository = new PostRepository(new PDOFactory());
-        $posts = $postRepository->getAllPost();
-        if($posts) {
-            $this->renderJSON([
-                "posts" => $posts
-            ]);
-            http_response_code(200);
-            die;
+        $userRepository = new UserRepository(new PDOFactory());
+        $user = $userRepository->getUserByToken($cred);
+        $userId = $user->getId();
+        $userColoc = $user->getColocID();
+        if ($userColoc){
+            return redirect('/coloc');
         }
+
         $this->renderJSON([
             "message" => "No Post"
         ]);
@@ -52,7 +51,7 @@ class PostController extends Controller
         $userRepository = new UserRepository(new PDOFactory());
         $user = $userRepository->getUserByToken($cred);
         $userId = $user->getId();
-        
+
         $args = [...$_POST, 'proprioID' => $userId];
         $colocRepository = new ColocRepository(new PDOFactory());
         $coloc = new Coloc($args);
@@ -62,36 +61,6 @@ class PostController extends Controller
         $argsUser = ['id' => $userId,'coloc_id' => $getColocID->getID()];
         $userbis = new User($argsUser);
         $changeUserStatus = $userRepository->updateStatus($userbis);
-        $this->renderJSON([
-            "coloc" => $coloc
-        ]);
-        http_response_code(200);
-        die;
-    }
-
-
-    #[Route('/coloc', 'colocById', ['POST'])]
-    public function colocById()
-    {
-        $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
-        $token = JWTHelper::decodeJWT($cred);
-        if (!$token) {
-            $this->renderJSON([
-                "message" => "invalid cred"
-            ]);
-            die;
-        }
-        $userRepository = new UserRepository(new PDOFactory());
-        $user = $userRepository->getUserByToken($cred);
-        $userId = $user->getId();
-        $userColoc = $user->getColocId();
-
-        $args = [$userColoc];
-        $colocRepository = new ColocRepository(new PDOFactory());
-        $coloc = new Coloc($args);
-        $coloc = $colocRepository->insert($coloc);
-    
-
         $this->renderJSON([
             "coloc" => $coloc
         ]);

@@ -11,6 +11,10 @@ export default function Home({setColoc, coloc}: IShowProps) {
         sessionStorage.removeItem('token');
         navigate("/login");
     }
+    
+    const goToColoc = () => {
+        navigate("/coloc");
+    }
 
     return(
         <>
@@ -20,6 +24,7 @@ export default function Home({setColoc, coloc}: IShowProps) {
                 <h1>OU</h1>
                 <h3>Demander à votre proprio l'accès à votre coloc</h3>
             </div>
+            <button onClick={goToColoc}>J'ai une coloc</button>
             {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
         </>
     )

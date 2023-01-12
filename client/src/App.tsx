@@ -33,7 +33,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={"/login"} element={<Login/>}/>
-                    <Route path={'/'} element={
+                    <Route path={'/home'} element={
                         <NeedAuth>
                             <Home setColoc={setColoc} coloc={coloc}/>
                         </NeedAuth>
