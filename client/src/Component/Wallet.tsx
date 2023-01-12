@@ -1,6 +1,6 @@
 import {useState, useEffect, ChangeEvent, FormEvent} from "react";
 import { useNavigate } from "react-router-dom";
-import {formDataColocInterface, IColoc, IShowProps} from "../types/Post"
+import {IformDataColoc, IColoc, IShowProps} from "../types/Post"
 
 export default function Wallet({setFetchUsers, fetchUsers}:any) {
 

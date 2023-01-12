@@ -17,7 +17,12 @@ interface IShowProps {
     coloc: { coloc: IColoc[] }
 }
 
-export interface formDataColocInterface {
-    user_id: string,
-    coloc_id: string
+interface IuserList extends IShowProps {
+    setFetchUsers: Dispatch<SetStateAction<any>>
+    fetchUsers: any
+}
+
+export interface IformDataColoc extends FormColoc {
+    coloc_id: any,
+    user_id: any
 }

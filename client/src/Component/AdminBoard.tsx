@@ -54,7 +54,7 @@ export default function AdminBoard({setColoc, coloc}: IShowProps) {
                   <div className="container d-flex flex-column p-0 max-w" key={index}>
                       {fetchUsers.users?.filter( (elem: any) => (elem['token'] === token.token)  ).map((ele: any, key: any) => {
                           return (
-                              <div className="row align-content-center justify-content-center my-5">
+                              <div className="row align-content-center justify-content-center my-5" key={key}>
                                   <div className="col-7 bg-success text-white p-3">
                                       <h2 className="text-center fw-bold fs-3 mb-2">Bonjour {el['username']}</h2>
                                       <h3 className="text-center fw-bold fs-4 mb-3">la colocation est heureuse de vous accueillir</h3>

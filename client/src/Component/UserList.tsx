@@ -1,21 +1,23 @@
 import {useState, useEffect, ChangeEvent, FormEvent} from "react";
 import { useNavigate } from "react-router-dom";
-import {formDataColocInterface, IColoc, IShowProps} from "../types/Post"
+import {IformDataColoc, IColoc, IShowProps} from "../types/Post"
 
 export default function UserList({setFetchUsers, fetchUsers}:any) {
     // @ts-ignore
-    const [formDataColoc, setFormDataColoc] = useState<formDataColocInterface>({user_id: "", coloc_id:""});
-    let [colocData, setColocData] = useState<object>({colocId: '', userId: ''})
+    const [formDataColoc, setFormDataColoc] = useState<IformDataColoc>({coloc_id:0, user_id:0});
+    const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})
     const token = JSON.parse(sessionStorage.token);
     const navigate = useNavigate();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formDataColoc)
+
         fetch('http://localhost:5657/addrenter', {
             method: "POST",
             mode: "cors",
-            body: JSON.stringify(colocData),
+            body: new URLSearchParams({
+            ...formDataColoc
+            }),
             credentials: "include",
             headers: new Headers({
                 "Authorization" : "Bearer " + token.token,
@@ -23,7 +25,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
             })
         }).then((data) =>  data.json())
             .then((json) => {
-                console.log(json);
+
                 if (json.message) {
                     if (json.message === "invalid cred") {
                         sessionStorage.removeItem('token');
@@ -31,21 +33,35 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                     }
                     return
                 }
-
+                setColoc(
+                    prevState => {
+                        return {
+                            coloc: [
+                                json.coloc,
+                                ...prevState.coloc,
+                            ]
+                        }
+                    }
+                )
+            console.log(coloc);
+            console.log(formDataColoc?.coloc_id);
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }
-    
-    const handleChange = (event: any) => {
-        let value = event.target.value;
-        let name = event.target.name;
 
-        setColocData((prevalue) => {
+    const handleChange = (e: ChangeEvent) => {
+        setFormDataColoc(prevState => {
             return {
-                ...prevalue,   // Spread Operator
-                [name]: value
+                ...prevState,
+                // @ts-ignore
+                [e.target.name]: e.target.value
+
             }
         })
     }
+
+
+
+
 
     return (
             <>
@@ -58,10 +74,10 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                                    <form onSubmit={handleSubmit}>
                                    {fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] != null).map( (el: any, key: any) => (
                                        <div key={key}>
-                                           <input type="hidden" id="colocId" name="colocId" value={el['coloc_id']} onChange={handleChange}/>
+                                           <input type="hidden" id="colocId" name="coloc_id" value={el['coloc_id']} onChange={handleChange}/>
                                        </div>
                                    ))}
-                                       <input type="hidden" id="userId" name="userId" value={item['id']} onChange={handleChange}/>
+                                       <input type="hidden" id="userId" name="user_id" value={item['id']} onChange={handleChange}/>
                                    <button className="list-group-item p-0 border-0 btn btn-link" type="submit">Inviter</button>
                                </form>
                                </span>
