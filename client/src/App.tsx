@@ -4,7 +4,7 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./Routes/Login";
 import Dashboard from "./Routes/Dashboard";
-import {IColoc} from "./types/Post";
+import {IColoc, IShowProps} from "./types/Post";
 import Home from "./Routes/Home";
 import Coloc from "./Routes/Coloc";
 import NeedAuth from "./Routes/NeedAuth";
