@@ -3,7 +3,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import FormPost from "../Component/FormPost";
 
-export default function Home({setColoc, coloc}: IShowProps) {
+export default function Coloc({setColoc, coloc}: IShowProps) {
 
     const navigate = useNavigate()
     const [viewColoc, setViewColoc] = useState<any>("");
