@@ -13,7 +13,7 @@ export default function AdminBoard({setColoc, coloc}: IShowProps) {
 
     useEffect( () => {
 
-        const usersList = fetch('http://localhost:5657/coloclist', {
+        const colocsList = fetch('http://localhost:5657/coloclist', {
             method: "POST",
             mode: "cors",
             credentials: "include",
@@ -45,6 +45,12 @@ export default function AdminBoard({setColoc, coloc}: IShowProps) {
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }, [])
 
+    useEffect( () => {
+        if(!fetchColoc.allColocs) {
+            navigate('/')
+        }
+    }, [])
+
     return (
       <>
               {fetchColoc.allColocs?.map((item: any, index: any) => {
@@ -63,11 +69,8 @@ export default function AdminBoard({setColoc, coloc}: IShowProps) {
                                       <p className="text-center mb-2">Bienvenue {el['username']} -- id:  {el['id']}  </p>
                                       </div>
                                       <div className="d-flex flex-sm-row flex-column align-content-center justify-content-center">
-                                          <div className="w-50 d-flex flex-column align-content-center">
+                                          <div className="w-100 d-flex flex-column align-content-center">
                                               <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} />
-                                          </div>
-                                          <div className="w-50">
-                                              <FormPost setColoc={setColoc} coloc={coloc}/>
                                           </div>
                                       </div>
                                   </div>
@@ -90,24 +93,6 @@ export default function AdminBoard({setColoc, coloc}: IShowProps) {
                       </div>
                   );
               })}
-
-
-
-
-
-          {/*{fetchColoc.allColocs?.filter( (ele: any) => ele['proprioID'] != null).map( (item: any, key: any) => {*/}
-          {/*    return(  <ul  key={key}>*/}
-          {/*    <li>{item['title']}</li>*/}
-          {/*    <li>{item['content']}</li>*/}
-          {/*    <li>{item['proprioID']}</li>*/}
-          {/*    </ul>)*/}
-          {/*})}*/}
-          {/*{fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] != null).map( (el: any, key: any) => {*/}
-          {/*    return(*/}
-          {/*      */}
-          {/*    )*/}
-          {/*})}*/}
-
       </>
       
     )

@@ -1,16 +1,43 @@
 import {IShowProps} from "../types/Post";
 import { useNavigate, NavLink } from "react-router-dom";
 import React, {useEffect, useState} from "react";
+import FormPost from "../Component/FormPost";
 
 export default function Home({setColoc, coloc}: IShowProps) {
 
     const navigate = useNavigate()
+    const [viewColoc, setViewColoc] = useState<any>("");
+    const token = JSON.parse(sessionStorage.token);
+    let createColoc :string = "d-none";
+    useEffect( () => {
+
+        const colocsList = fetch('http://localhost:5657/coloclist', {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: new Headers({
+                "Authorization" : "Bearer " + token.token,
+                "Content-type":  "application/x-www-form-urlencoded"
+            })
+        }).then((response) =>  response.json())
+            .then((data) => {
+
+                setViewColoc(data);
+            }).catch(error => console.log("Erreur dans la requête fetch : " + error))
+    }, [])
 
     const deco = () => {
         sessionStorage.removeItem('token');
         navigate("/login");
     }
 
+    console.log(createColoc);
+    console.log(viewColoc.allColocs?.length);
+    if(viewColoc.allColocs?.length === 0) {
+        createColoc = "block";
+    } else  {
+        createColoc = "d-none";
+    }
     return(
         <>
             <div className="container d-flex flex-column align-content-center justify-content-cente py-2 w-75">
@@ -40,6 +67,13 @@ export default function Home({setColoc, coloc}: IShowProps) {
             <div className="container mt-2 rounded-2 d-flex align-content-center justify-content-center gap-2 py-2 w-75">
                 <NavLink className="btn btn-success btn-sm" to="dashboard">Voir mon tableau de bord</NavLink>
                 <button className="btn btn-secondary btn-sm" onClick={deco}>Me déconnecter de l'espace</button>
+            </div>
+
+
+            <div className={`container ${createColoc} mt-2 rounded-2 d-flex align-content-center justify-content-center gap-2 py-2 w-75`}>
+                <h4>Je veux devenir propriétaire</h4>
+                <p>Pour devenir propriétaire, vous devez remplir ce formulaire:</p>
+                <FormPost setColoc={setColoc} coloc={coloc}/>
             </div>
             {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
         </>

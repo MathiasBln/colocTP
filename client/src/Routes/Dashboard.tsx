@@ -2,8 +2,9 @@
 import Balance from '../Component/Balance';
 import AdminBoard from "../Component/AdminBoard";
 import {FormColoc, IColoc, IShowProps} from "../types/Post";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate, NavLink} from "react-router-dom";
+import FormPost from "../Component/FormPost";
 
 export default function Dashboard({setColoc, coloc}: IShowProps) {
     const navigate = useNavigate();
