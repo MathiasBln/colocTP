@@ -32,7 +32,7 @@ const Expense = ({setExpenses, expenses}: IShowProps ) => {
     return (<>{expenses.expenses?.map((e) => {
         count += e.cost;
         return <>
-        <div className="expense">
+        <div className="expense" id="expenses">
             <h1 className="expense-title">{e?.title}</h1>
             <p className="expense-price">{e?.cost}€</p>
         </div>

@@ -13,7 +13,7 @@ export default function NavBarDashboard({deco}: any) {
                     <div className="navbar-nav">
                         <ul className="nav">
                             <li className="nav-item mr-5">
-                                <NavLink className="nav-link active bg-success text-white fw-bold" aria-current="page" to="/">Retour à l'accueil</NavLink>
+                                <NavLink className="nav-link active bg-success text-white fw-bold" aria-current="page" to="/home">Retour à l'accueil</NavLink>
                             </li>
                             <li className="nav-item mr-5">
                                 <a className="nav-link bg-success text-white fw-bold" href="#expenses">Nos dépenses</a>

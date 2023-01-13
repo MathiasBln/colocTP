@@ -3,10 +3,9 @@ import UserList from "./UserList";
 import {FormColoc, IColoc, IShowProps} from "../types/Post";
 import React, {useEffect, useState} from "react";
 
-export default function WelcomeDashBoard() {
+export default function WelcomeDashBoard({coloc}:any) {
     // @ts-ignore
     const navigate = useNavigate()
-    const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})
     const [fetchColoc, setFetchColoc] = useState<any>("");
     const [fetchUsers, setFetchUsers] = useState<any>("");
     const token = JSON.parse(sessionStorage.token);
@@ -57,10 +56,9 @@ export default function WelcomeDashBoard() {
                             <div className="row align-content-center justify-content-center my-5" key={key}>
                                 <div className="col-7 bg-success text-white p-3">
                                     <h2 className="text-center fw-bold fs-3 mb-2">Bonjour {el['username']}</h2>
-                                    <h3 className="text-center fw-bold fs-4 mb-3">la colocation est heureuse de vous accueillir</h3>
-                                    <p> Ici vous pouvez consulter l'état de vos finance, vos dettes ou vos créances.
-                                        Vous avez également une vision synthétique de l'état des finances de la colocation.</p>
-                                    <p>Si vous êtes propriétaire, la liste de vos colocations et les potentiels colocataires s'affichent aussi ici.</p>
+                                    <h3 className="text-center fw-bold fs-4 mb-3">la colocation <span className="text-success">{coloc?.title}</span> est heureuse de vous accueillir</h3>
+                                    <p> Ici vous pouvez consulter l'état des finances de la colocation, vos dettes ou vos créances.</p>
+                                    <p>Si vous êtes propriétaire, la liste de vos colocations et les potentiels colocataires s'afficheront ci-dessous.</p>
                                 </div>
                                 <div className="col-4 bg-success text-white p-3">
                                     <h3 className="text-start mb-4">Vos informations: </h3>
@@ -77,7 +75,8 @@ export default function WelcomeDashBoard() {
                           return (
                               <div className="row bg-dark text-white rounded mb-5 p-2 mx-0" key={key}>
                                   <div className="d-flex flex-column align-content-center justify-content-center align-item-center justify-item-center">
-                                      <div className="py-2 mx-auto"><h3 className="text-center">Gestion de la colocation <span className="fw-bold text-success">{item['title']}</span></h3></div>
+                                      <div className="py-2 mx-auto"><h3 className="text-center">Colocation <span className="fw-bold text-success">{item['title']}</span></h3></div>
+                                      <p className="py-2 mx-auto">Vous trouvez ici des informations sur une colocation dont vous êtes propriétaire</p>  
                                   </div>
 
                                   <div className="shadow text-center mx-auto bg-white w-75 my-3">
