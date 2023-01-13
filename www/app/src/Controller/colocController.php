@@ -33,19 +33,47 @@ class colocController extends Controller
 
     }
 
-    #[Route('/addrenter', 'addrenter', ['POST', 'GET'])]
+    #[Route('/addrenter', 'addrenter', ['GET'])]
     public function addrenter()
     {
+        $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
+        $token = JWTHelper::decodeJWT($cred);
+        if (!$token) {
+            $this->renderJSON([
+                "message" => "invalid cred"
+            ]);
+            die;
+        }
+        $userRepository = new UserRepository(new PDOFactory());
+        $user = $userRepository->getUserByToken($cred);
+        $userId = $user->getId();
 
-        $userRepo = new UserRepository(new PDOFactory());
-        $argsRenter =  [...$_POST];
-        $renterUpdate = $userRepo->updateStatus($argsRenter);
+        $args = [...$_POST, 'proprioID' => $userId];
+        $colocRepository = new ColocRepository(new PDOFactory());
+        $renter = new Coloc($args);
+        $renter = $colocRepository->insert($coloc);
+
+        $getColocID = $colocRepository->getColocByUserId($userId);
+        $argsUser = ['id' => $userId,'coloc_id' => $getColocID->getID()];
+        $userbis = new User($argsUser);
+        $changeUserStatus = $userRepository->updateStatus($userbis);
+        
         $this->renderJSON([
-            "renterUpdate" => $renterUpdate
+            "renter" => $renter
         ]);
         http_response_code(200);
         die;
+    }
 
+    #[Route('/getexpenses', 'getexpenses', ['POST'])]
+    public function getExpenses()
+    {
+        $userRepository = new UserRepository(new PDOFactory());
+        $users = $userRepository->getAllUsers();
+
+        $this->renderJson(["users" => $users]);
+        http_response_code(200);
+        exit();
     }
 
 } 

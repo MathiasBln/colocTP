@@ -45,6 +45,8 @@ class ColocRepository extends Repository
         $query->bindValue(':proprioID', $coloc->getProprioID());
         $query->execute();
     }
+    
+    
 
     // public function update(Post $post): bool
     // {

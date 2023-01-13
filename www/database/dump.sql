@@ -21,23 +21,16 @@ CREATE TABLE IF NOT EXISTS expense
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     title TEXT NOT NULL,
-  	cost INT Not NULL,
+    cost INT Not NULL,
+    user_id INT,
     coloc_id INT,
+    CONSTRAINT FK_user_id
+    FOREIGN KEY (user_id) REFERENCES users (id),
     CONSTRAINT FK_colocID
-      FOREIGN KEY (coloc_id) REFERENCES colocGroup (id)
+    FOREIGN KEY (coloc_id) REFERENCES colocGroup (id)
 );
 
--- EXPENSE <-> USER --
-create table expense_user_junction
-(
-  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  expense_id int,
-  user_id int,
-  CONSTRAINT FK_expense 
-      FOREIGN KEY (expense_id) REFERENCES expense (id),
-  CONSTRAINT FK_user 
-      FOREIGN KEY (user_id) REFERENCES users (id)
-);
+
 
 
 

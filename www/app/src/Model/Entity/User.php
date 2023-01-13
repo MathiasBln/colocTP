@@ -6,21 +6,12 @@ use App\Model\Entity\BaseEntity;
 
 class User extends BaseEntity
 {
-//     private ?int $id = null;
+
     private ?string $username = null;
     private ?string $password = null;
     private ?string $token = null;
     private ?int $coloc_id = null;
-
-    // public function getId(): ?int 
-    // { 
-    //     return $this->id;
-    // }
-
-    // public function setId(?int $id): void
-    // { 
-    //     $this->id = $id;
-    // }
+    
 
     /**
      * @return string|null

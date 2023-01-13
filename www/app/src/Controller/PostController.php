@@ -23,7 +23,7 @@ class PostController extends Controller
     //     }
     // }
 
-    #[Route('/post', 'newPost', ['POST'])]
+    #[Route('/newcoloc', 'newColoc', ['POST'])]
     public function newPost()
     {
         $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
