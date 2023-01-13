@@ -25,14 +25,14 @@ class ExpenseRepository extends Repository
     public function insert(Expense $expense)
     {
         $newExpense =
-            'INSERT INTO `expense` (`title`, `cost`, `coloc_id`, `user_id`)
-            VALUES(:title, :cost, :coloc_id, :user_id)';
+            'INSERT INTO `expense` (`title`, `cost`, `user_id`,  `coloc_id`)
+            VALUES(:title, :cost, :user_id, :coloc_id)';
 
         $query = $this->pdo->prepare($newExpense);
-        $query->bindValue(':title', $coloc->getTitle());
-        $query->bindValue(':cost', $coloc->getCost());
-        $query->bindValue(':coloc_id', $coloc->getColocID());
-        $query->bindValue(':user_id', $coloc->getUserID());
+        $query->bindValue(':title', $expense->getTitle());
+        $query->bindValue(':cost', $expense->getCost());
+        $query->bindValue(':user_id', $expense->getUserID());
+        $query->bindValue(':coloc_id', $expense->getColocID());
         $query->execute();
     }
 

@@ -55,22 +55,17 @@ class ExpenseController extends Controller
         $userRepository = new UserRepository(new PDOFactory());
         $user = $userRepository->getUserByToken($cred);
         $userId = $user->getId();
-        $colocId = $userRepository->getColocId();
-        
-        $args = [...$_POST, 'coloc_id' => $colocId, 'user_id' => $userId];
+        $colocId = $user->getColocId();
+        $args = [...$_POST, 'user_id' => $userId, 'coloc_id' => $colocId];
         $expenseRepository = new ExpenseRepository(new PDOFactory());
         $expense = new Expense($args);
         $expense = $expenseRepository->insert($expense);
 
-        $argsExpense = ['id' => $userId,'coloc_id' => $colocId];
-        $expensebis = new Expense($argsExpense);
-        $changeExpenseStatus = $ExpenseRepository->updateStatus($expense);
         $this->renderJSON([
             "expense" => $expense
         ]);
         http_response_code(200);
         die;
     }
-
 }
 
