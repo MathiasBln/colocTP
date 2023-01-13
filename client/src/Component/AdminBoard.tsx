@@ -1,7 +1,7 @@
 import { useNavigate} from "react-router-dom";
 import UserList from "./UserList";
-import {FormColoc, IColoc, IShowProps} from "../types/Post";
-import FormPost from "./FormPost";
+import {FormColoc, IColoc, IShowProps} from "../types/Coloc";
+import NewColocForm from "./NewColoc";
 import React, {useEffect, useState} from "react";
 import '../style/Utilities.css';
 
@@ -45,7 +45,7 @@ export default function AdminBoard({setColoc, coloc}: IShowProps) {
                 setFetchUsers(data);
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }, [])
-
+    // SELECT user_id, SUM(cost) FROM expense WHERE user_id = :id GROUP BY user_id
     return (
       <>
 

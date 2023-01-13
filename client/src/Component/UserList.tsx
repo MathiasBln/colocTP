@@ -1,6 +1,6 @@
 import {useState, useEffect, ChangeEvent, FormEvent} from "react";
 import { useNavigate } from "react-router-dom";
-import { IColoc, IShowProps, FormColoc, IRenter, INewRenter, FormRenter} from "../types/Post"
+import { IColoc, IShowProps, FormColoc, IRenter, INewRenter, FormRenter} from "../types/Coloc"
 
 export default function UserList({setFetchUsers, fetchUsers}:any) {
     // @ts-ignore

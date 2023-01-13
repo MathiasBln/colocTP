@@ -1,8 +1,8 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import { FormColoc, IShowProps} from "../types/Post";
+import { FormColoc, IShowProps} from "../types/Coloc";
 import {useNavigate} from "react-router-dom";
 
-export default function Form({setColoc, coloc}: IShowProps) {
+export default function NewColocForm({setColoc, coloc}: IShowProps) {
 
     const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" })
     // @ts-ignore
@@ -43,7 +43,7 @@ export default function Form({setColoc, coloc}: IShowProps) {
                     }
                 )
             })
-        navigate('/dashboard')
+        navigate('/coloc')
     }
 
     const handleChange = (e: ChangeEvent) => {

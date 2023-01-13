@@ -22,10 +22,9 @@ interface IuserList extends IShowProps {
     fetchUsers: any
 }
 
-
 export interface FormRenter {
+    id: string,
     coloc_id: string,
-    id: string
 }
 
 export interface IRenter extends FormRenter {

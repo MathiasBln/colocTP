@@ -1,10 +1,10 @@
 // import React, { useEffect } from "react";
 import Balance from '../Component/Balance';
 import AdminBoard from "../Component/AdminBoard";
-import {FormColoc, IColoc, IShowProps} from "../types/Post";
+import {FormColoc, IColoc, IShowProps} from "../types/Coloc";
 import React, {useEffect, useState} from "react";
 import {useNavigate, NavLink} from "react-router-dom";
-import FormPost from "../Component/FormPost";
+import NewColocForm from "../Component/NewColoc";
 import Wallet from "../Component/Wallet";
 
 export default function Dashboard({setColoc, coloc}: IShowProps) {

@@ -1,7 +1,7 @@
-import {IShowProps} from "../types/Post";
+import {IShowProps} from "../types/Coloc";
 import { useNavigate, NavLink } from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import FormPost from "../Component/FormPost";
+import NewColocForm from "../Component/NewColoc";
 
 export default function Home({setColoc, coloc}: IShowProps) {
 
@@ -38,7 +38,7 @@ export default function Home({setColoc, coloc}: IShowProps) {
               <h2 className="text-center">Bienvenue dans l'espace de colocation</h2>
             </div>
             <div className="container mt-2 rounded-2 d-flex align-content-center justify-content-center gap-2 py-2 w-75">
-                <NavLink className="btn btn-success btn-sm" to="dashboard">Voir mon tableau de bord</NavLink>
+                <NavLink className="btn btn-success btn-sm" to="coloc">Voir mon tableau de bord</NavLink>
                 <button className="btn btn-secondary btn-sm" onClick={deco}>Me déconnecter de l'espace</button>
             </div>
 
@@ -57,7 +57,7 @@ export default function Home({setColoc, coloc}: IShowProps) {
 
             <div className="container mt-2 rounded-2 bg-grey w-50">
                 <p className="text-center fw-bold">Pour devenir propriétaire d'une coloc, vous pouvez remplir ce formulaire:</p>
-                <FormPost setColoc={setColoc} coloc={coloc}/>
+                <NewColocForm setColoc={setColoc} coloc={coloc}/>
             </div>
             {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
         </>

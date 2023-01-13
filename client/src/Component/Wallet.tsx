@@ -1,8 +1,28 @@
-import {useState, useEffect, ChangeEvent, FormEvent} from "react";
+import {useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { IColoc, IShowProps} from "../types/Post"
+import { IColoc, IShowProps} from "../types/Coloc"
 
-export default function Wallet({setFetchUsers, fetchUsers}:any) {
+export default function Wallet() {
+    
+    const [fetchExpenses, setFetchExpenses] = useState<any>("");
+    const token = JSON.parse(sessionStorage.token);
+    
+    useEffect( () => {
+
+        fetch('http://localhost:5657/getexpenses', {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: new Headers({
+                "Authorization" : "Bearer " + token.token,
+                "Content-type":  "application/x-www-form-urlencoded"
+            })
+        }).then((response) =>  response.json())
+            .then((data) => {
+                setFetchExpenses(data);
+            }).catch(error => console.log("Erreur dans la requête fetch : " + error))
+    }, [])
+
 
 
     return(<>
@@ -16,6 +36,7 @@ export default function Wallet({setFetchUsers, fetchUsers}:any) {
                 </tr>
                 </thead>
                 <tbody>
+                {fetchExpenses.expenses?.filter( (elem: any) => (elem['token'] === token.token)  ).map((ele: any, key: any) => {
                 <tr>
                     <td>25</td>
                     <td>63</td>

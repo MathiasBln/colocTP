@@ -4,11 +4,9 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./Routes/Login";
 import Dashboard from "./Routes/Dashboard";
-import {IColoc, IShowProps} from "./types/Post";
+import {IColoc, IShowProps} from "./types/Coloc";
 import Home from "./Routes/Home";
 import NeedAuth from "./Routes/NeedAuth";
-
-
 
 interface authInterface {
     value: boolean
@@ -40,7 +38,7 @@ function App() {
                             <Home setColoc={setColoc} coloc={coloc}/>
                         </NeedAuth>
                     }/>
-                    <Route path={'/dashboard'} element={
+                    <Route path={'/coloc'} element={
                         <NeedAuth>
                             <Dashboard setColoc={setColoc} coloc={coloc} />
                         </NeedAuth>
