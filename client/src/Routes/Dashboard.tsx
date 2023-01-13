@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Balance from '../Component/Balance';
+import ExpensesForm from "../Component/ExpensesForm";
 import ListUser from "../Component/ListUser";
+import { IExpense } from "../types/Expense";
+import ListExpense from "../Component/ListExpense";
 
-// interface IUser {
-//     title:string;
-//     content:string;
-// }
 
 export default function Dashboard() {
     const token = JSON.parse(sessionStorage.token)
     const [coloc, setColoc] = useState({title:"", content:"", id:""} || undefined)
+    const [expenses, setExpenses] = useState<{ expenses: IExpense[] }>({expenses: []})
 
     useEffect(() => {
         fetch('http://localhost:5657/coloc', {
@@ -28,7 +28,8 @@ export default function Dashboard() {
             <h1>{coloc?.title}</h1>
             <Balance />
             <ListUser colocId={coloc?.id}/>
-            {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
+            <ListExpense />
+            <ExpensesForm setExpenses={setExpenses} expenses={expenses}/>
         </>
     )
 }

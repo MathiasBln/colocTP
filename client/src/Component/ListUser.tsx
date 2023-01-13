@@ -18,15 +18,13 @@ export default function ListUser(props :any) {
             })
         })
         .then((response) =>  response.json())
-        .then((data) => {
-            
+        .then((data) => {       
             setFetchUsers(data);
         }).catch(error => console.log("Erreur dans la requête fetch : " + error)) 
     }, [])
 
 
-    const handleChange = (e :ChangeEvent) => {
-        e.preventDefault();
+    const handleChange = (e :any) => {
         setFormData({id: e.target.value, coloc_id: props.colocId})
     }
 
