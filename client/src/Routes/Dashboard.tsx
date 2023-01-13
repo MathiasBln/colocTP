@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Balance from '../Component/Balance';
+import Spent from '../Component/Spent';
 
 export default function Dashboard() {
     const token = JSON.parse(sessionStorage.token)
@@ -15,7 +16,8 @@ export default function Dashboard() {
         })
     })
     return(
-        <>
+        <> 
+            <Spent/>
             <Balance />
             {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
         </>
