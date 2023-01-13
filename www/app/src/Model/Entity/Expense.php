@@ -8,7 +8,8 @@ class Expense extends BaseEntity
 {
     private ?string $title = null;
     private ?int $cost = null;
-    private ?int $colocID = null;
+    private ?int $coloc_id = null;
+    private ?int $user_id = null;
 
     public function getTitle()
     {
@@ -33,11 +34,21 @@ class Expense extends BaseEntity
     }
     public function getColocID()
     {
-        return $this->$colocID;
+        return $this->$coloc_id;
+    }
+    public function setColocID($coloc_id)
+    {
+        $this->coloc_id = $coloc_id;
+        return $this;
     }
     public function getUserID()
     {
-        return $this->$userID;
+        return $this->$user_id;
+    }
+    public function setUserID($user_id)
+    {
+        $this->user_id = $user_id;
+        return $this;
     }
 
 }

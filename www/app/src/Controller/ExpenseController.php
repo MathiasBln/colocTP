@@ -17,7 +17,7 @@ class ExpenseController extends Controller
 
    
     #[Route('/allExpense', 'ExpenseId', ['POST'])]
-    public function AllExpense($error = [])
+    public function AllExpense()
     {
         $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
         $token = JWTHelper::decodeJWT($cred);
@@ -29,15 +29,13 @@ class ExpenseController extends Controller
         }
         $userRepository = new UserRepository(new PDOFactory());
         $user = $userRepository->getUserByToken($cred);
-        $userId = $user->getId();
-
         $userColocId = $user->getColocId();
 
         $expenseRepository = new ExpenseRepository(new PDOFactory());
         $expenses = $expenseRepository->getExpenseByUserId($userColocId);
 
         $this->renderJSON([
-            "expense" => $expenses
+            "expenses" => $expenses
         ]);
         http_response_code(200);
         die;
@@ -57,54 +55,22 @@ class ExpenseController extends Controller
         $userRepository = new UserRepository(new PDOFactory());
         $user = $userRepository->getUserByToken($cred);
         $userId = $user->getId();
-        $coloc = $userRepository->getColoc();
+        $colocId = $userRepository->getColocId();
         
-        $args = [...$_POST, 'proprioID' => $userId];
-        $colocRepository = new ExpenseRepository(new PDOFactory());
+        $args = [...$_POST, 'coloc_id' => $colocId, 'user_id' => $userId];
+        $expenseRepository = new ExpenseRepository(new PDOFactory());
         $expense = new Expense($args);
-        $expenses = $colocRepository->insert($expense);
+        $expense = $expenseRepository->insert($expense);
 
-        $getColocID = $colocRepository->getColocByUserId($userId);
-        $argsUser = ['id' => $userId,'coloc_id' => $getColocID->getID()];
-        $userbis = new User($argsUser);
-        $changeUserStatus = $userRepository->updateStatus($userbis);
+        $argsExpense = ['id' => $userId,'coloc_id' => $colocId];
+        $expensebis = new Expense($argsExpense);
+        $changeExpenseStatus = $ExpenseRepository->updateStatus($expense);
         $this->renderJSON([
-            "expense" => $expenses
+            "expense" => $expense
         ]);
         http_response_code(200);
         die;
     }
-
-
-    #[Route('/coloc', 'colocById', ['POST'])]
-    public function colocById()
-    {
-        $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
-        $token = JWTHelper::decodeJWT($cred);
-        if (!$token) {
-            $this->renderJSON([
-                "message" => "invalid cred"
-            ]);
-            die;
-        }
-        $userRepository = new UserRepository(new PDOFactory());
-        $user = $userRepository->getUserByToken($cred);
-        $userId = $user->getToken();
-        $userColoc = $user->getColocId();
-
-        $args = [$userColoc];
-        $colocRepository = new ColocRepository(new PDOFactory());
-        $coloc = new Coloc($args);
-        $coloc = $colocRepository->insert($coloc);
-    
-
-        $this->renderJSON([
-            "coloc" => $coloc
-        ]);
-        http_response_code(200);
-        die;
-    }
-
 
 }
 

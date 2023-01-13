@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-const Expense = () => {
-    const [fetchUsers, setFetchUsers] = useState<any>();
+const Expense = (): JSX.Element => {
+    const [fetchExpenses, setFetchExpenses] = useState<[]>([]);
     const token = JSON.parse(sessionStorage.token);
 
-useEffect( () => {
-        fetch('http://localhost:5657/expense', {
+    useEffect( () => {
+        fetch('http://localhost:5657/allExpense', {
             method: "POST",
             mode: "cors",
             credentials: "include",
@@ -16,11 +16,13 @@ useEffect( () => {
         })
         .then((response) =>  response.json())
         .then((data) => {
-            setFetchUsers(data);
+            console.log("data", data);
+           setFetchExpenses(...fetchExpenses, data);
         }).catch(error => console.log("Erreur dans la requête fetch : " + error)) 
     }, [])
-    console.log(fetchUsers);
-    return (<></>)
+    
+    console.log('fecth retour ', fetchExpenses);
+    return (<>TARTE AUX POILS</>)
 }
 
 export default Expense;

@@ -25,7 +25,7 @@ export default function ListUser(props :any) {
     }, [])
 
 
-    const handleChange = (e :ChangeEvent) => {
+    const handleChange = (e :any) => {
         e.preventDefault();
         setFormData({id: e.target.value, coloc_id: props.colocId})
     }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Balance from '../Component/Balance';
+import Expense from "../Component/Expense";
 import ListUser from "../Component/ListUser";
 
 // interface IUser {
@@ -28,6 +29,7 @@ export default function Dashboard() {
             <h1>{coloc?.title}</h1>
             <Balance />
             <ListUser colocId={coloc?.id}/>
+            <Expense />
             {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
         </>
     )
