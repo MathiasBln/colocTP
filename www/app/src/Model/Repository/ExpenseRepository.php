@@ -6,6 +6,16 @@ use App\Model\Entity\Expense;
 
 class ExpenseRepository extends Repository
 {
+    public function getAllExpenses(): array
+    {
+        $query = $this->pdo->query("SELECT * FROM expense");
+        $expenses = [];
+        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+            $expenses[] = new Expense($data);
+        }
+        return $expenses;
+    }
+
     public function getExpenseByUserId($colocId)
     {
         $query = $this->pdo->prepare(

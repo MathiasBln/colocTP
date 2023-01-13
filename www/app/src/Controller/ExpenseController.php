@@ -14,8 +14,6 @@ use App\Services\JWTHelper;
 
 class ExpenseController extends Controller
 {
-
-   
     #[Route('/allExpense', 'ExpenseId', ['POST'])]
     public function AllExpense()
     {
@@ -66,6 +64,22 @@ class ExpenseController extends Controller
         ]);
         http_response_code(200);
         die;
+    }
+
+    #[Route('/getexpenses', 'getexpenses', ['POST', 'GET'])]
+    public function getExpenses()
+    {
+        $userRepository = new UserRepository(new PDOFactory());
+        $expenseRepository = new ExpenseRepository(new PDOFactory());
+        $costs = $expenseRepository->getAllExpenses();
+        $users = $userRepository->getAllUsers();
+        
+        $this->renderJSON([
+            "costs" => $costs,
+            "users" => $users
+        ]);
+        http_response_code(200);
+        exit();
     }
 }
 

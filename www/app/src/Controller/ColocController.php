@@ -12,7 +12,7 @@ use App\Model\Entity\User;
 use App\Services\JWTHelper;
 
 class ColocController extends Controller
-{
+{    
 
     #[Route('/userslist', 'userslist', ['POST'])]
     public function listUsers() {
@@ -23,6 +23,17 @@ class ColocController extends Controller
         http_response_code(200);
         exit();
       
+    }
+
+    #[Route('/coloclist', 'coloclist', ['POST'])]
+    public function colocList() {
+        $colocRepository = new ColocRepository(new PDOFactory());
+        $allColocs = $colocRepository->getAllColocs();
+
+        $this->renderJson(["allColocs" => $allColocs]);
+        http_response_code(200);
+        exit();
+
     }
 
     #[Route('/coloc', 'colocInformation', ['POST','GET'])]
@@ -65,5 +76,4 @@ class ColocController extends Controller
         http_response_code(200);
         die;
     }
-
 }

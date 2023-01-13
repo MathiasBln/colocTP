@@ -6,7 +6,17 @@ use App\Model\Entity\Coloc;
 
 class ColocRepository extends Repository
 {
-
+    public function getAllColocs(): array
+    {
+        $colocs = 'SELECT * FROM colocGroup';
+        $query = $this->pdo->query($colocs);
+        $allColocs = [];
+        while ($result = $query->fetch(\PDO::FETCH_ASSOC)) {
+            $allColocs[] = new Coloc($result);
+        }
+        return $allColocs;
+    }
+    
     public function getColocByID($id): ?Coloc
     {
         $query = $this->pdo->prepare(
