@@ -1,8 +1,16 @@
 import { useEffect } from "react";
 import { IShowProps } from "../types/Expense";
+import "../style/Expense.css"
+
 
 const Expense = ({setExpenses, expenses}: IShowProps ) => {
     const token = JSON.parse(sessionStorage.token);
+    const mystyle = {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: 'center',
+        justifyContent: "center"
+      };
     let count = 0;
     useEffect( () => {
         count = 0
@@ -24,8 +32,10 @@ const Expense = ({setExpenses, expenses}: IShowProps ) => {
     return (<>{expenses.expenses?.map((e) => {
         count += e.cost;
         return <>
-        <h1>{e?.title}</h1>
-        <p>{e?.cost}</p>
+        <div className="expense">
+            <h1 className="expense-title">{e?.title}</h1>
+            <p className="expense-price">{e?.cost}€</p>
+        </div>
         </>
     })}
     <p>TOTAL : {count}</p>

@@ -5,6 +5,7 @@ import Expense from "../Component/Expense";
 import ExpensesForm from "../Component/ExpensesForm";
 import ListUser from "../Component/ListUser";
 import { IExpense } from "../types/Expense";
+import "../style/Dashboard.css"
 
 
 export default function Dashboard() {
@@ -32,12 +33,25 @@ export default function Dashboard() {
     }, [token.token]);
     return(
         <>  
-            <button className="btn btn-outline-dark btn-lg px-5" onClick={deco}>Logout</button>
-            <h1>{coloc?.title}</h1>
-            <Balance />
-            <ListUser colocId={coloc?.id}/>
-            <Expense setExpenses={setExpenses} expenses={expenses}/>
-            <ExpensesForm setExpenses={setExpenses} expenses={expenses}/>
+        <button className="btn btn-outline-dark btn-lg px-5" onClick={deco}>Logout</button>
+        <div className="dashboard">
+            <h1 className="title">{coloc?.title}</h1>
+            <div className="dashboard__section">
+                <div className="dashboard__section__group">
+                    <h3 className="subtitle">Expenses</h3>
+                    <Expense setExpenses={setExpenses} expenses={expenses}/>
+                </div>
+                <div className="dashboard__section__group">
+                    <h3 className="subtitle">Add Expense</h3>
+                    <ExpensesForm setExpenses={setExpenses} expenses={expenses}/>
+                </div>
+                <div className="dashboard__section__group">
+                    <h3 className="subtitle">Add User</h3>
+                    <ListUser colocId={coloc?.id}/>
+                </div>
+                <Balance />
+            </div>
+        </div>
         </>
     )
 }

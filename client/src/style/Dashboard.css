@@ -1,0 +1,29 @@
+.title {
+	text-transform: uppercase;
+	font-size: 40px;
+	padding: 30px;
+	text-decoration: underline;
+	margin-bottom: 100px;
+}
+
+.subtitle {
+	font-weight: bold;
+}
+
+.dashboard {
+	display: flex;;
+	flex-direction: column;
+	align-items: center;
+}
+
+.dashboard__section {
+	display: flex;
+	justify-content: center;
+	gap: 50px;
+}
+
+.dashboard__section__group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
