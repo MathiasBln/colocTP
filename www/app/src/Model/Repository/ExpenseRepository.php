@@ -6,7 +6,7 @@ use App\Model\Entity\Expense;
 
 class ExpenseRepository extends Repository
 {
-    public function getExpenseByUserId($colocId): ?Expense
+    public function getExpenseByUserId($colocId)
     {
         $query = $this->pdo->prepare(
             "SELECT *
@@ -15,9 +15,9 @@ class ExpenseRepository extends Repository
         );
         $query->bindValue(':colocId', $colocId);
         $query->execute();
-        $expense = $query->fetch(\PDO::FETCH_ASSOC);
+        $expense = $query->fetchAll(\PDO::FETCH_ASSOC);
         if ($expense) {
-            return new Expense($expense);
+            return $expense;
         }
         return null;
     }

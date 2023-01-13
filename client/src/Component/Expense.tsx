@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Expense = (): JSX.Element => {
-    const [fetchExpenses, setFetchExpenses] = useState<[]>([]);
+    const [fetchExpenses, setFetchExpenses] = useState<{expenses:[{title:'', cost: number, user_id: number}]}>({expenses:[{title:'', cost: 0, user_id: 0}]});
     const token = JSON.parse(sessionStorage.token);
 
     useEffect( () => {
@@ -17,12 +17,17 @@ const Expense = (): JSX.Element => {
         .then((response) =>  response.json())
         .then((data) => {
             console.log("data", data);
-           setFetchExpenses(...fetchExpenses, data);
+           setFetchExpenses(data);
         }).catch(error => console.log("Erreur dans la requête fetch : " + error)) 
-    }, [])
-    
-    console.log('fecth retour ', fetchExpenses);
-    return (<>TARTE AUX POILS</>)
+    },[])
+    console.log("fetch", fetchExpenses.expenses);
+
+    return (<>{fetchExpenses.expenses.map((e) => {
+        return <>
+        <h1>{e.title}</h1>
+        <p>{e.cost}</p>
+        </>
+    })}</>)
 }
 
 export default Expense;
