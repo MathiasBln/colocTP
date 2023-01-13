@@ -5,6 +5,7 @@ import Expense from "../Component/Expense";
 import ExpensesForm from "../Component/ExpensesForm";
 import ListUser from "../Component/ListUser";
 import { IExpense } from "../types/Expense";
+import WelcomeDashBoard from "../Component/WelcomeDashboard";
 import "../style/Dashboard.css"
 
 
@@ -36,6 +37,7 @@ export default function Dashboard() {
         <button className="btn btn-outline-dark btn-lg px-5" onClick={deco}>Logout</button>
         <div className="dashboard">
             <h1 className="title">{coloc?.title}</h1>
+           
             <div className="dashboard__section">
                 <div className="dashboard__section__group">
                     <h3 className="subtitle">Expenses</h3>
@@ -50,6 +52,7 @@ export default function Dashboard() {
                     <ListUser colocId={coloc?.id}/>
                 </div>
                 <Balance />
+                <WelcomeDashBoard />
             </div>
         </div>
         </>

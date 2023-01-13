@@ -1,7 +1,6 @@
 import { useNavigate, NavLink} from "react-router-dom";
 import UserList from "./UserList";
 import {FormColoc, IColoc, IShowProps} from "../types/Post";
-import NewColocForm from "./NewColoc";
 import React, {useEffect, useState} from "react";
 
 export default function WelcomeDashBoard() {
@@ -110,12 +109,6 @@ export default function WelcomeDashBoard() {
                                               {item['id']}
                                           </div>
                                       </div>
-                                  </div>
-                                  <div className="mx-auto">
-                                      <div className="w-50 mx-auto mb-3">
-                                          <h4 className="text-center mx-auto my-2">Ils aimeraient devenir colocataire de <span className="fw-bold text-success">{item['title']}:</span></h4>
-                                      </div>
-                                      <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} />
                                   </div>
                               </div>
                           );
