@@ -1,4 +1,4 @@
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useCallback, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import { FormExpense } from "../types/Expense";
 import { IShowProps } from "../types/Expense";
@@ -10,9 +10,7 @@ export default function ExpensesForm({setExpenses, expenses}: IShowProps ) {
 	const token = JSON.parse(sessionStorage.token)
     const navigate = useNavigate()
 
-    // @ts-ignore
-
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         fetch('http://localhost:5657/newExpense', {
             method: "POST",
@@ -47,14 +45,15 @@ export default function ExpensesForm({setExpenses, expenses}: IShowProps ) {
                 )
 
             })
-    }
+            window.location.reload();
+    },[formData, token.token, navigate, setExpenses])
 
-    const handleChange = (e: ChangeEvent) => {
+    const handleChange = ({target}:any) => {
         setFormData(prevState => {
             return {
                 ...prevState,
                 // @ts-ignore
-                [e.target.name]: e.target.value
+                [target.name]: target.value
             }
         })
     }

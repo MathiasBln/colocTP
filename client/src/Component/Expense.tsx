@@ -18,7 +18,7 @@ const Expense = ({setExpenses, expenses}: IShowProps ) => {
         .then((data) => {
            setExpenses(data);
         }).catch(error => console.log("Erreur dans la requête fetch : " + error)) 
-    },[expenses, token.token, setExpenses])
+    },[setExpenses, token.token])
 
     return (<>{expenses.expenses?.map((e) => {
         return <>
