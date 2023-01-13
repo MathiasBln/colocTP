@@ -2,13 +2,13 @@ import {Dispatch, SetStateAction} from "react";
 
 export interface FormExpense {
     title: string,
-    cost: string
+    cost: int
 }
 
 export interface IExpense extends FormExpense {
     id: number,
     title: string,
-    cost: string,
+    cost: int,
     user_id: string,
     coloc_id: string
 }
