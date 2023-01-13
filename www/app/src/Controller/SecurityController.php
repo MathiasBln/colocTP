@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use App\Model\Factory\PDOFactory;
 use App\Model\Repository\UserRepository;
 use App\Model\Entity\User;

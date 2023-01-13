@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Model\Entity;
-
 use App\Model\Entity\BaseEntity;
 
 class User extends BaseEntity

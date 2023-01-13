@@ -65,10 +65,6 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
         })
     }
 
-
-
-
-
     return (
             <>
                 <ul className="list-group mt-2 w-50 mx-auto">

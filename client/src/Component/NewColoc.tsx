@@ -11,7 +11,7 @@ export default function NewColocForm({setColoc, coloc}: IShowProps) {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        fetch('http://localhost:5657/post', {
+        fetch('http://localhost:5657/newcoloc', {
             method: "POST",
             mode: "cors",
             body: new URLSearchParams({

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Model\Entity;
-
 use App\Model\Traits\Hydrator;
 
 abstract class BaseEntity implements \JsonSerializable

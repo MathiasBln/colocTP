@@ -64,16 +64,4 @@ class colocController extends Controller
         http_response_code(200);
         die;
     }
-
-    #[Route('/getexpenses', 'getexpenses', ['POST'])]
-    public function getExpenses()
-    {
-        $userRepository = new UserRepository(new PDOFactory());
-        $users = $userRepository->getAllUsers();
-
-        $this->renderJson(["users" => $users]);
-        http_response_code(200);
-        exit();
-    }
-
 } 

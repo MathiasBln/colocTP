@@ -24,7 +24,7 @@ class PostController extends Controller
     // }
 
     #[Route('/newcoloc', 'newColoc', ['POST'])]
-    public function newPost()
+    public function newColoc()
     {
         $cred = str_replace("Bearer ", "", getallheaders()['authorization']);
         $token = JWTHelper::decodeJWT($cred);

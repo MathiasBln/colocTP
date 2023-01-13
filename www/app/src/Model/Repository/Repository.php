@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Model\Repository;
-
 use App\Model\Interfaces\Database;
 
 abstract class Repository

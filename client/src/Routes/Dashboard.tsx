@@ -1,11 +1,9 @@
-// import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
+import Expense from "../Component/Expense";
 import Balance from '../Component/Balance';
 import AdminBoard from "../Component/AdminBoard";
-import {FormColoc, IColoc, IShowProps} from "../types/Coloc";
-import React, {useEffect, useState} from "react";
+import {IShowProps} from "../types/Coloc";
 import {useNavigate, NavLink} from "react-router-dom";
-import NewColocForm from "../Component/NewColoc";
-import Wallet from "../Component/Wallet";
 
 export default function Dashboard({setColoc, coloc}: IShowProps) {
     const navigate = useNavigate();
@@ -17,8 +15,8 @@ export default function Dashboard({setColoc, coloc}: IShowProps) {
                   <NavLink  className="mx-auto btn btn-sm btn-secondary w-25" to="/">Retour à l'accueil</NavLink>
               </div>
                 <AdminBoard setColoc={setColoc} coloc={coloc} />
+                <Expense />
                 <Balance />
-                <Wallet />
             </div>
 
         </>)

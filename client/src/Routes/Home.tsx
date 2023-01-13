@@ -59,29 +59,6 @@ export default function Home({setColoc, coloc}: IShowProps) {
                 <p className="text-center fw-bold">Pour devenir propriétaire d'une coloc, vous pouvez remplir ce formulaire:</p>
                 <NewColocForm setColoc={setColoc} coloc={coloc}/>
             </div>
-            {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
         </>
     )
 }
-
-// export default function Home({setColoc, coloc}: IShowProps) {
-//
-//     const navigate = useNavigate()
-//
-//     const deco = () => {
-//         sessionStorage.removeItem('token');
-//         navigate("/login");
-//     }
-//
-//     return(
-//         <>
-//             <button className="btn btn-outline-dark btn-lg px-5" onClick={deco}>Logout</button>
-//             <FormPost setColoc={setColoc} coloc={coloc}/>
-//             <div className="container py-2 h-100">
-//                 <h1>OU</h1>
-//                 <h3>Demander à votre proprio l'accès à votre coloc</h3>
-//             </div>
-//             {/* <ShowPost setPosts={setPosts} posts={posts}/> */}
-//         </>
-//     )
-// }

@@ -27,6 +27,7 @@ function App() {
         sessionStorage.removeItem('token');
     }
 
+    // @ts-ignore
     return (
         <div className="min-vh-100 gradient-custom">
             <BrowserRouter>
