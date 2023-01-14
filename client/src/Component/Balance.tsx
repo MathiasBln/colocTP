@@ -75,10 +75,10 @@ const Balance = ({coloc}:any): JSX.Element => {
      })
   
     return(
-        <div id='balance' className="mb-3">
+        <div id='balance' className="mb-2">
         {fetchUsers.users?.filter( (elem: any) => ((elem['token'] === token.token))  ).map((el: any, index: any) => {
                   return (
-            <div className="container w-50 my-5 bg-dark rounded p-3 shadow" key={index}>
+            <div className="container w-50 mb-5 mt-3 bg-dark rounded p-3 shadow" key={index}>
                 <h3 className="text-center fs-4 mb-2 text-white">Votre balance</h3>
                 <h4 className="text-center fs-6 mb-3 text-white">Visualisez vos créances et dettes</h4>
                 <table className="table table-hover table-success border border-2 border-success">

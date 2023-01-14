@@ -42,16 +42,16 @@ export default function Dashboard() {
             <h1 className="title">{coloc?.title}</h1>
             <WelcomeDashBoard coloc={coloc} />
             <div className="container dashboard__section">
-                <div className="dashboard__section__group bg-success px-4 py-2">
-                    <h3 className="subtitle text-white">Dépenses</h3>
+                <div className="dashboard__section__group bg-warning px-4 py-2">
+                    <h3 className="subtitle fs-4 mt-2 mb-3">Dépenses</h3>
                     <Expense setExpenses={setExpenses} expenses={expenses}/>
                 </div>
-                <div className="dashboard__section__group bg-dark">
-                    <h3 className="subtitle">Ajout d'une dépense</h3>
+                <div className="dashboard__section__group bg-success text-white">
+                    <h3 className="subtitle fs-4 mt-2 mb-3">Ajout d'une dépense</h3>
                     <ExpensesForm setExpenses={setExpenses} expenses={expenses}/>
                 </div>
-                <div className="dashboard__section__group bg-dark">
-                    <h3 className="subtitle">Potentiels colocataires</h3>
+                <div className="dashboard__section__group bg-warning text-dark">
+                    <h3 className="subtitle fs-4 my-2">Potentiels colocataires</h3>
                     <ListUser colocId={coloc?.id}/>
                 </div>
             </div>
