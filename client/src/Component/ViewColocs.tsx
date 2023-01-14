@@ -29,7 +29,7 @@ return(
                 {
                 //@ts-ignore
                 viewColoc.allColocs?.map( (el: any, key: any) => (
-                    <tr>
+                    <tr key={el['id']}>
                         <td>{el['title']}</td>
                         <td>{el['content']}</td>
                         <td className="cursor-pointer hover-blue">{el['title']}@yakmail.eu</td>

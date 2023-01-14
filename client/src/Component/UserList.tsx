@@ -82,7 +82,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
             </div>
             <div className="row text-dark">
                 {fetchUsers.users?.filter( (ele: any) => ele['coloc_id'] == null).map( (item: any, key: any) => (
-                    <div className="row text-dark p-3">
+                    <div className="row text-dark p-3" key={item['id']}>
                             <div className="col-5">
                                     <span className="fs-5 fw-bold">{item['username']}</span>
                             </div>

@@ -56,7 +56,7 @@ export default function Dashboard() {
                 </div>
             </div>
         </div>
-        <Balance coloc={coloc} />
+        <Balance coloc={coloc} setExpenses={setExpenses} expenses={expenses} />
         </>
     )
 }

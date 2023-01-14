@@ -46,10 +46,9 @@ export default function WelcomeDashBoard({coloc}:any) {
    
     return (
       <>
-
           {fetchUsers.users?.filter( (elem: any) => (elem['token'] === token.token)  ).map((el: any, index: any) => {
               return (
-                  <div className="container d-flex flex-column p-0 max-w" key={index}>
+                  <div className="container d-flex flex-column p-0" key={el['id']}>
                       {fetchUsers.users?.filter( (elem: any) => (elem['token'] === token.token)  ).map((ele: any, key: any) => {
                           return (
                             <>
@@ -62,7 +61,7 @@ export default function WelcomeDashBoard({coloc}:any) {
                                 </div>
                                 <div className="col-4 bg-success text-white p-3">
                                     <h3 className="text-start mb-4">Vos informations: </h3>
-                                    <ul className="text-dark list-group list-group-flush rounded" key={key}>
+                                    <ul className="text-dark list-group list-group-flush rounded">
                                         <li className="list-group-item"> Votre pseudo: <span className="fw-bold">{ele['username']}</span></li>
                                         <li className="list-group-item"> Votre identifiant unique: <span className="fw-bold">{ele['id']}</span></li>
                                     </ul>
@@ -71,7 +70,7 @@ export default function WelcomeDashBoard({coloc}:any) {
                               </>
                           );
                       })}
-                      {fetchColoc.allColocs?.filter( (iterator: any) => (iterator['proprioID'] === el['id'])  ).map((item: any, key: any) => {
+                      {fetchColoc.allColocs?.filter( (iterator: any) => (iterator['proprioID'] === el['id'])).map((item: any, key: any) => {
                           return (
                               <div className="row bg-dark text-white rounded mb-5 p-2 mx-0" key={key}>
                                   <div className="d-flex flex-column align-content-center justify-content-center align-item-center justify-item-center">
