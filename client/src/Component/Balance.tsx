@@ -55,7 +55,7 @@ const Balance = ({coloc}:any): JSX.Element => {
                 setFetchExpenses(data);
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))     
     }, [token.token, navigate])
-    console.log()
+   
     let accumulatorDebt: Array<number> = [];
     let total: number = 0;
     let accumulatorObligations: Array<number> = [];
