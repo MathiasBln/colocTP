@@ -41,17 +41,17 @@ export default function Dashboard() {
         <div className="dashboard">
             <h1 className="title">{coloc?.title}</h1>
             <WelcomeDashBoard coloc={coloc} />
-            <div className="dashboard__section">
-                <div className="dashboard__section__group">
-                    <h3 className="subtitle">Expenses</h3>
+            <div className="container dashboard__section">
+                <div className="dashboard__section__group bg-success px-4 py-2">
+                    <h3 className="subtitle text-white">Dépenses</h3>
                     <Expense setExpenses={setExpenses} expenses={expenses}/>
                 </div>
-                <div className="dashboard__section__group">
-                    <h3 className="subtitle">Add Expense</h3>
+                <div className="dashboard__section__group bg-dark">
+                    <h3 className="subtitle">Ajout d'une dépense</h3>
                     <ExpensesForm setExpenses={setExpenses} expenses={expenses}/>
                 </div>
-                <div className="dashboard__section__group">
-                    <h3 className="subtitle">Add User</h3>
+                <div className="dashboard__section__group bg-dark">
+                    <h3 className="subtitle">Potentiels colocataires</h3>
                     <ListUser colocId={coloc?.id}/>
                 </div>
             </div>
