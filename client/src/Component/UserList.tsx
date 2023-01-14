@@ -80,7 +80,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                                        </div>
                                    ))}
                                        <input type="hidden" name="id" value={item['id']} onChange={handleChange}/>
-                                   <button className="list-group-item p-0 border-0 btn btn-link" type="submit">Inviter</button>
+                                   <button className="list-group-item btn btn-sm rounded-5 bg-success shadow border-0 border text-white fw-bold" type="submit">Inviter</button>
                                </form>
                                </span>
                            </div>

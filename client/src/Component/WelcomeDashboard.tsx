@@ -110,6 +110,7 @@ export default function WelcomeDashBoard({coloc}:any) {
                                           </div>
                                       </div>
                                   </div>
+                                  <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} />
                               </div>
                           );
                       })}
