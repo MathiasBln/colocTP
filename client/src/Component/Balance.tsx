@@ -90,13 +90,17 @@ const Balance = ({coloc}:any): JSX.Element => {
     fetchExpenses.users?.filter( (elem: any) => (token.token === elem['token'])  ).map((colocUser: any, key: any) => {
         userColocId = colocUser['coloc_id']
      })
+
+    expenses.expenses?.map((e) => {count += e.cost;})
      
     usersNumber = fetchExpenses.users?.length;
+    console.log("UserNumber"+usersNumber)
     quote = count/usersNumber;
+    console.log(quote)
    
     return(
         <div id='balance' className="mb-2">
-        {expenses.expenses?.map((e) => {count += e.cost;})}
+       
         {fetchUsers.users?.filter( (elem: any) => ((elem['token'] === token.token))  ).map((el: any, index: any) => {
                   return (
             <div className="container w-50 mb-5 mt-3 bg-dark rounded p-3 shadow" key={index}>
