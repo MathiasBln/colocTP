@@ -60,15 +60,15 @@ export default function ExpensesForm({setExpenses, expenses}: IShowProps ) {
 
     return (
         <>
-			<form className="card-body p-5" onSubmit={handleSubmit}>
+			<form className="card-body d-flex flex-column align-content-center p-4" onSubmit={handleSubmit}>
 				<div className="form-outline form-white mb-4">
-					<label className="form-label" htmlFor="typeEmailX">Reason</label>
-					<input type="text" id="typeEmailX" className="form-control form-control-lg" name="title" onChange={handleChange}/>
+					<label className="form-label" htmlFor="reason">Raison</label>
+					<input type="text" id="reason" className="form-control form-control-lg" name="title" onChange={handleChange}/>
 				</div>
 				<div className="form-outline form-white mb-4">
-					<label className="form-label" htmlFor="typePasswordX">Amount</label>
-					<textarea id="typePasswordX" className="form-control form-control-lg" name="cost" onChange={handleChange}/>
-					<button className="btn black px-5" type="submit">Submit</button>
+					<label className="form-label" htmlFor="amount">Montant</label>
+					<textarea id="amount" rows={1} className="form-control form-control-lg" name="cost" onChange={handleChange}/>
+					<button className="btn btn-dark fw-bold mt-3" type="submit">Validez</button>
 				</div>
 			</form>
         </>
