@@ -5,3 +5,11 @@
 .hover-blue:hover  { 
     color: #0e91ee!important;
 }
+
+.z-index-199  { 
+    z-index: 199;
+}
+
+.z-index-less  { 
+    z-index: -1;
+} 
