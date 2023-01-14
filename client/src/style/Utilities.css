@@ -1,0 +1,7 @@
+.cursor-pointer { 
+    cursor: pointer;
+}
+
+.hover-blue:hover  { 
+    color: #0e91ee!important;
+}

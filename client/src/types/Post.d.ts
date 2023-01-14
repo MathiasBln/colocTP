@@ -17,6 +17,18 @@ interface IShowProps {
     coloc: { coloc: IColoc[] }
 }
 
+export interface IListColoc {
+    id: number,
+    title: string,
+    content: string,
+    proprioID: number
+}
+
+interface IViewColoc {
+    setViewColoc: Dispatch<SetStateAction<{ coloc: IListColoc[] }>>
+    viewColoc: { coloc: IListColoc[] }
+}
+
 interface IuserList extends IShowProps {
     setFetchUsers: Dispatch<SetStateAction<any>>
     fetchUsers: any
@@ -29,8 +41,6 @@ export interface FormRenter {
 
 export interface IRenter extends FormRenter {
     id: number,
-    author: string,
-    createdAt: object,
     userId: number
 }
 

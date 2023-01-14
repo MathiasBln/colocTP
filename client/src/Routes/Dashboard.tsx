@@ -7,7 +7,7 @@ import ListUser from "../Component/ListUser";
 import { IExpense } from "../types/Expense";
 import WelcomeDashBoard from "../Component/WelcomeDashboard";
 import "../style/Dashboard.css"
-import NavBarDashboard from "../Component/navBarDashboard";
+import NavBarDashboard from "../Component/NavBarDashboard";
 
 
 export default function Dashboard() {
