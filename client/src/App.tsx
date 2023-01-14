@@ -38,6 +38,11 @@ function App() {
                             <Home setColoc={setColoc} coloc={coloc}/>
                         </NeedAuth>
                     }/>
+                    <Route path={'/home'} element={
+                        <NeedAuth>
+                            <Home setColoc={setColoc} coloc={coloc}/>
+                        </NeedAuth>
+                    }/>
                     <Route path={'/coloc'} element={
                         <NeedAuth>
                             <Dashboard />
