@@ -32,7 +32,7 @@ return(
                     <tr key={el['id']}>
                         <td>{el['title']}</td>
                         <td>{el['content']}</td>
-                        <td className="cursor-pointer hover-blue">{el['title']}@yakmail.eu</td>
+                        <td className="cursor-pointer hover-blue">{el['title'].trim().replace(/ /g, "")}@yakmail.eu</td>
                     </tr>
                     ))}
                 </tbody>
