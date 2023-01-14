@@ -65,14 +65,14 @@ export default function Form({setColoc, coloc}: IShowProps) {
                         <div className="card bg-dark text-white " style={{borderRadius: '1rem'}}>
                             <form className="card-body p-5" onSubmit={handleSubmit}>
                                 <div className="form-outline form-white mb-4">
-                                    <label className="form-label" htmlFor="typeEmailX">Title</label>
-                                    <input type="text" id="typeEmailX" className="form-control form-control-lg" name="title" onChange={handleChange}/>
+                                    <label className="form-label" htmlFor="ColocName">Nom de la colocation:</label>
+                                    <input type="text" id="ColocName" className="form-control form-control-lg" name="title" onChange={handleChange}/>
                                 </div>
                                 <div className="form-outline form-white mb-4">
-                                    <label className="form-label" htmlFor="typePasswordX">Address</label>
-                                    <textarea id="typePasswordX" className="form-control form-control-lg" name="content" onChange={handleChange}/>
+                                    <label className="form-label" htmlFor="ColocAddress">Adresse:</label>
+                                    <textarea id="ColocAddress" className="form-control form-control-lg" name="content" onChange={handleChange}/>
                                 </div>
-                                <button className="btn btn-outline-light btn-lg px-5" type="submit">Submit</button>
+                                <button className="btn btn-outline-light btn-lg px-5" type="submit">Je crée ma coloc</button>
                             </form>
                         </div>
                     </div>
