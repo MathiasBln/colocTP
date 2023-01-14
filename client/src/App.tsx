@@ -29,7 +29,7 @@ function App() {
     }
 
     return (
-        <div className="min-vh-100 gradient-custom">
+        <div className="min-vh-100 gradient-custom fancy-background-yellow">
             <BrowserRouter>
                 <Routes>
                     <Route path={"/login"} element={<Login/>}/>

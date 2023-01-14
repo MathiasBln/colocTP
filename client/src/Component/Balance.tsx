@@ -153,11 +153,17 @@ const Balance = ({coloc}:any): JSX.Element => {
                     </tbody>
                 </table>
                 <div className="w-75 rounded mx-auto">
-                    <p className="text-center fs-4 text-warning">{words} <span className={`fw-bold fs-3 text-${color}`}>{Math.abs(result)}</span><span className="fw-bold fs-3"> €</span> vis à vis des autres colocataires</p>
+                    <p className="text-center fs-4 text-warning py-5">{words} <span className={`fw-bold fs-3 text-${color}`}>{Math.abs(result)}</span><span className="fw-bold fs-3"> €</span> vis à vis des autres colocataires</p>
+                   <div className="border border-white border-3 rounded">
+                        <h4 className="text-center fs-3 text-center text-white success-background-50 w-100 py-4 rounded-top">Détails:</h4>
+                        <p className="text-center fs-4 text-warning">Nous avons divisé le total des dépenses de la colocation, <span className="text-success fw-bold">{count}€</span>, par le nombre de colocataires: <span className="text-success fw-bold">{usersNumber}</span>. </p>
+                        <p className="text-center fs-4 text-warning">Le résultat est un seuil minimal que vous devez au pot commun: <span className="text-success fw-bold">{quote}€</span> </p>
+                        <p className="text-center fs-4 text-warning"> le résultat net est votre créance ou votre dette en fonction de votre quote part minimale de contribution: <span className="fw-bold text-white">{Math.abs(result)}€</span>  </p>
+                    </div>
                 </div>
                 
             </div>         
-                   );
+                   ); 
                 })}
         </div>)
 }
