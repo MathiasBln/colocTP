@@ -72,7 +72,7 @@ export default function WelcomeDashBoard({coloc}:any) {
                       })}
                       {fetchColoc.allColocs?.filter( (iterator: any) => (iterator['proprioID'] === el['id'])).map((item: any, key: any) => {
                           return (
-                              <div className="row bg-dark text-white rounded mb-5 p-2 mx-0" key={key}>
+                              <div className="row bg-dark text-white rounded mb-5 p-2 mx-0" key={item['id']}>
                                   <div className="d-flex flex-column align-content-center justify-content-center align-item-center justify-item-center">
                                       <div className="mx-auto"><h3 className="text-center">Colocation <span className="fw-bold text-success">{item['title']}</span></h3></div>
                                       <p className="mx-auto">Vous trouvez ici des informations sur une colocation dont vous êtes propriétaire</p>  
