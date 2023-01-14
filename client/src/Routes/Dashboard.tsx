@@ -7,6 +7,7 @@ import ListUser from "../Component/ListUser";
 import { IExpense } from "../types/Expense";
 import WelcomeDashBoard from "../Component/WelcomeDashboard";
 import NavBarDashboard from "../Component/NavBarDashboard";
+import MessageToUser from "../Component/MessageToUser";
 import "../style/Dashboard.css"
 import "../style/Utilities.css"
 
@@ -41,6 +42,7 @@ export default function Dashboard() {
         {/* <button className="btn btn-outline-dark btn-lg px-5" onClick={deco}>Logout</button> */}
         <NavBarDashboard deco={deco} coloc={coloc} />
         <div className="dashboard">
+        {coloc?.id && <MessageToUser coloc={coloc} />}
             <h1 className="title">{coloc?.title}</h1>
             <WelcomeDashBoard coloc={coloc} />
             <div className="container dashboard__section">
