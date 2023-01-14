@@ -6,11 +6,13 @@ import ExpensesForm from "../Component/ExpensesForm";
 import ListUser from "../Component/ListUser";
 import { IExpense } from "../types/Expense";
 import WelcomeDashBoard from "../Component/WelcomeDashboard";
-import "../style/Dashboard.css"
 import NavBarDashboard from "../Component/NavBarDashboard";
+import "../style/Dashboard.css"
+import "../style/Utilities.css"
 
 
 export default function Dashboard() {
+
     const token = JSON.parse(sessionStorage.token)
     const [coloc, setColoc] = useState({title:"", content:"", id:""} || undefined)
     const [expenses, setExpenses] = useState<{ expenses: IExpense[] }>({expenses: []})
@@ -42,21 +44,29 @@ export default function Dashboard() {
             <h1 className="title">{coloc?.title}</h1>
             <WelcomeDashBoard coloc={coloc} />
             <div className="container dashboard__section">
-                <div className="dashboard__section__group bg-warning px-4 py-2">
+                <div className="w-25 dashboard__section__group bg-warning px-4 py-2">
                     <h3 className="subtitle fs-4 mt-2 mb-3">Dépenses</h3>
                     <Expense setExpenses={setExpenses} expenses={expenses}/>
                 </div>
-                <div className="dashboard__section__group bg-success text-white">
-                    <h3 className="subtitle fs-4 mt-2 mb-3">Ajout d'une dépense</h3>
+                <div className="w-50 dashboard__section__group bg-success text-white">
+                    <h3 className="subtitle fs-4 mt-2 mb-2">Ajout d'une dépense</h3>
+                    <p className="fs-6 mb-0">Inscrivez seulement vos dépenses servant la vie commune</p>
                     <ExpensesForm setExpenses={setExpenses} expenses={expenses}/>
                 </div>
-                <div className="dashboard__section__group bg-warning text-dark">
+                <div className="w-25 dashboard__section__group bg-warning text-dark px-4 py-2">
                     <h3 className="subtitle fs-4 my-2">Potentiels colocataires</h3>
                     <ListUser colocId={coloc?.id}/>
                 </div>
             </div>
+            <div className="w-100 container dashboard__section">
+                <div className="dashboard__section__group bg-success mx-0 py-5 text-dark">
+                    <Balance coloc={coloc} setExpenses={setExpenses} expenses={expenses} />
+                </div>
+                <div>
+
+                </div>
+            </div>
         </div>
-        <Balance coloc={coloc} setExpenses={setExpenses} expenses={expenses} />
         </>
     )
 }

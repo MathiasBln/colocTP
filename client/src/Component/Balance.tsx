@@ -103,7 +103,7 @@ const Balance = ({coloc}:any): JSX.Element => {
        
         {fetchUsers.users?.filter( (elem: any) => ((elem['token'] === token.token))  ).map((el: any, index: any) => {
                   return (
-            <div className="container w-50 mb-5 mt-3 bg-dark rounded p-3 shadow" key={index}>
+            <div className="w-100 mb-5 mt-3 bg-dark rounded p-3 shadow" key={index}>
                 <h3 className="text-center fs-4 mb-2 text-white">Votre balance</h3>
                 <table className="w-75 mx-auto table table-hover table-success border border-4 border-success">
                     <thead>
@@ -120,7 +120,7 @@ const Balance = ({coloc}:any): JSX.Element => {
                         
                         accumulatorDebt.push(ele['cost']);
                         total = accumulatorDebt.reduce((a,v) =>  a = a + v , 0 )
-                        result = quote - total
+                        result = total - quote
                      
                         if(result > 0){ 
                             color = "success"
