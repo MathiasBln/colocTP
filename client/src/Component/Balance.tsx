@@ -84,30 +84,34 @@ const Balance = ({coloc}:any): JSX.Element => {
     let quote:number = 0;
     let usersNumber: number = 0;
     let userColocId: number = 0;
+    let color: string = "white";
+    let words: string = "Vous devez payer ou être payé d'un montant de";
 
     fetchExpenses.users?.filter( (elem: any) => (token.token === elem['token'])  ).map((colocUser: any, key: any) => {
         userColocId = colocUser['coloc_id']
      })
+
+    expenses.expenses?.map((e) => {count += e.cost;})
      
     usersNumber = fetchExpenses.users?.length;
+    console.log("UserNumber"+usersNumber)
     quote = count/usersNumber;
+    console.log(quote)
    
     return(
         <div id='balance' className="mb-2">
-        {expenses.expenses?.map((e) => {count += e.cost;})}
+       
         {fetchUsers.users?.filter( (elem: any) => ((elem['token'] === token.token))  ).map((el: any, index: any) => {
                   return (
             <div className="container w-50 mb-5 mt-3 bg-dark rounded p-3 shadow" key={index}>
                 <h3 className="text-center fs-4 mb-2 text-white">Votre balance</h3>
-                <h4 className="text-center fs-6 mb-3 text-white">Visualisez vos créances et dettes</h4>
-                <table className="table table-hover table-success border border-2 border-success">
+                <table className="w-75 mx-auto table table-hover table-success border border-4 border-success">
                     <thead>
                     <tr>
-                        <th>Identifiant de colocation</th>
-                        <th>Vos Créances</th>
-                        <th>Vos Dettes</th>
-                        <th>Créances cumulées</th>
-                        <th>Dettes cumulées</th>
+                        <th>Colocation n°:</th>
+                        <th>Description</th>
+                        <th>Vos dépenses</th>
+                        <th>cumul</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -117,27 +121,41 @@ const Balance = ({coloc}:any): JSX.Element => {
                         accumulatorDebt.push(ele['cost']);
                         total = accumulatorDebt.reduce((a,v) =>  a = a + v , 0 )
                         result = quote - total
+                     
+                        if(result > 0){ 
+                            color = "success"
+                            words = "Vous avez une créance de"
+                            } else if (result < 0) {
+                            color = "danger"
+                            words = "Vous avez une dette de"
+                            } 
                         return( 
                         <tr key={key}>
                             <td>{ele['coloc_id']}</td>
-                            <td>Créances</td>
-                            <td>{ele['cost']}</td>
-                            <td>Créances cumul</td>
-                            <td>{total}</td>
+                            <td>{ele['title']}</td>
+                            <td>{ele['cost']}€</td>
+                            <td>{total}€</td>
                         </tr>
                         );
                      })}
                      <tr>
-                        <td className="text-dark fw-bold fs-6">TOTAUX</td>
-                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">TOT</td>
-                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">{total}</td>
+                        <td colSpan={2} className="text-dark fw-bold fs-6">Vos dépenses totales:</td>
+                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">{total}€</td>
                      </tr>
                      <tr>
-                        <td colSpan={3} className="text-dark fw-bold fs-6">Résultat net</td>
-                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">{result}</td>
+                        <td colSpan={2} className="text-dark fw-bold fs-6">Votre quote part:</td>
+                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">{quote}€</td>
                      </tr>
+                    <tr>
+                        <td colSpan={2} className="text-dark fw-bold fs-6">Résultat net</td>
+                        <td colSpan={2} className={`text-${color} bg-warning shadow text-center fw-bold fs-5`}>{result}€</td>
+                    </tr>
                     </tbody>
                 </table>
+                <div className="w-75 rounded mx-auto">
+                    <p className="text-center fs-4 text-warning">{words} <span className={`fw-bold fs-3 text-${color}`}>{Math.abs(result)}</span><span className="fw-bold fs-3"> €</span> vis à vis des autres colocataires</p>
+                </div>
+                
             </div>         
                    );
                 })}

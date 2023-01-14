@@ -40,10 +40,10 @@ const Expense = ({setExpenses, expenses}: IShowProps ) => {
             </tr>
         </thead>
         <tbody>
-            {expenses.expenses?.map((e) => {
+            {expenses.expenses?.map((e, key) => {
             count += e.cost;
             return <>
-            <tr>
+            <tr key={key}>
                 <td className="fs-6 fw-bold">{e?.title}</td>
                 <td className="fs-6 fw-bold">{e?.cost}€</td>
             </tr>
