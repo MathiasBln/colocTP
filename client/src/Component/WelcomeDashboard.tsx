@@ -56,7 +56,7 @@ export default function WelcomeDashBoard({coloc}:any) {
                             <div className="row align-content-center justify-content-center my-5" key={key}>
                                 <div className="col-7 bg-success text-white p-3">
                                     <h2 className="text-center fw-bold fs-3 mb-2">Bonjour {el['username']}</h2>
-                                    <h3 className="text-center fw-bold fs-4 mb-3">la colocation <span className="text-success">{coloc?.title}</span> est heureuse de vous accueillir</h3>
+                                    <h3 className="text-center fw-bold fs-4 mb-3">la colocation <span className="text-dark">{coloc?.title}</span> est heureuse de vous accueillir</h3>
                                     <p> Ici vous pouvez consulter l'état des finances de la colocation, vos dettes ou vos créances.</p>
                                     <p>Si vous êtes propriétaire, la liste de vos colocations et les potentiels colocataires s'afficheront ci-dessous.</p>
                                 </div>
@@ -75,8 +75,9 @@ export default function WelcomeDashBoard({coloc}:any) {
                           return (
                               <div className="row bg-dark text-white rounded mb-5 p-2 mx-0" key={key}>
                                   <div className="d-flex flex-column align-content-center justify-content-center align-item-center justify-item-center">
-                                      <div className="py-2 mx-auto"><h3 className="text-center">Colocation <span className="fw-bold text-success">{item['title']}</span></h3></div>
-                                      <p className="py-2 mx-auto">Vous trouvez ici des informations sur une colocation dont vous êtes propriétaire</p>  
+                                      <div className="mx-auto"><h3 className="text-center">Colocation <span className="fw-bold text-success">{item['title']}</span></h3></div>
+                                      <p className="mx-auto">Vous trouvez ici des informations sur une colocation dont vous êtes propriétaire</p>  
+                                      <h4 className="mx-auto fs-5">Addresse de la colocation: <span className="text-success fw-bold">{item['content']}</span></h4>  
                                   </div>
 
                                   <div className="shadow text-center mx-auto bg-white w-75 my-3">

@@ -56,7 +56,7 @@ export default function Dashboard() {
                 </div>
             </div>
         </div>
-        <Balance />
+        <Balance coloc={coloc} />
         </>
     )
 }
