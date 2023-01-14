@@ -113,7 +113,6 @@ const Balance = ({coloc}:any): JSX.Element => {
                         <td colSpan={2} className="text-dark text-center fw-bold fs-6">tot creance</td>
                         <td colSpan={2} className="text-dark text-center fw-bold fs-6">{total}</td>
                      </tr>
-                    
                     </tbody>
                 </table>
             </div>         

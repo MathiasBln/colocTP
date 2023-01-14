@@ -1,11 +1,12 @@
 import { NavLink} from "react-router-dom";
 
-export default function NavBarDashboard({deco}: any) { 
+export default function NavBarDashboard({deco, coloc}: any) { 
 
     return(
     <>
         <nav className="navbar navbar-expand-lg navbar-success bg-success py-0">
             <div className="container-fluid">
+                <NavLink className="navbar-brand text-uppercase fs-2 fw-bold" to={"/"}>{coloc?.title}</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

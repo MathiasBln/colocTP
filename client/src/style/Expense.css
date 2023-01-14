@@ -1,0 +1,6 @@
+.expense { 
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: flex-start;
+}

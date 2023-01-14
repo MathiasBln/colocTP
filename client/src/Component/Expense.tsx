@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { IShowProps } from "../types/Expense";
 import "../style/Expense.css"
 
-
 const Expense = ({setExpenses, expenses}: IShowProps ) => {
     const token = JSON.parse(sessionStorage.token);
     const mystyle = {
@@ -33,7 +32,7 @@ const Expense = ({setExpenses, expenses}: IShowProps ) => {
         count += e.cost;
         return <>
         <div className="expense" id="expenses">
-            <h1 className="expense-title">{e?.title}</h1>
+            <h2 className="expense-title fs-4 fw-bold">{e?.title}</h2>
             <p className="expense-price">{e?.cost}€</p>
         </div>
         </>

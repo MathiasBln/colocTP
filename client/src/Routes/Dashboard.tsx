@@ -37,7 +37,7 @@ export default function Dashboard() {
         <>  
         {/* La navBar qui a été créé inclu déjà un logout (se déconnecter) */}
         {/* <button className="btn btn-outline-dark btn-lg px-5" onClick={deco}>Logout</button> */}
-        <NavBarDashboard deco={deco} />
+        <NavBarDashboard deco={deco} coloc={coloc} />
         <div className="dashboard">
             <h1 className="title">{coloc?.title}</h1>
             <WelcomeDashBoard coloc={coloc} />
