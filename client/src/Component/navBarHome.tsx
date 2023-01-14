@@ -14,10 +14,10 @@ export default function NavBarHome({deco, coloc}: any) {
         <div className="navbar-nav">
             <ul className="nav">
                 <li className="nav-item mr-5">
-                    <button className="nav-link border-0 bg-success text-white fw-bold fs-4 px-5" onClick={deco}>Me déconnecter</button>
+                    <button className="nav-link border-0 bg-success text-white fw-bold fs-4 px-5 hover-blue" onClick={deco}>Me déconnecter</button>
                 </li>
                 <li className="nav-item mr-5">
-                    <NavLink className="nav-link active bg-success text-white fw-bold fs-4 px-5" aria-current="page" to="/coloc">Mon espace client</NavLink>
+                    <NavLink className="nav-link active bg-success text-white fw-bold fs-4 px-5 hover-blue" aria-current="page" to="/coloc">Mon espace client</NavLink>
                 </li>
             </ul>          
         </div>

@@ -14,10 +14,10 @@ const deco = () => {
 // @ts-ignore
 return(
     <>
-        <div className="container mt-2 rounded-2 bg-grey w-50">
+        <div className="container mt-2  mb-5 py-3 rounded-2  warning-background-50 shadow w-75">
             <h3 className="text-center fs-4 fw-bold my-2"> Nos colocations </h3>
             <p className="text-center">Envoyez un email au contact de la colocation. Si votre profil correspond, vous serez invité à devenir colocataire.</p>
-            <table className="table table-hover table-success table-striped">
+            <table className="table table-hover table-success table-striped w-50 mx-auto">
                 <thead>
                     <tr>
                     <th>Nom de la coloc</th>
