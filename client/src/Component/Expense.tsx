@@ -29,7 +29,7 @@ const Expense = ({setExpenses, expenses}: IShowProps ) => {
     },[setExpenses, token.token])
 
     return (<>
-    <table className="table table-success table-striped table-hover table-sm table-bordered border border-3 border-success">
+    <table id="expenses" className="table table-success table-striped table-hover table-sm table-bordered border border-3 border-success">
         <thead>
             <tr>
             <th className="fs-6 fw-bold" colSpan={2}>Dépenses de la coloc</th>  
