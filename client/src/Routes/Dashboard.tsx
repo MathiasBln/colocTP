@@ -38,8 +38,6 @@ export default function Dashboard() {
         {coloc?.id && <NavBarDashboard deco={deco} coloc={coloc} />}
         <div className="dashboard">
             {messageOnColoc}
-         
-     
         </div>
         </>
     )

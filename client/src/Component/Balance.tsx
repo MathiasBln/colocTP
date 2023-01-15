@@ -2,7 +2,7 @@ import {useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IShowProps } from "../types/Post"; 
 import { IExpense } from "../types/Expense";
-
+import '../style/Utilities.css'
 const Balance = ({coloc}:any): JSX.Element => {
     
     const navigate = useNavigate();
@@ -103,8 +103,8 @@ const Balance = ({coloc}:any): JSX.Element => {
        
         {fetchUsers.users?.filter( (elem: any) => ((elem['token'] === token.token))  ).map((el: any, index: any) => {
                   return (
-            <div className="w-100 mb-5 mt-3 bg-dark rounded p-3 shadow" key={index}>
-                <h3 className="text-center fs-4 mb-2 text-white">Votre balance</h3>
+            <div className="w-100 mb-5 mt-3 bg-transparent rounded p-3" key={index}>
+                <h3 className="text-center fs-3 mb-2 text-white">Votre balance</h3>
                 <table className="w-75 mx-auto table table-hover table-success border border-4 border-success">
                     <thead>
                     <tr>
@@ -148,13 +148,13 @@ const Balance = ({coloc}:any): JSX.Element => {
                      </tr>
                     <tr>
                         <td colSpan={2} className="text-dark fw-bold fs-6">Résultat net</td>
-                        <td colSpan={2} className={`text-${color} bg-warning shadow text-center fw-bold fs-5`}>{result}€</td>
+                        <td colSpan={2} className={`text-${color} bg-dark shadow text-center fw-bold fs-5`}>{result}€</td>
                     </tr>
                     </tbody>
                 </table>
                 <div className="w-75 rounded mx-auto">
-                    <p className="text-center fs-4 text-warning py-5">{words} <span className={`fw-bold fs-3 text-${color}`}>{Math.abs(result)}</span><span className="fw-bold fs-3"> €</span> vis à vis des autres colocataires</p>
-                   <div className="border border-white border-3 rounded">
+                    <p className="text-center fs-4 text-dark fw-bold py-5">{words} <span className={`fw-bold fs-3 text-${color}`}>{Math.abs(result)}</span><span className="fw-bold fs-3"> €</span> vis à vis des autres colocataires</p>
+                   <div className="border border-white border-3 rounded bg-dark">
                         <h4 className="text-center fs-3 text-center text-white success-background-50 w-100 py-4 rounded-top">Détails:</h4>
                         <p className="text-center fs-4 text-warning">Nous avons divisé le total des dépenses de la colocation, <span className="text-success fw-bold">{count}€</span>, par le nombre de colocataires: <span className="text-success fw-bold">{usersNumber}</span>. </p>
                         <p className="text-center fs-4 text-warning">Le résultat est un seuil minimal que vous devez au pot commun: <span className="text-success fw-bold">{quote}€</span> </p>

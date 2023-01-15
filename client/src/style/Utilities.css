@@ -19,6 +19,7 @@
     --light:#f8f9fa;
     --dark:#212529;
     --dark-50:rgba(33, 37, 41,0.5);
+    --dark-80:rgba(33, 37, 41,0.8);
     --dark-90:rgba(33, 37, 41,0.9);
     --white:#fff;
     --white-50:rgba(255, 255, 255,0.5);
@@ -53,6 +54,10 @@
 
 .dark-background-50 { 
     background-color: var(--dark-50)!important;
+}
+
+.dark-background-80 { 
+    background-color: var(--dark-80)!important;
 }
 
 .dark-background-90 { 
