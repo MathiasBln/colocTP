@@ -48,3 +48,4 @@ interface INewRenter {
     setRenter: Dispatch<SetStateAction<{ renter: IRenter[] }>>
     renter: { renter: IRenter[] }
 }
+

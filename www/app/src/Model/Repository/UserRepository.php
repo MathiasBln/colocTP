@@ -139,12 +139,13 @@ class UserRepository extends Repository
         return $query->execute();
     }
 
-    public function delete($id)
+    public function deleteUser(User $user): bool
     {
-        $deleteUser = "DELETE FROM `users` WHERE `id` = :id";
+        $deleteUser = "DELETE FROM `users` WHERE `id` = :id AND `coloc_id` = :coloc_id";
         $query = $this->pdo->prepare($deleteUser);
-        $query->bindValue(':id', $id);
-
+        $query->bindValue(':coloc_id', $user->getColocId());
+        $query->bindValue(':id', $user->getId());
+        
         return $query->execute();
     }
 }

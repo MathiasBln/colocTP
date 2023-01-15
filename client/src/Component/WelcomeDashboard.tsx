@@ -1,18 +1,16 @@
-import { useNavigate, NavLink} from "react-router-dom";
 import UserList from "./UserList";
-import {FormColoc, IColoc, IShowProps} from "../types/Post";
+import ManageUsers from "./ManageUsers";
 import React, {useEffect, useState} from "react";
 
 export default function WelcomeDashBoard({coloc}:any) {
     // @ts-ignore
-    const navigate = useNavigate()
     const [fetchColoc, setFetchColoc] = useState<any>("");
     const [fetchUsers, setFetchUsers] = useState<any>("");
     const token = JSON.parse(sessionStorage.token);
 
     useEffect( () => {
 
-        const colocsList = fetch('http://localhost:5657/coloclist', {
+        fetch('http://localhost:5657/coloclist', {
             method: "POST",
             mode: "cors",
             credentials: "include",
@@ -25,11 +23,11 @@ export default function WelcomeDashBoard({coloc}:any) {
 
                 setFetchColoc(data);
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
-    }, [])
+    }, [token.token])
 
     useEffect( () => {
 
-        const usersList = fetch('http://localhost:5657/userslist', {
+        fetch('http://localhost:5657/userslist', {
             method: "POST",
             mode: "cors",
             credentials: "include",
@@ -42,13 +40,19 @@ export default function WelcomeDashBoard({coloc}:any) {
 
                 setFetchUsers(data);
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
-    }, [])
+    }, [token.token])
 
     const potentialRentersArray:Array<string> = [];
     fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] === null).map( (el: any, key: any) => (
         potentialRentersArray.push(el.username)
     ))
     const potentialRentersNumber : number = potentialRentersArray.length;  
+
+    const rentersArray:Array<string> = [];
+    fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] !== null).map( (el: any, key: any) => (
+        rentersArray.push(el.username)
+    ))
+    const rentersNumber : number = rentersArray.length;  
    
     return (
       <>
@@ -115,7 +119,8 @@ export default function WelcomeDashBoard({coloc}:any) {
                                           </div>
                                       </div>
                                   </div>
-                                  {potentialRentersNumber > 0 && <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} />}
+                                  {potentialRentersNumber > 0 && <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} thiscoloc={item?.id} />}
+                                  {rentersNumber > 0 && <ManageUsers setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} thiscoloc={item?.id}/>}
                               </div>
                           );
                       })}

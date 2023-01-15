@@ -3,7 +3,7 @@ import { useEffect, useState} from "react";
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./Routes/Login";
-import {IColoc} from "./types/Post";
+import {IColoc} from "./types/Coloc";
 import Home from "./Routes/Home";
 import NeedAuth from "./Routes/NeedAuth";
 import Dashboard from './Routes/Dashboard';

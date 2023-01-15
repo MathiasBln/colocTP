@@ -18,3 +18,12 @@ interface IShowProps {
     setExpenses: Dispatch<SetStateAction<{ expenses: IExpense[] }>>
     expenses: { expenses: IExpense[] }
 }
+
+export interface IUserColoc extends FormColoc {
+    coloc_id: number | string
+}
+
+interface IUsersByColoc {
+    setRenter: Dispatch<SetStateAction<{ coloc_id: IExpense[] }>>
+    renter: { coloc_id: IExpense[] }
+}

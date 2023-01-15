@@ -1,5 +1,5 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import { FormColoc, IShowProps} from "../types/Post";
+import { FormColoc, IShowProps} from "../types/Coloc";
 import {useNavigate} from "react-router-dom";
 
 
@@ -12,7 +12,7 @@ export default function Form({setColoc, coloc}: IShowProps) {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        fetch('http://localhost:5657/post', {
+        fetch('http://localhost:5657/createcoloc', {
             method: "POST",
             mode: "cors",
             body: new URLSearchParams({

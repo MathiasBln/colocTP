@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, NavLink} from "react-router-dom";
-import { IShowProps, IViewColoc, IListColoc} from "../types/Post";
+import { IShowProps, IViewColoc, IListColoc} from "../types/Coloc";
 import "../style/Utilities.css";
 
 export default function ViewColocs({setViewColoc, viewColoc}: IViewColoc) {

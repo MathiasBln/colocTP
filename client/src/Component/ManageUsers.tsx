@@ -1,20 +1,20 @@
 import {useState, ChangeEvent, FormEvent} from "react";
 import { useNavigate } from "react-router-dom";
-import { IRenter, FormRenter} from "../types/Coloc"
+import { IRenter, FormRenter} from "../types/Coloc";
 import { IAlert } from "../types/User";
 import "../style/Utilities.css";
-export default function UserList({setFetchUsers, fetchUsers, thiscoloc}:any) {
+
+export default function ManageUsers({setFetchUsers, fetchUsers, thiscoloc}:any) {
 
     const token = JSON.parse(sessionStorage.token);
     const [formRenter, setFormRenter] = useState<FormRenter>({ id: "", coloc_id: "" });
     const [renter, setRenter] = useState<{ renter: IRenter[] }>({renter: []})
-    const [alert, setAlert] = useState<IAlert>({isAlert: false, message: "", color:""})
+    const [alert, setAlert] = useState<IAlert>({isAlert: false, message: "", color:"alert-warning"})
     const navigate = useNavigate();
-
+     
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault(); 
-        
-        fetch('http://localhost:5657/addrenter', {
+        fetch('http://localhost:5657/excluderenter', {
             method: "POST",
             mode: "cors",
             body: new URLSearchParams({
@@ -27,7 +27,7 @@ export default function UserList({setFetchUsers, fetchUsers, thiscoloc}:any) {
             })
         }).then((data) =>  data.json())
             .then((json) => {
-            
+              
                 if (json.message) {
                     if (json.message === "invalid cred") {
                         sessionStorage.removeItem('token');
@@ -48,13 +48,14 @@ export default function UserList({setFetchUsers, fetchUsers, thiscoloc}:any) {
                         }
                     }
                 )
-                window.location.reload(); 
-
-            }).catch(error => { 
+            window.location.reload()
+            }).catch((error) => {
                 setAlert({...alert, isAlert: true, message: "Votre requête n'a pu aboutir, vérifiez que vous ayez bien entré la donnée.", color:"alert-danger"})
-            })
-    }
-   
+             }
+            
+           )
+    }       
+  console.log("alert  "+alert);
     const handleChange = (e: ChangeEvent) => {
         setFormRenter(prevState => {
             return {
@@ -66,15 +67,12 @@ export default function UserList({setFetchUsers, fetchUsers, thiscoloc}:any) {
         })
     }
 
-
-
-
     return (    
         <div className="shadow text-center mx-auto bg-white w-75 my-3">
              <div className="row text-dark border-bottom border-2 border-dark bg-success">
                 <div className="col-12 p-2">
-                    <h4 className="mx-auto fs-4 fs-md-5 text-uppercase fw-bold text-white">Potentiels colocataires</h4>
-                    <p className="mx-auto fs-6 fw-bold text-white">En vous aidant des informations ci-dessus et ci-dessous, entrez le identifiants pour les inviter dans une colocation</p>
+                    <h4 className="mx-auto fs-4 fs-md-5 text-uppercase fw-bold text-white">Gerer les colocataires</h4>
+                    <p className="mx-auto fs-6 fw-bold text-white">En vous aidant des informations ci-dessus et ci-dessous, entrez le identifiants pour gérer les colocataires</p>
                 </div>
             </div>
             <div className="row text-dark bg-success">
@@ -84,16 +82,16 @@ export default function UserList({setFetchUsers, fetchUsers, thiscoloc}:any) {
                 <div className="col-1 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
                     <h4 className="fs-6 fs-md-5">Id</h4>
                 </div>
-                <div className="col-1 d-flex align-content-center justify-content-between align-items-center gap-2">
-                    <span>Id Coloc</span>
+                <div className="col-1 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
+                    <h4 className="fs-6 fs-md-5">Id Coloc</h4>
                 </div>
                 <div className="col-8 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
-                    <h4 className="fs-6 fs-md-5">formulaire d'invitation</h4>
+                    <h4 className="fs-6 fs-md-5">formulaire</h4>
                 </div>
             </div>
 
             <div className="row text-dark">
-                {fetchUsers.users?.filter( (ele: any) => ele['coloc_id'] == null).map( (item: any, key: any) => (
+                {fetchUsers.users?.filter( (ele: any) => (ele['coloc_id'] === thiscoloc && ele['token'] !== token.token)).map( (item: any, key: any) => (
                     <div className="row text-dark p-3" key={item['id']}>
                         <div className="col-2 d-flex align-content-center justify-content-between align-items-center gap-2">
                                 <span>{item['username']}</span>
@@ -112,17 +110,17 @@ export default function UserList({setFetchUsers, fetchUsers, thiscoloc}:any) {
                                         <input title='coloc_id' type="text" id="ColocId" className="form-control form-control-sm" name="coloc_id" onChange={handleChange}/>
                                         </div>
                                         <div className="form-outline form-white">
-                                        <label className="form-label" htmlFor="userId">Identifiant candidat:</label>
+                                        <label className="form-label" htmlFor="userId">Identifiant colocataire:</label>
                                         <input title='id' type="text" id="userId" className="form-control form-control-sm" name="id" onChange={handleChange}/>
                                         </div>
                                         <div className="form-outline form-white">
-                                        <button className="py-2 px-4 btn btn-success text-white hover-blue fw-bold shadow" type="submit">Inviter</button>
+                                        <button className="py-2 px-4 btn btn-danger text-white hover-blue fw-bold shadow" type="submit">Exclure</button>
                                         </div>
                                 </form>
                             </span>
                         </div>
                     </div>
-                    ))} 
+                    ))}
             </div>
             {alert.isAlert &&
             <div className="row">
@@ -132,8 +130,7 @@ export default function UserList({setFetchUsers, fetchUsers, thiscoloc}:any) {
                     </div>
                 </div>
             </div>}
+         
         </div>
     );
 };
-
-

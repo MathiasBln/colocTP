@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Model\Factory\PDOFactory;
 use App\Model\Repository\ColocRepository;
 use App\Model\Repository\UserRepository;
