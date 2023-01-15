@@ -7,10 +7,28 @@ use App\Model\Entity\BaseEntity;
 class User extends BaseEntity
 {
 
+    public ?int $id = null;
     private ?string $username = null;
     private ?string $password = null;
     private ?string $token = null;
-    private ?int $coloc_id = null;
+    public ?int $coloc_id = null;
+
+     /**
+     * @return int|null
+     */
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
+
 
     /**
      * @return string|null

@@ -76,4 +76,23 @@ class ColocController extends Controller
         http_response_code(200);
         die;
     }
+
+    #[Route('/addrenter', 'addrenter', ['POST', 'GET'])]
+    public function addRenter()
+    {
+        
+        $this->renderJSON([
+            'datas' => $_POST
+        ]);
+        die();
+        $userRepository = new UserRepository(new PDOFactory());
+        $argsUser = [$_POST];
+        $userbis = new User($argsUser);
+        $changeUserStatus = $userRepository->updateStatus($userbis);
+        $this->renderJSON([
+            "userStatus" => $changeUserStatus
+        ]);
+        http_response_code(200);
+        die;
+    }
 }

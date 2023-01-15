@@ -29,7 +29,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
             })
         }).then((data) =>  data.json())
             .then((json) => {
-
+                console.log(json.datas)
                 if (json.message) {
                     if (json.message === "invalid cred") {
                         sessionStorage.removeItem('token');
@@ -50,6 +50,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                         }
                     }
                 )
+               
 
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }
@@ -64,6 +65,13 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
             }
         })
     }
+
+
+    const colocIdArray:Array<number|string> = [];
+    fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] !== null).map( (el: any, key: any) => (
+        colocIdArray.push(el.coloc_id)
+    ))
+    const colocOnlyId =  colocIdArray[0];
 
     return (    
         <div className="shadow text-center mx-auto bg-white w-75 my-3">
@@ -89,11 +97,9 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                         <div className="col-5">
                             <span>
                                 <form onSubmit={handleSubmit}>
-                                    {fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] != null).map( (el: any, key: any) => (
                                         <div key={key}>
-                                            <input type="hidden" name="coloc_id" value={el['coloc_id']} onChange={handleChange}/>
+                                            <input type="hidden" name="coloc_id" value={colocOnlyId} onChange={handleChange}/>
                                         </div>
-                                    ))}
                                     <input type="hidden" name="id" value={item['id']} onChange={handleChange}/>
                                     <button className="mx-auto list-group-item btn btn-sm rounded-5 px-4 py-2 bg-success shadow border-0 border text-white fw-bold" type="submit">Inviter dans la colocation</button>
                                 </form>
