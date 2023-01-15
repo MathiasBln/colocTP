@@ -30,6 +30,7 @@ export default function Dashboard() {
         .then(response => response.json())
         .then(data => setColoc(data.coloc));
     }, [token.token]);
+
     return(
         <>  
         {coloc?.id && <NavBarDashboard deco={deco} coloc={coloc} />}

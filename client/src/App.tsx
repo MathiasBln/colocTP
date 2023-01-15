@@ -24,10 +24,6 @@ function App() {
         }
     },[])
 
-    const deco = () => {
-        sessionStorage.removeItem('token');
-    }
-
     return (
         <div className="min-vh-100 gradient-custom fancy-background-yellow">
             <BrowserRouter>
