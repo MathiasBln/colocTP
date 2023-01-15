@@ -94,7 +94,7 @@ const Balance = ({coloc}:any): JSX.Element => {
     expenses.expenses?.map((e) => {count += e.cost;})
      
     usersNumber = fetchExpenses.users?.length;
-    console.log("UserNumber"+usersNumber)
+
     quote = Math.round(count/usersNumber);
    
     return(
