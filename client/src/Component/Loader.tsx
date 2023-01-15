@@ -1,11 +1,17 @@
 import "../style/Utilities.css";
 import "../style/Dashboard.css"
+import "../style/Loader.css";
 
 export default function Loader() { 
 
     return(
         <>
-        <p>Votre page est bientôt prête</p>
+        <div className="page-loader-container">
+            <div className="mt-5 d-flex align-content-center justify-content-center">
+                <span className="loader"></span>
+            </div>
+        </div>
+          
         </>
     )
 
