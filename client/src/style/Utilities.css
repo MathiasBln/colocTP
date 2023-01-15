@@ -11,6 +11,7 @@
     --warning-70:  rgba(255, 193, 7,0.7);
     --success:   rgb(25, 135, 84);
     --success-50:rgba(25, 135, 84, 0.5);
+    --success-70:rgba(25, 135, 84, 0.7);
     --success-80:rgba(25, 135, 84, 0.8);
     --teal:    #20c997;
     --info:    #0dcaf0;
@@ -18,6 +19,7 @@
     --light:#f8f9fa;
     --dark:#212529;
     --dark-50:rgba(33, 37, 41,0.5);
+    --dark-80:rgba(33, 37, 41,0.8);
     --dark-90:rgba(33, 37, 41,0.9);
     --white:#fff;
     --white-50:rgba(255, 255, 255,0.5);
@@ -42,12 +44,20 @@
     background-color: var(--success-50)!important;
 }
 
+.success-background-70 { 
+    background-color: var(--success-70)!important;
+}
+
 .success-background-80 { 
     background-color: var(--success-80)!important;
 }
 
 .dark-background-50 { 
     background-color: var(--dark-50)!important;
+}
+
+.dark-background-80 { 
+    background-color: var(--dark-80)!important;
 }
 
 .dark-background-90 { 

@@ -11,20 +11,20 @@ export default function NavBarDashboard({deco, coloc}: any) {
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <ul className="nav fs-4">
-                            <li className="nav-item bg-success px-5">
-                                <NavLink className="nav-link active hover-blue bg-success text-white fw-bold" aria-current="page" to="/home">Retour à l'accueil</NavLink>
+                <div className="collapse navbar-collapse justify-content-center my-0" id="navbarNavAltMarkup">
+                    <div className="navbar-nav my-0">
+                        <ul className="nav fs-4 my-0">
+                            <li className="nav-item bg-transparent px-5 my-0">
+                                <NavLink className="nav-link active hover-blue text-white fw-bold" aria-current="page" to="/home">Retour à l'accueil</NavLink>
                             </li>
-                            <li className="nav-item bg-success px-5">
-                                <a className="nav-link bg-success hover-blue text-white fw-bold" href="#expenses">Nos dépenses</a>
+                            <li className="nav-item bg-transparent px-5 my-0">
+                                <a className="nav-link hover-blue text-white fw-bold" href="#expenses">Nos dépenses</a>
                             </li>
-                            <li className="nav-item bg-success px-5">
-                                <a className="nav-link  bg-success hover-blue text-white fw-bold" href="#balance">Ma balance</a>
+                            <li className="nav-item bg-transparent px-5 my-0">
+                                <a className="nav-link  hover-blue text-white fw-bold" href="#balance">Ma balance</a>
                             </li>
-                            <li className="nav-item bg-success px-5">
-                                <button className="nav-link bg-success hover-blue border-0 text-white fw-bold" onClick={deco}>Me déconnecter</button>
+                            <li className="nav-item bg-transparent px-5 my-0">
+                                <button className="nav-link hover-blue bg-transparent border-0 text-white fw-bold" onClick={deco}>Me déconnecter</button>
                             </li>
                         </ul>          
                     </div>

@@ -45,7 +45,7 @@ export default function Home({setColoc, coloc}: IShowProps) {
         {/* <button className="btn btn-outline-dark btn-lg px-5" onClick={deco}>Logout</button> */}
            <div className="container py-2 d-flex flex-column align-content-center justify-content-center">
                 <h1 className="text-center fs-4 text-uppercase mt-5 mb-2 fw-bold">Devenir propriétaire</h1>
-                <p className="text-center fs-5 fw-bold">Remplissez ce formulaire afin de créer la colocation et devenez pleinement propriétaire</p>
+                <p className="text-center fs-5 fw-bold">Remplissez ce formulaire afin de créer la colocation et devenez pleinement gérant de la colocation</p>
                 <FormPost setColoc={setColoc} coloc={coloc}/>
                 <hr className="border border-5 border-success bg-success w-25 mx-auto rounded my-5"/>
            </div>
