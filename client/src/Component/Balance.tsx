@@ -9,6 +9,7 @@ const Balance = ({coloc}:any): JSX.Element => {
     const [fetchExpenses, setFetchExpenses] = useState<any>("");
     const [fetchUsers, setFetchUsers] = useState<any>("");
     const [expenses, setExpenses] = useState<{ expenses: IExpense[] }>({expenses: []});
+    const [usersNumber, setUsersNumber] = useState<any>("");
 
     const token = JSON.parse(sessionStorage.token);
     
@@ -57,12 +58,15 @@ const Balance = ({coloc}:any): JSX.Element => {
                     return
                 }
                 setFetchExpenses(data);
+                setUsersNumber(data?.users.length);
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))     
     }, [token.token, navigate])
-    
+
+
     let count: number = 0;
     useEffect( () => {
-        count = 0
+       count = 0;
+      
         fetch('http://localhost:5657/allExpense', {
             method: "POST",
             mode: "cors",
@@ -75,14 +79,16 @@ const Balance = ({coloc}:any): JSX.Element => {
         .then((response) =>  response.json())
         .then((data) => {
            setExpenses(data);
+          
         }).catch(error => console.log("Erreur dans la requête fetch : " + error)) 
-    },[setExpenses, token.token])
+       
+    },[setExpenses, setUsersNumber, token.token])
 
     let accumulatorDebt: Array<number> = [];
     let total: number = 0;
     let result: number = 0;
     let quote:number = 0;
-    let usersNumber: number = 0;
+  
     let userColocId: number = 0;
     let color: string = "white";
     let words: string = "Vous devez payer ou être payé d'un montant de";
@@ -92,11 +98,9 @@ const Balance = ({coloc}:any): JSX.Element => {
      })
 
     expenses.expenses?.map((e) => {count += e.cost;})
-     
-    usersNumber = fetchExpenses.users?.length;
-
     quote = Math.round(count/usersNumber);
-   
+    console.log("Number"+usersNumber);
+
     return(
         <div id='balance' className="mb-2">
        

@@ -40,6 +40,22 @@ class UserRepository extends Repository
         return null;
     }
 
+    public function getNumberUserByColocId($colocId): int | string
+    {
+        $query = $this->pdo->prepare(
+            "SELECT COUNT(*)
+            FROM `users`
+            WHERE `coloc_id` = :coloc_id"
+        );
+        $query->bindValue(':id', $colocId);
+        $query->execute();
+        $user = $query->fetch(\PDO::FETCH_ASSOC);
+        if ($user) {
+            return $user;
+        }
+        return null;
+    }
+
     public function getUserByToken($token): ?User
     {
         $query =

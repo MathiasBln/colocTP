@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Controller;
-
-
 use App\Model\Factory\PDOFactory;
 use App\Model\Repository\ColocRepository;
 use App\Model\Repository\UserRepository;
@@ -20,6 +18,18 @@ class ColocController extends Controller
         $users = $userRepository->getAllUsers();
         
         $this->renderJson(["users" => $users]);
+        http_response_code(200);
+        exit();
+      
+    }
+
+    #[Route('/numuserbycoloc', 'numuserbycoloc', ['POST'])]
+    public function numuserbycoloc() {
+        $userRepository = new UserRepository(new PDOFactory());
+        $colocId = [...$_POST];
+        $countUsers = $userRepository->getNumberUserByColocId($colocId);
+        
+        $this->renderJson(["countUsers" => $countUsers]);
         http_response_code(200);
         exit();
       

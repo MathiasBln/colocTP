@@ -16,6 +16,8 @@ class ColocRepository extends Repository
         }
         return $allColocs;
     }
+
+    
     
     public function getColocByID($id): ?Coloc
     {
