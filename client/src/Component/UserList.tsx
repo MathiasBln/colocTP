@@ -77,16 +77,13 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                 </div>
             </div>
             <div className="row text-dark bg-success">
-                <div className="col-2 p-2">
+                <div className="col-2 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
                     <h4 className="fs-6 fs-md-5">Nom</h4>
                 </div>
-                <div className="col-1 p-2">
+                <div className="col-2 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
                     <h4 className="fs-6 fs-md-5">Id</h4>
                 </div>
-                <div className="col-1 p-2">
-                    <h4 className="fs-6 fs-md-5">Coloc n°</h4>
-                </div>
-                <div className="col-8 p-2">
+                <div className="col-8 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
                     <h4 className="fs-6 fs-md-5">formulaire d'invitation</h4>
                 </div>
             </div>
@@ -94,14 +91,11 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
             <div className="row text-dark">
                 {fetchUsers.users?.filter( (ele: any) => ele['coloc_id'] == null).map( (item: any, key: any) => (
                     <div className="row text-dark p-3" key={item['id']}>
-                        <div className="col-2 d-flex flex-column">
+                        <div className="col-2 d-flex align-content-center justify-content-between align-items-center gap-2">
                                 <span>{item['username']}</span>
                         </div>
-                        <div className="col-1 d-flex flex-column">
+                        <div className="col-2 d-flex align-content-center justify-content-between align-items-center gap-2">
                                 <span>{item['id']}</span>
-                        </div>
-                        <div className="col-1 d-flex flex-column">
-                                <span>{colocOnlyId} </span>
                         </div>
                         <div className="col-8">
                             <span>
