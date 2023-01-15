@@ -17,7 +17,7 @@ export default function NavBarHome({deco, coloc}: any) {
                     <button className="nav-link border-0 dark-background-50 text-white fw-bold fs-4 px-5 hover-blue" onClick={deco}>Me déconnecter</button>
                 </li>
                 <li className="nav-item mr-5">
-                    <NavLink className="nav-link active dark-background-50 text-white fw-bold fs-4 px-5 hover-blue" aria-current="page" to="/coloc">Mon espace client</NavLink>
+                    <NavLink className="nav-link active dark-background-50 text-white fw-bold fs-4 px-5 hover-blue" aria-current="page" to="/coloc">Mon espace colocataire</NavLink>
                 </li>
             </ul>          
         </div>
