@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarDashboard from "../Component/NavBarDashboard";
-import MessageColoc from "../Component/MessageColoc";
+import MessageColoc from "../Component/SubDashboard";
 import MessageNoColoc from "../Component/MessageNoColoc";
 import "../style/Dashboard.css"
 import "../style/Utilities.css"

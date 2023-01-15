@@ -1,5 +1,5 @@
 import {IShowProps, IViewColoc, IListColoc} from "../types/Post";
-import FormPost from "../Component/FormPost";
+import FormPost from "../Component/CreateColoc";
 import NavBarHome from "../Component/NavBarHome";
 import ViewColocs from "../Component/ViewColocs";
 import { useState, useEffect } from "react";

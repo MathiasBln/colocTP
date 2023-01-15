@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { IExpense } from "../types/Expense";
 import { useNavigate } from "react-router-dom";
-import WelcomeDashBoard from "../Component/WelcomeDashboard";
-import Balance from '../Component/Balance';
-import Expense from "../Component/Expense";
-import ExpensesForm from "../Component/ExpensesForm";
-import ListUser from "../Component/ListUser";
+import WelcomeDashBoard from "./WelcomeDashboard";
+import Balance from './Balance';
+import Expense from "./Expense";
+import ExpensesForm from "./ExpensesForm";
+import ListUser from "./ListUser";
 import "../style/Utilities.css";
 import "../style/Dashboard.css"
 
-
-export default function MessageColoc({coloc}: any) {
+export default function SubDashBoard({coloc}: any) {
 
 const token = JSON.parse(sessionStorage.token)
 const [expenses, setExpenses] = useState<{ expenses: IExpense[] }>({expenses: []})
