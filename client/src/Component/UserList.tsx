@@ -3,15 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { IColoc, IShowProps, FormColoc, IRenter, INewRenter, FormRenter} from "../types/Post"
 
 export default function UserList({setFetchUsers, fetchUsers}:any) {
-    // @ts-ignore
-    const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" });
-    const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})
-
-    const [formRenter, setFormRenter] = useState<FormRenter>({ id: "", coloc_id: "" });
-    const [renter, setRenter] = useState<{ renter: IRenter[] }>({renter: []})
-
 
     const token = JSON.parse(sessionStorage.token);
+    const [formRenter, setFormRenter] = useState<FormRenter>({ id: "", coloc_id: "" });
+    const [renter, setRenter] = useState<{ renter: IRenter[] }>({renter: []})
     const navigate = useNavigate();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
