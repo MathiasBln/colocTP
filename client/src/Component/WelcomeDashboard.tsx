@@ -97,20 +97,20 @@ export default function WelcomeDashBoard({coloc}:any) {
                                               <h4 className="fs-6 fs-md-5">Colocation</h4>
                                           </div>
                                           <div className="col-3">
-                                              <h4 className="fs-6 fs-md-5">Id coloc</h4>
+                                              <h4 className="fs-6 fs-md-5">Colocation n°</h4>
                                           </div>
                                       </div>
                                       <div className="row text-dark">
-                                          <div className="col-3">
+                                          <div className="col-3 fw-bold">
                                               {el['username']}
                                           </div>
-                                          <div className="col-3">
+                                          <div className="col-3 fw-bold">
                                               {el['id']}
                                           </div>
-                                          <div className="col-3">
+                                          <div className="col-3 fw-bold">
                                               {item['title']}
                                           </div>
-                                          <div className="col-3">
+                                          <div className="col-3 fw-bold">
                                               {item['id']}
                                           </div>
                                       </div>

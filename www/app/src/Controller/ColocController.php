@@ -81,16 +81,12 @@ class ColocController extends Controller
     public function addRenter()
     {
         
-        $this->renderJSON([
-            'renter' => $_POST
-        ]);
-        die();
         $userRepository = new UserRepository(new PDOFactory());
         $argsUser = [...$_POST];
         $userbis = new User($argsUser);
-        $changeUserStatus = $userRepository->updateStatus($userbis);
+        $renter = $userRepository->updateStatus($userbis);
         $this->renderJSON([
-            "datas" => $changeUserStatus
+            "renter" => $renter
         ]);
         http_response_code(200);
         die;

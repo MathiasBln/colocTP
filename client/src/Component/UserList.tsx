@@ -72,8 +72,8 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
         <div className="shadow text-center mx-auto bg-white w-75 my-3">
              <div className="row text-dark border-bottom border-2 border-dark bg-success">
                 <div className="col-12 p-2">
-                    <h4 className="mx-auto fs-6 fs-md-5 text-uppercase fw-bold text-white">Potentiels colocataires</h4>
-                    <p className="mx-auto fw-bold text-white">En vous aidant des informations, entrez le identifiants pour les inviter dans une colocation</p>
+                    <h4 className="mx-auto fs-4 fs-md-5 text-uppercase fw-bold text-white">Potentiels colocataires</h4>
+                    <p className="mx-auto fs-6 fw-bold text-white">En vous aidant des informations ci-dessus et ci-dessous, entrez le identifiants pour les inviter dans une colocation</p>
                 </div>
             </div>
             <div className="row text-dark bg-success">
