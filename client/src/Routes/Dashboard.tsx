@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarDashboard from "../Component/NavBarDashboard";
-import MessageColoc from "../Component/SubDashboard";
+import  SubDashboard from "../Component/SubDashboard";
 import MessageNoColoc from "../Component/MessageNoColoc";
 import "../style/Dashboard.css"
 import "../style/Utilities.css"
@@ -13,7 +13,7 @@ export default function Dashboard() {
     const [coloc, setColoc] = useState({title:"", content:"", id:""} || undefined)
 
     const navigate = useNavigate()
-    const messageOnColoc :JSX.Element = coloc?.id ? <MessageColoc coloc={coloc} /> : <MessageNoColoc />;
+    const messageOnColoc :JSX.Element = coloc?.id ? <SubDashboard coloc={coloc} /> : <MessageNoColoc />;
     const deco: any = () => {
         sessionStorage.removeItem('token');
         navigate("/login");

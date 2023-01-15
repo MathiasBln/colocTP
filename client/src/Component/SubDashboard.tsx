@@ -9,7 +9,7 @@ import ListUser from "./ListUser";
 import "../style/Utilities.css";
 import "../style/Dashboard.css"
 
-export default function SubDashBoard({coloc}: any) {
+export default function SubDashboard({coloc}: any) {
 
 const token = JSON.parse(sessionStorage.token)
 const [expenses, setExpenses] = useState<{ expenses: IExpense[] }>({expenses: []})

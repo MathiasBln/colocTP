@@ -3,6 +3,7 @@ import {IShowProps} from "../types/Post";
 import FormPost from "../Component/CreateColoc";
 import NavBarHome from "../Component/NavBarHome";
 import ViewColocs from "../Component/ViewColocs";
+import HomeMessage from "../Component/HomeMessage"
 import { useNavigate} from "react-router-dom";
 
 export default function Home({setColoc, coloc}: IShowProps) {
@@ -38,7 +39,7 @@ export default function Home({setColoc, coloc}: IShowProps) {
     }
 
     return(
-        <div>
+        <div className="container">
         <NavBarHome deco={deco} />
         <div className="row mt-5 align-content-center justify-items-center justify-content-center">
             <div className="container py-2 d-flex flex-column align-content-center justify-content-center">
@@ -49,14 +50,18 @@ export default function Home({setColoc, coloc}: IShowProps) {
         </div>
            <div className="row mt-3 align-content-center justify-items-center justify-content-center">
             <div className="col-8">
-                <div className="container py-5 d-flex flex-column align-content-center justify-content-center">
+                <div className=" py-5 d-flex flex-column align-content-center justify-content-center">
                 <p className="text-center fs-4 fw-bold mb-2">...Ou accédez à votre espace de gestion si vous êtes colocataire:</p>
                 <button className="btn btn-success shadow fw-bold fs-5 w-25 mt-2 mx-auto" onClick={goToColoc}>J'ai une coloc</button>
                 </div>
             </div>
            </div>
-           <div className="container py-2 d-flex flex-column align-content-center justify-content-center">
-                {viewColoc.allColocs?.length > 0 && <ViewColocs setViewColoc={setViewColoc} viewColoc={viewColoc} />}
+           <div className="row mt-3 align-content-center justify-items-center justify-content-center">
+           <div className="col-8">
+                <div className="py-2 d-flex flex-column align-content-center justify-content-center">
+                        {viewColoc.allColocs?.length > 0 ? <ViewColocs setViewColoc={setViewColoc} viewColoc={viewColoc} /> : <HomeMessage />}
+                    </div>
+                </div>
             </div>
         </div>        
     );
