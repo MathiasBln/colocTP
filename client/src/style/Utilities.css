@@ -11,6 +11,7 @@
     --warning-70:  rgba(255, 193, 7,0.7);
     --success:   rgb(25, 135, 84);
     --success-50:rgba(25, 135, 84, 0.5);
+    --success-70:rgba(25, 135, 84, 0.7);
     --success-80:rgba(25, 135, 84, 0.8);
     --teal:    #20c997;
     --info:    #0dcaf0;
@@ -40,6 +41,10 @@
 
 .success-background-50 { 
     background-color: var(--success-50)!important;
+}
+
+.success-background-70 { 
+    background-color: var(--success-70)!important;
 }
 
 .success-background-80 { 

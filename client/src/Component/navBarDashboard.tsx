@@ -14,16 +14,16 @@ export default function NavBarDashboard({deco, coloc}: any) {
                 <div className="collapse navbar-collapse justify-content-center my-0" id="navbarNavAltMarkup">
                     <div className="navbar-nav my-0">
                         <ul className="nav fs-4 my-0">
-                            <li className="nav-item success-background-50 px-5 my-0">
+                            <li className="nav-item bg-transparent px-5 my-0">
                                 <NavLink className="nav-link active hover-blue text-white fw-bold" aria-current="page" to="/home">Retour à l'accueil</NavLink>
                             </li>
-                            <li className="nav-item success-background-50 px-5 my-0">
+                            <li className="nav-item bg-transparent px-5 my-0">
                                 <a className="nav-link hover-blue text-white fw-bold" href="#expenses">Nos dépenses</a>
                             </li>
-                            <li className="nav-item success-background-50 px-5 my-0">
+                            <li className="nav-item bg-transparent px-5 my-0">
                                 <a className="nav-link  hover-blue text-white fw-bold" href="#balance">Ma balance</a>
                             </li>
-                            <li className="nav-item success-background-50 px-5 my-0">
+                            <li className="nav-item bg-transparent px-5 my-0">
                                 <button className="nav-link hover-blue bg-transparent border-0 text-white fw-bold" onClick={deco}>Me déconnecter</button>
                             </li>
                         </ul>          
