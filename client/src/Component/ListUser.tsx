@@ -53,8 +53,8 @@ export default function ListUser(props :any) {
             {fetchUsers.users?.filter( (ele: any) => ele['coloc_id'] == null).map( (item: any, key: any) => (
                 <div className="d-flex flex-column align-content-start justify-content-center gap-2 my-3" key={key}>
                     <h2 className="border border-0 bg-transparent fs-3" >{item['username']}</h2>
-                    <button className="btn btn-sm border border-2 border-dark rounded text-center fs-4 bg-success" onClick={handleChange} value={item["id"]}>Attribuer la coloc
-                </button>
+                    {/* <button className="btn btn-sm border border-2 border-dark rounded text-center fs-4 bg-success" onClick={handleChange} value={item["id"]}>Attribuer la coloc
+                </button> */}
                 </div>
             ))}
             {hasChange &&

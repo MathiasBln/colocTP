@@ -1,6 +1,6 @@
 import {useState, useEffect, ChangeEvent, FormEvent} from "react";
 import { useNavigate } from "react-router-dom";
-import { IColoc, IShowProps, FormColoc, IRenter, INewRenter, FormRenter} from "../types/Post"
+import { IRenter, FormRenter} from "../types/Post"
 import "../style/Utilities.css";
 export default function UserList({setFetchUsers, fetchUsers}:any) {
 
@@ -9,8 +9,9 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
     const [renter, setRenter] = useState<{ renter: IRenter[] }>({renter: []})
     const navigate = useNavigate();
 
+     
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault(); 
         fetch('http://localhost:5657/addrenter', {
             method: "POST",
             mode: "cors",
@@ -24,7 +25,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
             })
         }).then((data) =>  data.json())
             .then((json) => {
-                console.log(json.renter)
+            
                 if (json.message) {
                     if (json.message === "invalid cred") {
                         sessionStorage.removeItem('token');
@@ -45,7 +46,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                         }
                     }
                 )
-               
+                window.location.reload(); 
 
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }
@@ -62,12 +63,6 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
     }
 
 
-    const colocIdArray:Array<number|string> = [];
-    fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] !== null).map( (el: any, key: any) => (
-        colocIdArray.push(el.coloc_id)
-    ))
-    const colocOnlyId =  colocIdArray[0];
-    console.log("formRenter "+formRenter);
     return (    
         <div className="shadow text-center mx-auto bg-white w-75 my-3">
              <div className="row text-dark border-bottom border-2 border-dark bg-success">
@@ -103,14 +98,11 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
                                         <div className="form-outline form-white" key={key}>
                                         <label className="form-label" htmlFor="ColocId">Identifiant coloc:</label>
                                         <input title='coloc_id' type="text" id="ColocId" className="form-control form-control-sm" name="coloc_id" onChange={handleChange}/>
-                                            {/* <input type="hidden" name="coloc_id" value={colocOnlyId} onChange={handleChange}/> */}
                                         </div>
                                         <div className="form-outline form-white">
                                         <label className="form-label" htmlFor="userId">Identifiant candidat:</label>
                                         <input title='id' type="text" id="userId" className="form-control form-control-sm" name="id" onChange={handleChange}/>
                                         </div>
-                                        
-                                    {/* <input type="hidden" name="id" value={item['id']} onChange={handleChange}/> */}
                                         <div className="form-outline form-white">
                                         <button className="py-2 px-4 btn btn-success text-white hover-blue fw-bold shadow" type="submit">Inviter</button>
                                         </div>
