@@ -26,6 +26,7 @@ export default function Form({setColoc, coloc}: IShowProps) {
         })
             .then(data => data.json())
             .then((json) => {
+                console.log(json.coloc)
                 if (json.message) {
                     if (json.message === "invalid cred") {
                         sessionStorage.removeItem('token');
@@ -44,7 +45,7 @@ export default function Form({setColoc, coloc}: IShowProps) {
                     }
                 )
             })
-            navigate('/coloc')
+            // navigate('/coloc')
     }
 
     const handleChange = (e: ChangeEvent) => {
@@ -56,7 +57,7 @@ export default function Form({setColoc, coloc}: IShowProps) {
             }
         })
     }
-
+console.log(formData)
     return (
         <>
             <div className="container py-2 h-100">

@@ -47,6 +47,7 @@ export default function ListUser(props :any) {
         setFormData({id: 0, coloc_id: 0})
     }
 
+console.log("FormListUser "+formData);
     return (
             <>
             {fetchUsers.users?.filter( (ele: any) => ele['coloc_id'] == null).map( (item: any, key: any) => (

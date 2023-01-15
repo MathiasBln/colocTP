@@ -37,15 +37,15 @@ export default function ExpensesForm({setExpenses, expenses}: IShowProps ) {
                     prevState => {
                         return {
                             expenses: [
-                                json.expenses,
+                                json?.expenses,
                                 ...prevState?.expenses,
                             ]
                         }
                     }
                 )
-
+                window.location.reload(); 
             })
-            window.location.reload();
+            
     },[formData, token.token, navigate, setExpenses])
 
     const handleChange = ({target}:any) => {
