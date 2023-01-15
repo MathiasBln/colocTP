@@ -72,7 +72,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
         colocIdArray.push(el.coloc_id)
     ))
     const colocOnlyId =  colocIdArray[0];
-
+ 
     return (    
         <div className="shadow text-center mx-auto bg-white w-75 my-3">
              <div className="row text-dark border-bottom border-2 border-dark bg-success">

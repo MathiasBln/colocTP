@@ -43,6 +43,12 @@ export default function WelcomeDashBoard({coloc}:any) {
                 setFetchUsers(data);
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }, [])
+
+    const potentialRentersArray:Array<string> = [];
+    fetchUsers.users?.filter( (elem: any) => elem['coloc_id'] === null).map( (el: any, key: any) => (
+        potentialRentersArray.push(el.username)
+    ))
+    const potentialRentersNumber : number = potentialRentersArray.length;  
    
     return (
       <>
@@ -109,7 +115,7 @@ export default function WelcomeDashBoard({coloc}:any) {
                                           </div>
                                       </div>
                                   </div>
-                                  <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} />
+                                  {potentialRentersNumber > 0 && <UserList setFetchUsers={setFetchUsers} fetchUsers={fetchUsers} />}
                               </div>
                           );
                       })}
