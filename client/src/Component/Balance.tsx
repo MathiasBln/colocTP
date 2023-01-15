@@ -1,8 +1,8 @@
 import {useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { IShowProps } from "../types/Post"; 
 import { IExpense } from "../types/Expense";
-import '../style/Utilities.css'
+import '../style/Utilities.css';
+
 const Balance = ({coloc}:any): JSX.Element => {
     
     const navigate = useNavigate();
@@ -94,9 +94,8 @@ const Balance = ({coloc}:any): JSX.Element => {
     expenses.expenses?.map((e) => {count += e.cost;})
      
     usersNumber = fetchExpenses.users?.length;
-    console.log("UserNumber"+usersNumber)
-    quote = count/usersNumber;
-    console.log(quote)
+
+    quote = Math.round(count/usersNumber);
    
     return(
         <div id='balance' className="mb-2">
@@ -140,20 +139,20 @@ const Balance = ({coloc}:any): JSX.Element => {
                      })}
                      <tr>
                         <td colSpan={2} className="text-dark fw-bold fs-6">Vos dépenses totales:</td>
-                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">{total}€</td>
+                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">{Math.round(total)}€</td>
                      </tr>
                      <tr>
                         <td colSpan={2} className="text-dark fw-bold fs-6">Votre quote part:</td>
-                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">{quote}€</td>
+                        <td colSpan={2} className="text-dark text-center fw-bold fs-6">{Math.round(quote)}€</td>
                      </tr>
                     <tr>
                         <td colSpan={2} className="text-dark fw-bold fs-6">Résultat net</td>
-                        <td colSpan={2} className={`text-${color} bg-dark shadow text-center fw-bold fs-5`}>{result}€</td>
+                        <td colSpan={2} className={`text-${color} bg-dark shadow text-center fw-bold fs-5`}>{Math.round(result)}€</td>
                     </tr>
                     </tbody>
                 </table>
                 <div className="w-75 rounded mx-auto">
-                    <p className="text-center fs-4 text-dark fw-bold py-5">{words} <span className={`fw-bold fs-3 text-${color}`}>{Math.abs(result)}</span><span className="fw-bold fs-3"> €</span> vis à vis des autres colocataires</p>
+                    <p className="text-center fs-4 text-dark fw-bold py-5">{words} <span className={`fw-bold fs-3 text-${color}`}>{Math.abs(Math.round(result))}</span><span className="fw-bold fs-3"> €</span> vis à vis des autres colocataires</p>
                    <div className="border border-white border-3 rounded bg-dark">
                         <h4 className="text-center fs-3 text-center text-white success-background-50 w-100 py-4 rounded-top">Détails:</h4>
                         <p className="text-center fs-4 text-warning">Nous avons divisé le total des dépenses de la colocation, <span className="text-success fw-bold">{count}€</span>, par le nombre de colocataires: <span className="text-success fw-bold">{usersNumber}</span>. </p>

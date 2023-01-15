@@ -41,16 +41,12 @@ const Expense = ({setExpenses, expenses}: IShowProps ) => {
         </thead>
         <tbody>
             {expenses.expenses?.map((e, key) => {
-            count += e.cost;
+            count += e?.cost;
             return <>
             <tr key={key}>
                 <td className="fs-6 fw-bold">{e?.title}</td>
                 <td className="fs-6 fw-bold">{e?.cost}€</td>
             </tr>
-            {/* <div className="expense" id="expenses">
-                <h2 className="expense-title fs-4 fw-bold">{e?.title}</h2>
-                <p className="expense-price">{e?.cost}€</p>
-            </div> */}
             </>
         })}
         <tr>
@@ -59,7 +55,6 @@ const Expense = ({setExpenses, expenses}: IShowProps ) => {
         </tr>
         </tbody>
     </table>
-    {/* <p>TOTAL : {count}</p> */}
     </>)
 }
 

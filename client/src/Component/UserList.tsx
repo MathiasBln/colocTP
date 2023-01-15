@@ -1,17 +1,12 @@
 import {useState, useEffect, ChangeEvent, FormEvent} from "react";
 import { useNavigate } from "react-router-dom";
 import { IColoc, IShowProps, FormColoc, IRenter, INewRenter, FormRenter} from "../types/Post"
-
+import "../style/Utilities.css";
 export default function UserList({setFetchUsers, fetchUsers}:any) {
-    // @ts-ignore
-    const [formData, setFormData] = useState<FormColoc>({ title: "", content: "" });
-    const [coloc, setColoc] = useState<{ coloc: IColoc[] }>({coloc: []})
-
-    const [formRenter, setFormRenter] = useState<FormRenter>({ id: "", coloc_id: "" });
-    const [renter, setRenter] = useState<{ renter: IRenter[] }>({renter: []})
-
 
     const token = JSON.parse(sessionStorage.token);
+    const [formRenter, setFormRenter] = useState<FormRenter>({ id: "", coloc_id: "" });
+    const [renter, setRenter] = useState<{ renter: IRenter[] }>({renter: []})
     const navigate = useNavigate();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -29,7 +24,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
             })
         }).then((data) =>  data.json())
             .then((json) => {
-                console.log(json.datas)
+                console.log(json.renter)
                 if (json.message) {
                     if (json.message === "invalid cred") {
                         sessionStorage.removeItem('token');
@@ -54,7 +49,7 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
 
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }
-
+  
     const handleChange = (e: ChangeEvent) => {
         setFormRenter(prevState => {
             return {
@@ -72,36 +67,53 @@ export default function UserList({setFetchUsers, fetchUsers}:any) {
         colocIdArray.push(el.coloc_id)
     ))
     const colocOnlyId =  colocIdArray[0];
- 
+    console.log("formRenter "+formRenter);
     return (    
         <div className="shadow text-center mx-auto bg-white w-75 my-3">
              <div className="row text-dark border-bottom border-2 border-dark bg-success">
                 <div className="col-12 p-2">
-                    <h4 className="mx-auto fs-6 fs-md-5 text-uppercase fw-bold">Potentiels colocataires</h4>
+                    <h4 className="mx-auto fs-6 fs-md-5 text-uppercase fw-bold text-white">Potentiels colocataires</h4>
+                    <p className="mx-auto fw-bold text-white">En vous aidant des informations, entrez le identifiants pour les inviter dans une colocation</p>
                 </div>
             </div>
             <div className="row text-dark bg-success">
-                <div className="col-5 p-2">
+                <div className="col-2 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
                     <h4 className="fs-6 fs-md-5">Nom</h4>
                 </div>
-                <div className="col-5 p-2">
-                    <h4 className="fs-6 fs-md-5">Invitation</h4>
+                <div className="col-2 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
+                    <h4 className="fs-6 fs-md-5">Id</h4>
+                </div>
+                <div className="col-8 p-2 d-flex align-content-center justify-content-between align-items-center gap-2">
+                    <h4 className="fs-6 fs-md-5">formulaire d'invitation</h4>
                 </div>
             </div>
+
             <div className="row text-dark">
                 {fetchUsers.users?.filter( (ele: any) => ele['coloc_id'] == null).map( (item: any, key: any) => (
                     <div className="row text-dark p-3" key={item['id']}>
-                            <div className="col-5">
-                                    <span className="fs-5 fw-bold">{item['username']}</span>
-                            </div>
-                        <div className="col-5">
+                        <div className="col-2 d-flex align-content-center justify-content-between align-items-center gap-2">
+                                <span>{item['username']}</span>
+                        </div>
+                        <div className="col-2 d-flex align-content-center justify-content-between align-items-center gap-2">
+                                <span>{item['id']}</span>
+                        </div>
+                        <div className="col-8">
                             <span>
-                                <form onSubmit={handleSubmit}>
-                                        <div key={key}>
-                                            <input type="hidden" name="coloc_id" value={colocOnlyId} onChange={handleChange}/>
+                                <form className="d-flex align-content-center justify-content-between align-items-center gap-2" onSubmit={handleSubmit}>
+                                        <div className="form-outline form-white" key={key}>
+                                        <label className="form-label" htmlFor="ColocId">Identifiant coloc:</label>
+                                        <input title='coloc_id' type="text" id="ColocId" className="form-control form-control-sm" name="coloc_id" onChange={handleChange}/>
+                                            {/* <input type="hidden" name="coloc_id" value={colocOnlyId} onChange={handleChange}/> */}
                                         </div>
-                                    <input type="hidden" name="id" value={item['id']} onChange={handleChange}/>
-                                    <button className="mx-auto list-group-item btn btn-sm rounded-5 px-4 py-2 bg-success shadow border-0 border text-white fw-bold" type="submit">Inviter dans la colocation</button>
+                                        <div className="form-outline form-white">
+                                        <label className="form-label" htmlFor="userId">Identifiant candidat:</label>
+                                        <input title='id' type="text" id="userId" className="form-control form-control-sm" name="id" onChange={handleChange}/>
+                                        </div>
+                                        
+                                    {/* <input type="hidden" name="id" value={item['id']} onChange={handleChange}/> */}
+                                        <div className="form-outline form-white">
+                                        <button className="py-2 px-4 btn btn-success text-white hover-blue fw-bold shadow" type="submit">Inviter</button>
+                                        </div>
                                 </form>
                             </span>
                         </div>
