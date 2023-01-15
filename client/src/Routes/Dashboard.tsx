@@ -11,9 +11,8 @@ export default function Dashboard() {
 
     const token = JSON.parse(sessionStorage.token)
     const [coloc, setColoc] = useState({title:"", content:"", id:""} || undefined)
-
     const navigate = useNavigate()
-    const messageOnColoc :JSX.Element = coloc?.id ? <SubDashboard coloc={coloc} /> : <MessageNoColoc />;
+
     const deco: any = () => {
         sessionStorage.removeItem('token');
         navigate("/login");
@@ -33,11 +32,10 @@ export default function Dashboard() {
     }, [token.token]);
     return(
         <>  
-        {/* La navBar qui a été créé inclu déjà un logout (se déconnecter) */}
-        {/* <button className="btn btn-outline-dark btn-lg px-5" onClick={deco}>Logout</button> */}
         {coloc?.id && <NavBarDashboard deco={deco} coloc={coloc} />}
         <div className="dashboard">
-            {messageOnColoc}
+            {!coloc?.id && <MessageNoColoc />}
+            {coloc?.id &&  <SubDashboard coloc={coloc} />}
         </div>
         </>
     )

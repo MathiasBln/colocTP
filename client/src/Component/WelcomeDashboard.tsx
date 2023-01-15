@@ -55,7 +55,7 @@ export default function WelcomeDashBoard({coloc}:any) {
           {fetchUsers.users?.filter( (elem: any) => (elem['token'] === token.token)  ).map((el: any, index: any) => {
               return (
                   <div className="container d-flex flex-column p-0" key={el['id']}>
-                      {fetchUsers.users?.filter( (elem: any) => (elem['token'] === token.token)  ).map((ele: any, key: any) => {
+                      {fetchUsers.users?.filter( (elem: any) => (elem['token'] === token.token) && coloc?.id).map((ele: any, key: any) => {
                           return (
                             <>
                             <div className="row align-content-center justify-content-center my-5" key={key}>

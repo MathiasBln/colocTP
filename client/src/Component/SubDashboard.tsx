@@ -11,6 +11,10 @@ import "../style/Dashboard.css"
 
 export default function SubDashboard({coloc}: any) {
 
+    if(coloc?.id)  { 
+        
+    }
+
 const token = JSON.parse(sessionStorage.token)
 const [expenses, setExpenses] = useState<{ expenses: IExpense[] }>({expenses: []})
 const navigate = useNavigate()
