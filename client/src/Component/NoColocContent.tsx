@@ -22,7 +22,7 @@ export default function NoColocContent() {
         <p className="fs-4 mt-2"> Vous n'êtes pas colocataire ou le système ne vous identifie plus comme colocataire.</p>
         <p className="fs-5 mt-2">Si vous n'êtes pas encore colocataire, je vous invite à demander une admission dans une colocation. La liste se situe sur la page d'accueil. 
         Ecrivez un email à l'une des colocation qui étudiera votre demande et si elle est retenue, vous pourrez avoir pleinement accés à un espace de gestion.</p>
-        <p className="fs-5 mt-2">Si vous êtes colocataire, une mesure de sécurité ou un incident technique a pu vous retirer l'identification votre statut sur le site: 
+        <p className="fs-5 mt-2">Si vous êtes colocataire, une mesure de sécurité ou un incident technique empêcher l'accés à votre identifiant de colocataire: 
         pour être à nouveau considéré comme colocataire, je vous invite à vous reconnecter</p>
         </div>
         <div className="row align-content-center justify-content-center gap-2 pb-5"> 
