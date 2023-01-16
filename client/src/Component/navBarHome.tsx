@@ -1,7 +1,7 @@
 import { NavLink} from "react-router-dom";
 import "../style/Utilities.css";
 
-export default function navBarHome({deco, coloc}: any) { 
+export default function NavBarHome({deco, coloc}: any) { 
 
     return(
 

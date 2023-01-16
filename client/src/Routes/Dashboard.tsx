@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import navBarDashboard from "../Component/navBarDashboard";
+import NavBarDashboard from "../Component/NavBarDashboard";
 import  SubDashboard from "../Component/SubDashboard";
 import MessageNoColoc from "../Component/MessageNoColoc";
 import "../style/Dashboard.css"
@@ -33,7 +33,7 @@ export default function Dashboard() {
 
     return(
         <>  
-        {coloc?.id && <navBarDashboard deco={deco} coloc={coloc} />}
+        {coloc?.id && <NavBarDashboard deco={deco} coloc={coloc} />}
         <div className="dashboard">
             {!coloc?.id && <MessageNoColoc />}
             {coloc?.id &&  <SubDashboard coloc={coloc} />}
