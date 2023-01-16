@@ -1,7 +1,7 @@
 import { NavLink} from "react-router-dom";
 import "../style/Utilities.css";
 
-export default function NavBarDashboard({deco, coloc}: any) { 
+export default function navBarDashboard({deco, coloc}: any) { 
 
     return(
     <>

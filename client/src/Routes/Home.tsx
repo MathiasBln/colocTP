@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {IShowProps} from "../types/Coloc";
 import FormPost from "../Component/CreateColoc";
-import NavBarHome from "../Component/NavBarHome";
+import navBarHome from "../Component/navBarHome";
 import ViewColocs from "../Component/ViewColocs";
 import HomeMessage from "../Component/HomeMessage"
 import { useNavigate} from "react-router-dom";
@@ -40,7 +40,7 @@ export default function Home({setColoc, coloc}: IShowProps) {
 
     return(
         <div className="container">
-        <NavBarHome deco={deco} />
+        <navBarHome deco={deco} />
         <div className="row mt-5 align-content-center justify-items-center justify-content-center">
             <div className="container py-2 d-flex flex-column align-content-center justify-content-center">
                     <h1 className="text-center fs-3 text-uppercase mt-5 mb-2 fw-bold">Devenir gérant de colocation</h1>
