@@ -2,6 +2,7 @@
 
 
 ## Description:
+Projet réalisé par : Martin CLAVER, Julien VERITE, Amaury FRANSSEN, Mathias BOUILLON
 
 ## Prerequisite
 Docker, composer, npm.
